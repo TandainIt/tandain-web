@@ -1,0 +1,39 @@
+@use 'styles/mediaQueries' as mq;
+
+.Container {
+  padding: 20px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: mq.$max-xs) {
+  .Container {
+    padding: 24px 32px;
+  }
+}
+
+@media screen and (min-width: mq.$min-sm) {
+  .Container {
+    padding: 24px 48px;
+  }
+}
+
+@media screen and (min-width: mq.$min-sm) {
+  .Container {
+    padding: 24px 48px;
+  }
+}
+
+@media screen and (min-width: mq.$min-lg) {
+  .Container {
+    padding: 24px 64px;
+  }
+}
+
+@media screen and (min-width: mq.$min-xl) {
+  .Container {
+    padding: 24px 72px;
+  }
+}
+
