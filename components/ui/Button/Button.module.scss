@@ -1,0 +1,46 @@
+@use 'styles/colors.scss' as colors;
+
+.Button {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background ease-in 0.1s, color ease-in 0.1s;
+  background: none;
+}
+
+// Variant
+
+.SolidPrimary {
+  border: none;
+  background-color: colors.$primary-default;
+  color: colors.$white;
+
+  &:hover {
+    background-color: colors.$primary-darker;
+  }
+}
+
+.OutlinedPrimary {
+  border: 2px solid colors.$primary-darker;
+  color: colors.$primary-darker;
+
+  &:hover {
+    background-color: colors.$primary-lighter200;
+  }
+}
+
+
+
+// .Text {}
+
+// Size
+
+// .Small {}
+
+.Medium {
+  font-size: 1rem;
+  padding: 0 18px;
+  font-size: 1rem;
+  height: 2.5rem;
+}
+
+// .Large {}
