@@ -2,5 +2,12 @@
   display: inline-flex;
   text-align: center;
   align-items: center;
-  text-decoration: none;
+}
+
+.BaseButton {
+  border: none;
+  background: none;
+  font-family: inherit;
+  padding: 0;
+  font-size: 1rem;
 }
