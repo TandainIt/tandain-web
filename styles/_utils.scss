@@ -1,6 +1,42 @@
+@use './typhographies.scss' as t;
+
+// Font
+
+.font-semibold {
+	font-weight: t.$semibold;
+}
+
+// Padding
+
+.px2 {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
 
 // Margin
 
+.mx0p25 {
+	margin-top: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.mx0p5 {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.mt0p25 {
+	margin-top: 0.25rem;
+}
+
+.mr0p5 {
+	margin-right: 0.5rem;
+}
+
 .mr-16 {
-  margin-right: 16px;
+	margin-right: 16px;
+}
+
+.mb4 {
+	margin-bottom: 4rem;
 }

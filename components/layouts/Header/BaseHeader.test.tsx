@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
-import BaseHeader from '../../../../components/layouts/Header/BaseHeader';
+import BaseHeader from './BaseHeader';
 
 describe('Header/<BaseHeader>', () => {
 	it('should render correctly', () => {
-		render(<BaseHeader data-testid='base-header' />);
+		render(<BaseHeader />);
 
-		const baseHeader = screen.getByTestId('base-header');
+		const baseHeader = screen.getByTestId('header');
 
 		expect(baseHeader).toBeVisible();
 	});

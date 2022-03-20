@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import BaseButton from '../../../../components/ui/BaseButton/BaseButton';
+import BaseButton from './BaseButton';
 
 describe('Button/<BaseButton>', () => {
 	it('should render as button element', () => {

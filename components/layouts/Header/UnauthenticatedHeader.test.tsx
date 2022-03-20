@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import UnauthenticatedHeader from '../../../../components/layouts/Header/UnauthenticatedHeader';
+import UnauthenticatedHeader from './UnauthenticatedHeader';
 
 describe('Header/<UnauthenticatedHeader />', () => {
 	it('should render correctly', () => {

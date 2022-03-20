@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import Logo from '../../../../components/ui/Logo/Logo';
+import Logo from './Logo';
 
 describe('Logo/<Logo>', () => {
 	it('should render correctly', () => {
