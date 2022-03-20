@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
-import GoogleIcon from '../../../../components/icons/GoogleIcon';
-import Button from '../../../../components/ui/Button/Button';
+import GoogleIcon from '../../icons/GoogleIcon';
+import Button from './Button';
 
 describe('Button/<Button>', () => {
 	it('should render with default variant, color, and size', () => {
@@ -12,8 +12,8 @@ describe('Button/<Button>', () => {
 		expect(button).toHaveClass('Button Medium SolidPrimary');
 	});
 
-  it('should render with startIcon', () => {
-		render(<Button startIcon={<GoogleIcon />}/>);
+	it('should render with startIcon', () => {
+		render(<Button startIcon={<GoogleIcon />} />);
 
 		const button = screen.getByRole('button');
 
