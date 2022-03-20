@@ -5,6 +5,9 @@
   font-weight: 500;
   transition: background ease-in 0.1s, color ease-in 0.1s;
   background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // Variant
@@ -13,6 +16,7 @@
   border: none;
   background-color: colors.$primary-default;
   color: colors.$white;
+  fill: colors.$white;
 
   &:hover {
     background-color: colors.$primary-darker;
@@ -38,9 +42,14 @@
 
 .Medium {
   font-size: 1rem;
-  padding: 0 18px;
+  padding: 0 1rem;
   font-size: 1rem;
   height: 2.5rem;
+
+  .Icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 }
 
 // .Large {}

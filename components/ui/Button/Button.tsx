@@ -7,12 +7,13 @@ import classes from './Button.module.scss';
 
 const Button: FC<ButtonProps> = ({
 	as,
-  href,
+	href,
 	variant = 'solid',
 	size = 'md',
 	color = 'primary',
 	className = '',
 	children,
+	startIcon,
 }) => {
 	const sizeKeys = {
 		sm: 'Small',
@@ -24,15 +25,15 @@ const Button: FC<ButtonProps> = ({
 		solid: {
 			primary: 'SolidPrimary',
 		},
-    outlined: {
-      primary: 'OutlinedPrimary'
-    }
+		outlined: {
+			primary: 'OutlinedPrimary',
+		},
 	};
 
 	return (
 		<BaseButton
 			as={as}
-      href={href}
+			href={href}
 			className={`
         ${classes.Button}
         ${classes[sizeKeys[size]]} 
@@ -40,6 +41,7 @@ const Button: FC<ButtonProps> = ({
         ${className}
       `}
 		>
+			{startIcon && <i className={`${classes.Icon} mr0p5`}>{startIcon}</i>}
 			{children}
 		</BaseButton>
 	);
