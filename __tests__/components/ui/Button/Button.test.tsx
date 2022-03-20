@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import GoogleIcon from '../../../../components/icons/GoogleIcon';
 
+import GoogleIcon from '../../../../components/icons/GoogleIcon';
 import Button from '../../../../components/ui/Button/Button';
 
 describe('Button/<Button>', () => {
