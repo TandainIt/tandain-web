@@ -3,10 +3,20 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
 }
 
 button {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
