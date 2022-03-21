@@ -1,4 +1,9 @@
 @use 'styles/mediaQueries' as mq;
+@use 'styles/colors' as c;
+
+.Container {
+	border-top: 1px solid c.$gray-default;
+}
 
 @media screen and (max-width: mq.$sm) {
 	.Container {
