@@ -16,6 +16,7 @@ const Button: FC<ButtonProps> = ({
 	color = 'primary',
 	className = '',
 	children,
+  round,
 	startIcon,
 }) => {
 	return (
@@ -26,6 +27,7 @@ const Button: FC<ButtonProps> = ({
         ${classes.Button}
         ${classes[buttonSizes[size]]} 
         ${classes[buttonVariants[variant][color]]}
+        ${round && classes.Round}
         ${!children ? classes.IconOnly : ''}
         ${className}
       `}

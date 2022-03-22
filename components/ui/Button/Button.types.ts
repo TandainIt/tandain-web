@@ -7,4 +7,5 @@ export interface ButtonProps extends BaseButtonProps {
 	color?: 'primary';
 	size?: 'sm' | 'md' | 'lg';
 	startIcon?: ReactNode;
+  round?: Boolean 
 }

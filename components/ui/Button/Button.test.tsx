@@ -43,4 +43,12 @@ describe('Button/<Button>', () => {
 
 		expect(button).toHaveClass('Button TextPrimary');
 	});
+
+  it('should render with the rounded container', () => {
+    render(<Button round />);
+
+		const button = screen.getByRole('button');
+
+		expect(button).toHaveClass('Round');
+  })
 });
