@@ -3,6 +3,9 @@ import { FC } from 'react';
 import BaseButton from '../BaseButton/BaseButton';
 
 import { ButtonProps } from './';
+
+import { sizes as buttonSizes, variants as buttonVariants } from '../../../utils/variables';
+
 import classes from './Button.module.scss';
 
 const Button: FC<ButtonProps> = ({
@@ -15,33 +18,21 @@ const Button: FC<ButtonProps> = ({
 	children,
 	startIcon,
 }) => {
-	const sizeKeys = {
-		sm: 'Small',
-		md: 'Medium',
-		lg: 'Large',
-	};
-
-	const variantColorKeys = {
-		solid: {
-			primary: 'SolidPrimary',
-		},
-		outlined: {
-			primary: 'OutlinedPrimary',
-		},
-	};
-
 	return (
 		<BaseButton
 			as={as}
 			href={href}
 			className={`
         ${classes.Button}
-        ${classes[sizeKeys[size]]} 
-        ${classes[variantColorKeys[variant][color]]}
+        ${classes[buttonSizes[size]]} 
+        ${classes[buttonVariants[variant][color]]}
+        ${!children ? classes.IconOnly : ''}
         ${className}
       `}
 		>
-			{startIcon && <i className={`${classes.Icon} mr0p5`}>{startIcon}</i>}
+			{startIcon && (
+				<i className={`${classes.Icon} ${children && 'mr0p5'}`}>{startIcon}</i>
+			)}
 			{children}
 		</BaseButton>
 	);

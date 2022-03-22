@@ -20,11 +20,27 @@ describe('Button/<Button>', () => {
 		expect(button.firstChild).toHaveClass('Icon');
 	});
 
-	it('should render with the class of Outlined and Primary', () => {
+  it('should render with icon only', () => {
+		render(<Button startIcon={<GoogleIcon />} />);
+
+		const button = screen.getByRole('button');
+
+		expect(button).toHaveClass('IconOnly');
+	});
+
+	it('should render with the outlined variant and primary color', () => {
 		render(<Button variant='outlined' />);
 
 		const button = screen.getByRole('button');
 
 		expect(button).toHaveClass('Button OutlinedPrimary');
+	});
+
+  it('should render with the text variant and primary color', () => {
+		render(<Button variant='text' />);
+
+		const button = screen.getByRole('button');
+
+		expect(button).toHaveClass('Button TextPrimary');
 	});
 });
