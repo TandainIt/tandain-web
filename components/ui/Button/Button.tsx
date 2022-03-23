@@ -4,7 +4,10 @@ import BaseButton from '../BaseButton/BaseButton';
 
 import { ButtonProps } from './';
 
-import { sizes as buttonSizes, variants as buttonVariants } from '../../../utils/variables';
+import {
+	sizes as buttonSizes,
+	variants as buttonVariants,
+} from '../../../utils/variables';
 
 import classes from './Button.module.scss';
 
@@ -16,8 +19,9 @@ const Button: FC<ButtonProps> = ({
 	color = 'primary',
 	className = '',
 	children,
-  round,
+	round,
 	startIcon,
+	...rest
 }) => {
 	return (
 		<BaseButton
@@ -31,6 +35,7 @@ const Button: FC<ButtonProps> = ({
         ${!children ? classes.IconOnly : ''}
         ${className}
       `}
+			{...rest}
 		>
 			{startIcon && (
 				<i className={`${classes.Icon} ${children && 'mr0p5'}`}>{startIcon}</i>
