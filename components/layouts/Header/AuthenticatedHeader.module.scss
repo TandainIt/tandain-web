@@ -1,0 +1,55 @@
+@use 'styles/mediaQueries' as mq;
+@use 'styles/colors' as c;
+
+.Container {
+	padding: 1.25rem 4rem;
+	display: flex;
+	justify-content: space-between;
+
+	.Avatar {
+		background-color: c.$gray-darker;
+		fill: c.$gray-lighter;
+
+		&:hover {
+			background-color: c.$gray-darkest;
+		}
+	}
+
+	.SidebarButton {
+		display: none;
+	}
+}
+
+@media screen and (max-width: mq.$sm) {
+	.Container {
+		padding: 1.5rem 2rem;
+	}
+}
+
+@media screen and (min-width: mq.$sm) {
+	.Container {
+		padding: 1.5rem 3rem;
+	}
+}
+
+@media screen and (min-width: mq.$md) {
+	.Container {
+		padding: 1.25rem 3rem;
+
+		.SidebarButton {
+			display: none;
+		}
+	}
+}
+
+@media screen and (min-width: mq.$lg) {
+	.Container {
+		padding: 1.25rem 4rem;
+	}
+}
+
+@media screen and (min-width: mq.$xl) {
+	.Container {
+		padding: 1.25rem 4.5rem;
+	}
+}
