@@ -1,5 +1,11 @@
 @use './typhographies.scss' as t;
 
+// Flex
+
+.col {
+	display: inline-flex;
+}
+
 // Font
 
 .font-semibold {
@@ -35,6 +41,10 @@
 
 .mr-16 {
 	margin-right: 16px;
+}
+
+.mr2 {
+	margin-right: 2rem;
 }
 
 .mb4 {

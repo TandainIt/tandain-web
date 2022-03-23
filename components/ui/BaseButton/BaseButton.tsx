@@ -1,5 +1,5 @@
-import Link, { LinkProps } from 'next/link';
-import { FC, createElement } from 'react';
+import Link from 'next/link';
+import { FC } from 'react';
 
 import { BaseButtonProps } from './BaseButton.types';
 
