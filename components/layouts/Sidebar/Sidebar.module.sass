@@ -1,0 +1,35 @@
+@use 'styles/mediaQueries' as mq
+@use 'styles/colors.scss' as c
+
+.Sidebar
+  height: 100vh
+  padding: 1.5rem
+  flex-shrink: 0
+  position: fixed
+  transform: translateX(-100%)
+  transition: transform .25s ease
+  background-color: c.$white
+  z-index: 1001
+
+  .NavList
+    top: 112px // TODO: Change to be dynamic
+    position: relative
+
+.Sidebar.Expanded
+  transform: translateX(0)
+
+.Backdrop
+  display: none
+
+.Backdrop.Show
+  display: initial
+
+@media screen and (min-width: mq.$md)
+  .Sidebar
+    min-height: 80vh
+    padding: 1.25rem 1.5rem
+    position: static
+    transform: translateX(0)
+
+  .Backdrop.Show
+    display: none

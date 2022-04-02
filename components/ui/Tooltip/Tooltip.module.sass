@@ -1,0 +1,43 @@
+@use 'styles/colors.scss' as c
+
+.tooltip
+  position: relative
+
+  .text
+    position: absolute
+    white-space: nowrap
+    z-index: 1
+    padding: 0.25rem 0.5rem
+    border-radius: 0.25rem
+    background-color: c.$gray-darkest
+    color: c.$white
+    font-size: 0.75rem
+    display: none
+
+.tooltip:hover
+  .text
+    display: initial
+
+.tooltip.top
+  .text
+    bottom: 110%
+    left: 50%
+    transform: translateX(-50%)
+
+.tooltip.right
+  .text
+    top: 50%
+    left: 110%
+    transform: translateY(-50%)
+
+.tooltip.bottom
+  .text
+    top: 110%
+    left: 50%
+    transform: translateX(-50%)
+
+.tooltip.left
+  .text
+    top: 50%
+    right: 110%
+    transform: translateY(-50%)

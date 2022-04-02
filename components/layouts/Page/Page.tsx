@@ -1,11 +1,13 @@
 import { FC } from 'react';
 
+import classes from './Page.module.scss';
+
 import { PageProps } from './Page.types';
 
 const Page: FC<PageProps> = ({ className, children }) => (
-	<main data-testid='page' className={className}>
+	<div data-testid='page' className={`${classes.Page} ${className}`}>
 		{children}
-	</main>
+	</div>
 );
 
 export default Page;
