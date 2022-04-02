@@ -11,7 +11,7 @@
 }
 
 .Round {
-  border-radius: 50%;
+	border-radius: 50%;
 }
 
 // Variant
@@ -32,16 +32,17 @@
 	color: c.$primary-darker;
 
 	&:hover {
-		background-color: c.$primary-lighter200;
+		background-color: c.$primary-lighter300;
 	}
 }
 
 .TextPrimary {
 	color: c.$primary-darkest;
 	fill: c.$primary-darkest;
+	stroke: c.$primary-darkest;
 
-  &:hover {
-		background-color: c.$primary-lightest;
+	&:hover {
+		background-color: c.$primary-lighter300;
 	}
 }
 
@@ -59,9 +60,9 @@
 }
 
 .Medium.IconOnly {
-  padding: 0 0.5rem;
+	padding: 0 0.5rem;
 
-  .Icon {
+	.Icon {
 		width: 1.5rem;
 		height: 1.5rem;
 	}

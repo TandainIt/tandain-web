@@ -6,6 +6,12 @@
 	display: inline-flex;
 }
 
+// Sizing
+
+.w-full {
+	width: 100%;
+}
+
 // Font
 
 .font-semibold {
@@ -49,4 +55,8 @@
 
 .mb4 {
 	margin-bottom: 4rem;
+}
+
+.ml0p75 {
+	margin-left: 0.75rem;
 }

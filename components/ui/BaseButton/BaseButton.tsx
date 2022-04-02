@@ -9,7 +9,7 @@ const BaseButton: FC<BaseButtonProps> = ({
 	as = 'button',
 	href,
 	children,
-  className = '',
+	className = '',
 	...rest
 }) => {
 	// return createElement(href ? Link : 'button', { ...rest }, children);

@@ -4,7 +4,7 @@ import Backdrop from './Backdrop';
 
 describe('Backdrop/<Backdrop>', () => {
 	it('should render correctly', () => {
-		render(<Backdrop />);
+		render(<Backdrop data-testid='backdrop' />);
 
 		const backdrop = screen.getByTestId('backdrop');
 
