@@ -8,11 +8,11 @@ import classes from './Footer.module.sass';
 const Footer: FC = () => (
 	<footer data-testid='footer' className={classes.Container}>
 		<div>
-			<Title as='h5' className='mx0p5'>
+			<Title as='h5' className='my0p5'>
 				Tandain
 			</Title>
 			<ul>
-				<FooterListItem href='/about' className='mx0p25'>
+				<FooterListItem href='/about' className='my0p25'>
 					About
 				</FooterListItem>
 			</ul>

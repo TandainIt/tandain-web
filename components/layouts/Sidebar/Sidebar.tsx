@@ -45,7 +45,7 @@ const Sidebar: FC = () => {
 					<NavItem
 						startIcon={<ListIcon />}
 						href='/mylist'
-						className='mx0p25'
+						className='my0p25'
 						isExpanded={isSidebarExpanded}
 						isActive={pathname === '/mylist'}
 					>
