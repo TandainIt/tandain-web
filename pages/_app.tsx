@@ -8,7 +8,7 @@ import { toggleExpandSidebar } from '../store/actions/page';
 
 import Footer from '../components/layouts/Footer';
 
-import '../styles/index.scss';
+import '../styles/index.sass';
 
 function MyComponent({ children }) {
 	// NOTE: Configuring globally at first render

@@ -9,7 +9,7 @@ import {
 	variants as buttonVariants,
 } from '../../../utils/variables';
 
-import classes from './Button.module.scss';
+import classes from './Button.module.sass';
 
 const Button: FC<ButtonProps> = ({
 	as,

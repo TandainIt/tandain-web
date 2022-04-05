@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { BaseButtonProps } from './BaseButton.types';
 
-import classes from './BaseButton.module.scss';
+import classes from './BaseButton.module.sass';
 
 const BaseButton: FC<BaseButtonProps> = ({
 	as = 'button',

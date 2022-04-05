@@ -4,7 +4,7 @@ import BaseButton from '../../../components/ui/BaseButton';
 
 import GoogleButton from '../GoogleButton';
 
-import classes from './Signup.module.scss';
+import classes from './Signup.module.sass';
 import { SingupProps } from './Signup.types';
 
 const Signup: FC<SingupProps> = ({ className }) => (

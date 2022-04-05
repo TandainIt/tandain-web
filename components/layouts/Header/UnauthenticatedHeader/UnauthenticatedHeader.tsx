@@ -4,7 +4,7 @@ import Button from '@/components/ui/Button';
 import Logo from '@/components/ui/Logo';
 import BaseHeader from '@/components/layouts/Header/BaseHeader';
 
-import classes from './UnauthenticatedHeader.module.scss';
+import classes from './UnauthenticatedHeader.module.sass';
 
 export const UnauthenticatedHeader: FC = () => (
 	<BaseHeader
