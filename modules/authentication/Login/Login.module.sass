@@ -1,0 +1,10 @@
+@use 'styles/mediaQueries' as mq
+
+.Container
+  display: flex
+  flex-direction: column
+  width: 320px
+
+@media screen and (max-width: mq.$xs)
+  .Container
+    width: unset

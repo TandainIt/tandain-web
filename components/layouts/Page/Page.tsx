@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import classes from './Page.module.scss';
+import classes from './Page.module.sass';
 
 import { PageProps } from './Page.types';
 

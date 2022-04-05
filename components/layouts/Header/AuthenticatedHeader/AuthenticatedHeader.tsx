@@ -9,7 +9,7 @@ import MenuIcon from '@/components/icons/MenuIcon';
 import UserIcon from '@/components/icons/UserIcon';
 import BaseHeader from '@/components/layouts/Header/BaseHeader';
 
-import classes from './AuthenticatedHeader.module.scss';
+import classes from './AuthenticatedHeader.module.sass';
 
 const AuthenticatedHeader: FC = () => {
 	const dispatch = useAppDispatch();

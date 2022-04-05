@@ -5,7 +5,7 @@ import { UnauthenticatedHeader } from '../components/layouts/Header';
 import Page from '../components/layouts/Page';
 import Login from '../modules/authentication/Login';
 
-import classes from '../styles/pages/AuthPage.module.scss';
+import classes from '../styles/pages/AuthPage.module.sass';
 
 const LoginPage: NextPage = () => (
 	<>

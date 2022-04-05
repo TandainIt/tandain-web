@@ -4,7 +4,7 @@ import Title from '../../../components/typhographies/Title';
 import BaseButton from '../../../components/ui/BaseButton';
 import GoogleButton from '../GoogleButton';
 
-import classes from './Login.module.scss';
+import classes from './Login.module.sass';
 
 import { LoginProps } from './Login.types';
 

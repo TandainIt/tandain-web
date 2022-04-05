@@ -3,7 +3,7 @@ import { FC } from 'react';
 import Title from '@/components/typhographies/Title';
 import FooterListItem from './FooterListItem';
 
-import classes from './Footer.module.scss';
+import classes from './Footer.module.sass';
 
 const Footer: FC = () => (
 	<footer data-testid='footer' className={classes.Container}>
