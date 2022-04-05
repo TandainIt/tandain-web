@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { ReduxProvider } from '../../../pages/_app';
+import { ReduxProvider } from '@/pages/_app';
 import AuthenticatedHeader from './AuthenticatedHeader';
 
 const renderAuthenticatedHeader = () =>

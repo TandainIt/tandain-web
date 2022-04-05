@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Title from '../../typhographies/Title';
+import Title from '@/components/typhographies/Title';
 import FooterListItem from './FooterListItem';
 
 import classes from './Footer.module.scss';

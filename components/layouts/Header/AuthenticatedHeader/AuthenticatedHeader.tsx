@@ -1,13 +1,13 @@
 import { FC } from 'react';
 
-import useAppDispatch from '../../../hooks/useAppDispatch';
-import { toggleExpandSidebar } from '../../../store/actions/page';
+import useAppDispatch from '@/hooks/useAppDispatch';
+import { toggleExpandSidebar } from '@/store/actions/page';
 
-import Logo from '../../ui/Logo';
-import BaseHeader from './BaseHeader';
-import Button from '../../ui/Button';
-import MenuIcon from '../../icons/MenuIcon';
-import UserIcon from '../../icons/UserIcon';
+import Logo from '@/components/ui/Logo';
+import Button from '@/components/ui/Button';
+import MenuIcon from '@/components/icons/MenuIcon';
+import UserIcon from '@/components/icons/UserIcon';
+import BaseHeader from '@/components/layouts/Header/BaseHeader';
 
 import classes from './AuthenticatedHeader.module.scss';
 

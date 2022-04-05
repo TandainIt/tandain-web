@@ -2,8 +2,8 @@ import { FC } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import Button from '../../ui/Button';
-import Tooltip from '../../ui/Tooltip';
+import Button from '@/components/ui/Button';
+import Tooltip from '@/components/ui/Tooltip';
 
 import classes from './NavItem.module.sass';
 

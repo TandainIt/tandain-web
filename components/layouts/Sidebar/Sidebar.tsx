@@ -2,15 +2,15 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-import useAppDispatch from '../../../hooks/useAppDispatch';
-import useAppSelector from '../../../hooks/useAppSelector';
-import { toggleExpandSidebar } from '../../../store/actions/page';
-import pageSelector from '../../../store/selectors/page';
+import useAppDispatch from '@/hooks/useAppDispatch';
+import useAppSelector from '@/hooks/useAppSelector';
+import { toggleExpandSidebar } from '@/store/actions/page';
+import pageSelector from '@/store/selectors/page';
 
-import ListIcon from '../../icons/ListIcon';
-import MenuIcon from '../../icons/MenuIcon';
-import Backdrop from '../../ui/Backdrop';
-import Button from '../../ui/Button';
+import ListIcon from '@/components/icons/ListIcon';
+import MenuIcon from '@/components/icons/MenuIcon';
+import Backdrop from '@/components/ui/Backdrop';
+import Button from '@/components/ui/Button';
 import NavItem from './NavItem';
 
 import classes from './Sidebar.module.sass';
