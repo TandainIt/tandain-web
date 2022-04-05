@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import BaseButton from '../../ui/BaseButton';
+import BaseButton from '@/components/ui/BaseButton';
 
 import { FooterListItemProps } from './FooterListItem.types';
 
