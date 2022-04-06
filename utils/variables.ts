@@ -5,15 +5,3 @@ export const sizes = {
 	lg: 'Large',
 	xl: 'ExtraLarge',
 };
-
-export const variants = {
-  solid: {
-    primary: 'SolidPrimary',
-  },
-  outlined: {
-    primary: 'OutlinedPrimary',
-  },
-  text: {
-    primary: 'TextPrimary',
-  },
-};

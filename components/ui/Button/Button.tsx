@@ -4,10 +4,8 @@ import BaseButton from '../BaseButton/BaseButton';
 
 import { ButtonProps } from './';
 
-import {
-	sizes as buttonSizes,
-	variants as buttonVariants,
-} from '../../../utils/variables';
+import { sizes as buttonSizes } from '@/utils/variables';
+import { capitalize } from '@/utils/string';
 
 import classes from './Button.module.sass';
 
@@ -30,7 +28,8 @@ const Button: FC<ButtonProps> = ({
 			className={`
         ${classes.Button}
         ${classes[buttonSizes[size]]} 
-        ${classes[buttonVariants[variant][color]]}
+        ${classes[capitalize(variant)]}
+        ${classes[capitalize(color)]}
         ${round && classes.Round}
         ${!children ? classes.IconOnly : ''}
         ${className}

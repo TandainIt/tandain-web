@@ -11,29 +11,62 @@
 
 // Variant
 
-.SolidPrimary
+.Solid
   border: none
-  background-color: c.$primary-default
   color: c.$white
   fill: c.$white
+
+.Outlined
+  border-style: solid
+  border-width: 2px
+
+// color
+
+.Solid.Primary
+  background-color: c.$primary-default
 
   &:hover
     background-color: c.$primary-darker
 
-.OutlinedPrimary
-  border: 2px solid c.$primary-darker
+.Solid.Dark
+  background-color: c.$gray-darker200
+
+  &:hover
+    background-color: c.$gray-darkest
+
+.Outlined.Primary
+  border-color: c.$primary-darker
   color: c.$primary-darker
+  fill: c.$primary-darkest
+  stroke: c.$primary-darkest
 
   &:hover
     background-color: c.$primary-lighter300
 
-.TextPrimary
+.Outlined.Dark
+  border-color: c.$gray-darker200
+  color: c.$gray-darker200
+  fill: c.$gray-darker200
+  stroke: c.$gray-darker200
+
+  &:hover
+    background-color: c.$gray-lighter200
+
+.Text.Primary
   color: c.$primary-darkest
   fill: c.$primary-darkest
   stroke: c.$primary-darkest
 
   &:hover
     background-color: c.$primary-lighter300
+
+.Text.Dark
+  color: c.$gray-darker200
+  fill: c.$gray-darker200
+  stroke: c.$gray-darker200
+
+  &:hover
+    background-color: c.$gray-lighter200
 
 // Size
 
