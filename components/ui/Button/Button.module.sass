@@ -12,7 +12,7 @@
 .IconOnly
   padding: 0 0.5rem !important
 
-// Variant
+// ===== VARIANT =====
 
 .Solid
   border: none
@@ -23,90 +23,76 @@
   border-style: solid
   border-width: 2px
 
-// color
+// ===== COLOR =====
+
+@mixin solidColor($baseColor, $hoverColor)
+  background-color: $baseColor
+
+  &:hover
+    background-color: $hoverColor
+
+@mixin outlinedColor($baseColor, $hoverColor)
+  border-color: $baseColor
+  color: $baseColor
+  fill: $baseColor
+  stroke: $baseColor
+
+  &:hover
+    background-color: $hoverColor
+
+@mixin textColor($baseColor, $hoverColor, $hoverBgColor)
+  color: $baseColor
+  fill: $baseColor
+  stroke: $baseColor
+
+  &:hover
+    color: $hoverColor
+    fill: $hoverColor
+    stroke: $hoverColor
+    background-color: $hoverBgColor
 
 .Solid.Primary
-  background-color: c.$primary-default
-
-  &:hover
-    background-color: c.$primary-darker
+  @include solidColor(c.$primary-default, c.$primary-darker)
 
 .Solid.Dark
-  background-color: c.$gray-darker200
-
-  &:hover
-    background-color: c.$gray-darkest
+  @include solidColor(c.$gray-darker200, c.$gray-darkest)
 
 .Outlined.Primary
-  border-color: c.$primary-darker
-  color: c.$primary-darker
-  fill: c.$primary-darkest
-  stroke: c.$primary-darkest
-
-  &:hover
-    background-color: c.$primary-lighter300
+  @include outlinedColor(c.$primary-darker, c.$primary-lighter300)
 
 .Outlined.Dark
-  border-color: c.$gray-darker200
-  color: c.$gray-darker200
-  fill: c.$gray-darker200
-  stroke: c.$gray-darker200
-
-  &:hover
-    background-color: c.$gray-lighter200
+  @include outlinedColor(c.$gray-darker200, c.$gray-lighter200)
 
 .Text.Primary
-  color: c.$primary-darkest
-  fill: c.$primary-darkest
-  stroke: c.$primary-darkest
-
-  &:hover
-    background-color: c.$primary-lighter300
+  @include textColor(c.$primary-darkest, c.$primary-lighter300, c.$primary-darkest)
 
 .Text.Dark
-  color: c.$gray-darker200
-  fill: c.$gray-darker200
-  stroke: c.$gray-darker200
+  @include textColor(c.$gray-darker200, c.$gray-darkest, c.$gray-lighter200)
 
-  &:hover
-    background-color: c.$gray-lighter200
-    color: c.$gray-darkest
-    fill: c.$gray-darkest
-    stroke: c.$gray-darkest
+// ===== SIZE =====
 
-// Size
-
-.Medium
-  padding: 0 calc(1rem + 2px)
-  font-size: 1rem
-  height: 2.5rem
+@mixin size($baseSize, $height)
+  padding: 0 calc($baseSize + 2px)
+  font-size: $baseSize
+  height: $height
 
   .Icon
-    width: 1.25rem
-    height: 1.25rem
+    width: $height / 2
+    height: $height / 2
 
   &.Round
-    border-radius: 1.25rem
+    border-radius: $height / 2
+
+.Medium
+  @include size(1rem, 2.5rem)
 
   &.IconOnly .Icon
-      width: 1.5rem
-      height: 1.5rem
-
-.Large
-  padding: 0 calc(1.25rem + 2px)
-  font-size: 1.25rem
-  height: 3rem
-
-  .Icon
     width: 1.5rem
     height: 1.5rem
 
-  &.Round
-    border-radius: 1.5625rem
+.Large
+  @include size(1.25rem, 3rem)
 
-  &.IconOnly
-    padding: 0 0.5rem
-
-  .Icon
+  &.IconOnly .Icon
     width: 2rem
     height: 2rem
