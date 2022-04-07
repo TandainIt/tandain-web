@@ -9,6 +9,9 @@
   align-items: center
   justify-content: center
 
+.IconOnly
+  padding: 0 0.5rem !important
+
 // Variant
 
 .Solid
@@ -67,11 +70,14 @@
 
   &:hover
     background-color: c.$gray-lighter200
+    color: c.$gray-darkest
+    fill: c.$gray-darkest
+    stroke: c.$gray-darkest
 
 // Size
 
 .Medium
-  padding: 0 1rem
+  padding: 0 calc(1rem + 2px)
   font-size: 1rem
   height: 2.5rem
 
@@ -79,12 +85,28 @@
     width: 1.25rem
     height: 1.25rem
 
-.Medium.Round
-  border-radius: 1.25rem
+  &.Round
+    border-radius: 1.25rem
 
-.Medium.IconOnly
-  padding: 0 0.5rem
+  &.IconOnly .Icon
+      width: 1.5rem
+      height: 1.5rem
+
+.Large
+  padding: 0 calc(1.25rem + 2px)
+  font-size: 1.25rem
+  height: 3rem
 
   .Icon
     width: 1.5rem
     height: 1.5rem
+
+  &.Round
+    border-radius: 1.5625rem
+
+  &.IconOnly
+    padding: 0 0.5rem
+
+  .Icon
+    width: 2rem
+    height: 2rem

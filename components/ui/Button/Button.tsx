@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import clsx from 'clsx';
 
 import BaseButton from '../BaseButton/BaseButton';
 
@@ -25,15 +26,15 @@ const Button: FC<ButtonProps> = ({
 		<BaseButton
 			as={as}
 			href={href}
-			className={`
-        ${classes.Button}
-        ${classes[buttonSizes[size]]} 
-        ${classes[capitalize(variant)]}
-        ${classes[capitalize(color)]}
-        ${round && classes.Round}
-        ${!children ? classes.IconOnly : ''}
-        ${className}
-      `}
+			className={clsx(
+				classes.Button,
+				classes[buttonSizes[size]],
+				classes[capitalize(variant)],
+				classes[capitalize(color)],
+				round && classes.Round,
+				!children && classes.IconOnly,
+				className
+			)}
 			{...rest}
 		>
 			{startIcon && (
