@@ -26,6 +26,9 @@ export default {
     round: {
       type: { name: 'boolean' },
       defaultValue: false
+    },
+    iconClassName: {
+      type: { name: 'string'}
     }
 	},
 } as ComponentMeta<typeof Button>;

@@ -17,6 +17,7 @@ const Button: FC<ButtonProps> = ({
 	size = 'md',
 	color = 'primary',
 	className = '',
+	iconClassName,
 	children,
 	round,
 	startIcon,
@@ -38,7 +39,9 @@ const Button: FC<ButtonProps> = ({
 			{...rest}
 		>
 			{startIcon && (
-				<i className={`${classes.Icon} ${children && 'mr0p5'}`}>{startIcon}</i>
+				<i className={clsx(classes.Icon, iconClassName, children && 'mr0p5')}>
+					{startIcon}
+				</i>
 			)}
 			{children}
 		</BaseButton>
