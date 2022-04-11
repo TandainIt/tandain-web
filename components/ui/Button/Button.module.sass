@@ -64,7 +64,7 @@
   @include outlinedColor(c.$gray-darker200, c.$gray-lighter200)
 
 .Text.Primary
-  @include textColor(c.$primary-darkest, c.$primary-lighter300, c.$primary-darkest)
+  @include textColor(c.$primary-darkest, c.$primary-darkest, c.$primary-lighter300)
 
 .Text.Dark
   @include textColor(c.$gray-darker200, c.$gray-darkest, c.$gray-lighter200)
@@ -77,8 +77,8 @@
   height: $height
 
   .Icon
-    width: $height / 2
-    height: $height / 2
+    width: calc($height / 2)
+    height: calc($height / 2)
 
   &.Round
     border-radius: calc($height / 2)
