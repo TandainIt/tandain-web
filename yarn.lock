@@ -2028,7 +2028,7 @@
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addon-viewport@6.4.20", "@storybook/addon-viewport@^6.4.20":
+"@storybook/addon-viewport@6.4.20":
   version "6.4.20"
   resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-6.4.20.tgz#5440f1f2ed3a9a0e44e6620f5786010f11374317"
   integrity sha512-iDeIg+QX6doDR5rzaxPzG3tEnSD+UWVrcY8euHPLBjrsJkiTMaAf4M86sQjEBhY8xEZ+f//QBt8nT4tqBbR9zA==

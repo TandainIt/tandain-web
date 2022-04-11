@@ -34,8 +34,6 @@ const AuthenticatedHeader: FC = () => {
 			</div>
 			<Button
 				data-testid='avatar'
-				variant='text'
-				color='primary'
 				startIcon={<UserIcon />}
 				className={classes.Avatar}
 				round

@@ -16,9 +16,11 @@ const ListItem: FC<ListItemProps> = ({
 	sourceName,
 	sourceURL,
 	imgURL = '/',
+	className,
 	onDelete,
+	...args
 }) => (
-	<div className={classes.ListItem}>
+	<li className={clsx(classes.ListItem, className)} {...args}>
 		<div className={classes.ItemMain}>
 			<div>
 				<Link href='/' passHref>
@@ -58,7 +60,9 @@ const ListItem: FC<ListItemProps> = ({
 				/>
 			</a>
 		</Link>
-	</div>
+	</li>
 );
+
+ListItem.displayName = 'ListItem';
 
 export default ListItem;
