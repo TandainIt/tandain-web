@@ -1,0 +1,18 @@
+@use 'styles/mediaQueries' as mq
+
+.Main
+  padding: 0 2rem
+
+.Title
+  transition: width .2s ease
+
+@media screen and (min-width: mq.$md)
+  .Main
+    padding: 0 1rem
+
+    .List
+      display: flex
+      flex-wrap: wrap
+
+      .ListItem
+        margin: 1rem

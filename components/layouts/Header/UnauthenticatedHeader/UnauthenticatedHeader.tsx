@@ -13,7 +13,7 @@ export const UnauthenticatedHeader: FC = () => (
 	>
 		<Logo />
 		<div>
-			<Button variant='outlined' className='mr-16' as='a' href='/login'>
+			<Button variant='outlined' className='mr1' as='a' href='/login'>
 				Login
 			</Button>
 			<Button as='a' href='/signup'>

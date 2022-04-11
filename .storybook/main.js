@@ -7,9 +7,11 @@ module.exports = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-interactions',
 		'@storybook/preset-scss',
-    'storybook-addon-next-router'
+    'storybook-addon-next-router',
+    '@storybook/addon-viewport' // allows the stories to be displayed in different sizes and layouts
 	],
 	framework: '@storybook/react',
+  staticDirs: ['../public'],
 	webpackFinal: async (config, _) => {
 		config.resolve.alias = {
       ...config.resolve.alias,

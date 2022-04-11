@@ -9,49 +9,90 @@
   align-items: center
   justify-content: center
 
-// Variant
+.IconOnly
+  padding: 0 0.5rem !important
 
-.SolidPrimary
+// ===== VARIANT =====
+
+.Solid
   border: none
-  background-color: c.$primary-default
   color: c.$white
   fill: c.$white
 
-  &:hover
-    background-color: c.$primary-darker
+.Outlined
+  border-style: solid
+  border-width: 2px
 
-.OutlinedPrimary
-  border: 2px solid c.$primary-darker
-  color: c.$primary-darker
+// ===== COLOR =====
 
-  &:hover
-    background-color: c.$primary-lighter300
-
-.TextPrimary
-  color: c.$primary-darkest
-  fill: c.$primary-darkest
-  stroke: c.$primary-darkest
+@mixin solidColor($baseColor, $hoverColor)
+  background-color: $baseColor
 
   &:hover
-    background-color: c.$primary-lighter300
+    background-color: $hoverColor
 
-// Size
+@mixin outlinedColor($baseColor, $hoverColor)
+  border-color: $baseColor
+  color: $baseColor
+  fill: $baseColor
+  stroke: $baseColor
+
+  &:hover
+    background-color: $hoverColor
+
+@mixin textColor($baseColor, $hoverColor, $hoverBgColor)
+  color: $baseColor
+  fill: $baseColor
+  stroke: $baseColor
+
+  &:hover
+    color: $hoverColor
+    fill: $hoverColor
+    stroke: $hoverColor
+    background-color: $hoverBgColor
+
+.Solid.Primary
+  @include solidColor(c.$primary-default, c.$primary-darker)
+
+.Solid.Dark
+  @include solidColor(c.$gray-darker200, c.$gray-darkest)
+
+.Outlined.Primary
+  @include outlinedColor(c.$primary-darker, c.$primary-lighter300)
+
+.Outlined.Dark
+  @include outlinedColor(c.$gray-darker200, c.$gray-lighter200)
+
+.Text.Primary
+  @include textColor(c.$primary-darkest, c.$primary-darkest, c.$primary-lighter300)
+
+.Text.Dark
+  @include textColor(c.$gray-darker200, c.$gray-darkest, c.$gray-lighter200)
+
+// ===== SIZE =====
+
+@mixin size($baseSize, $height)
+  padding: 0 calc($baseSize + 2px)
+  font-size: $baseSize
+  height: $height
+
+  .Icon
+    width: calc($height / 2)
+    height: calc($height / 2)
+
+  &.Round
+    border-radius: calc($height / 2)
 
 .Medium
-  padding: 0 1rem
-  font-size: 1rem
-  height: 2.5rem
+  @include size(1rem, 2.5rem)
 
-  .Icon
-    width: 1.25rem
-    height: 1.25rem
-
-.Medium.Round
-  border-radius: 1.25rem
-
-.Medium.IconOnly
-  padding: 0 0.5rem
-
-  .Icon
+  &.IconOnly .Icon
     width: 1.5rem
     height: 1.5rem
+
+.Large
+  @include size(1.25rem, 3rem)
+
+  &.IconOnly .Icon
+    width: 2rem
+    height: 2rem

@@ -9,7 +9,7 @@ describe('Sidebar/<NavItem>', () => {
 			<NavItem
 				startIcon={<ListIcon />}
 				href='/mylist'
-				className='mx0p25'
+				className='my0p25'
 				isExpanded={false}
 			>
 				My List
@@ -32,7 +32,7 @@ describe('Sidebar/<NavItem>', () => {
 			<NavItem
 				startIcon={<ListIcon />}
 				href='/mylist'
-				className='mx0p25'
+				className='my0p25'
 				isExpanded
 			>
 				My List
@@ -48,7 +48,7 @@ describe('Sidebar/<NavItem>', () => {
 			<NavItem
 				startIcon={<ListIcon />}
 				href='/mylist'
-				className='mx0p25'
+				className='my0p25'
 				isExpanded={false}
 				isActive
 			>
