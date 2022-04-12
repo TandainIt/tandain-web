@@ -27,9 +27,8 @@ describe('Header/<AuthenticatedHeader>', () => {
 
 	it('should fire sidebar toogle button click', () => {
 		renderAuthenticatedHeader();
-
 		const toggleSidebarSpy = jest.spyOn(
-			require('../../../store/actions/page'),
+			require('../../../../store/actions/page'),
 			'toggleExpandSidebar'
 		);
 
