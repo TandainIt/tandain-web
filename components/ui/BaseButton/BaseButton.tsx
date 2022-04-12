@@ -1,32 +1,38 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, forwardRef } from 'react';
 
 import { BaseButtonProps } from './BaseButton.types';
 
 import classes from './BaseButton.module.sass';
 
-const BaseButton: FC<BaseButtonProps> = ({
-	as = 'button',
-	href,
-	children,
-	className = '',
-	...rest
-}) => {
-	// return createElement(href ? Link : 'button', { ...rest }, children);
+const BaseButton: FC<BaseButtonProps> = forwardRef(
+	({ as = 'button', href, children, className = '', ...rest }, ref) => {
+    
+		// return createElement(href ? Link : 'button', { ...rest }, children);
 
-	if (as === 'a' && href) {
+		if (as === 'a' && href) {
+      // TODO:  Add ref
+			return (
+				<Link href={href} passHref>
+					<a className={` ${className} ${classes.BaseLink}`}>
+						{children}
+					</a>
+				</Link>
+			);
+		}
+
 		return (
-			<Link href={href} passHref>
-				<a className={` ${className} ${classes.BaseLink}`}>{children}</a>
-			</Link>
+			<button
+				ref={ref}
+				className={`${className} ${classes.BaseButton}`}
+				{...rest}
+			>
+				{children}
+			</button>
 		);
 	}
+);
 
-	return (
-		<button className={`${className} ${classes.BaseButton}`} {...rest}>
-			{children}
-		</button>
-	);
-};
+BaseButton.displayName = 'BaseButton';
 
 export default BaseButton;
