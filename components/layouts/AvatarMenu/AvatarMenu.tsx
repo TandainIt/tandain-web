@@ -8,7 +8,7 @@ import { AvatarMenuProps } from './AvatarMenu.types';
 
 const AvatarMenu: FC<AvatarMenuProps> = forwardRef(
 	({ className }, ref: ForwardedRef<HTMLDivElement>) => (
-		<div ref={ref} className={clsx(classes.AvatarMenu, className)}>
+		<div ref={ref} data-testid="avatar-menu" className={clsx(classes.AvatarMenu, className)}>
 			<div className={classes.TopPanel}>
 				<span data-testid='name' className={classes.Name}>
 					Peitra Erdi
