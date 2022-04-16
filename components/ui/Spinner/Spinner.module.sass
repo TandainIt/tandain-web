@@ -1,0 +1,25 @@
+@use 'styles/colors' as c
+
+.Spinner
+  width: 2rem
+  height: 2rem
+  border: 0.25rem solid c.$gray-lighter
+  border-radius: 50%
+  border-top: 0.25rem solid c.$primary-default
+  -webkit-animation: spin 2s linear infinite
+  animation: spin 2s linear infinite
+
+/* Safari */
+@-webkit-keyframes spin
+  0% 
+    -webkit-transform: rotate(0deg)
+
+  100% 
+    -webkit-transform: rotate(360deg)
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
