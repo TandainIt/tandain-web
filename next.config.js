@@ -7,7 +7,12 @@ module.exports = withFederatedSidecar({
 	name: 'tandainClient', // NOTE: Don't use kebab-case
 	filename: 'static/chunks/remoteEntry.js',
 	exposes: {
-		'./Button': './components/ui/Button/Button.tsx',
+    './TrashIcon': './components/icons/TrashIcon.tsx',
+    './CheckmarkIcon': './components/icons/CheckmarkIcon.tsx',
+		'./Button': './components/ui/Button/index.ts',
+    './Spinner': './components/ui/Spinner/index.ts',
+    './Tooltip': './components/ui/Tooltip/index.ts',
+    './Title': './components/typhographies/Title/index.ts'
 	},
 	shared: {
 		...dependencies,
