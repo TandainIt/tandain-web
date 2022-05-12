@@ -19,8 +19,15 @@ const AuthenticatedHeader: FC = () => {
 	const dispatch = useAppDispatch();
 	const avatarRef = useRef(null);
 	const avatarMenuRef = useRef(null);
+  let windowWidth = 0
 
 	const [showAvatarMenu, setShowAvatarMenu] = useState(false);
+
+  if (typeof window !== "undefined") {
+    windowWidth = window.innerWidth;
+  }
+
+  console.log(windowWidth)
 
 	const toggleSidebar = () => dispatch(toggleExpandSidebar());
 
@@ -48,7 +55,7 @@ const AuthenticatedHeader: FC = () => {
 					className={`${classes.SidebarButton} mr2`}
 					onClick={toggleSidebar}
 				/>
-				<Logo />
+				<Logo isFull={windowWidth > 1024}/>
 			</div>
 			<Button
 				ref={avatarRef}
