@@ -27,8 +27,6 @@ const AuthenticatedHeader: FC = () => {
     windowWidth = window.innerWidth;
   }
 
-  console.log(windowWidth)
-
 	const toggleSidebar = () => dispatch(toggleExpandSidebar());
 
 	const toggleShowAvatarMenu = () => setShowAvatarMenu(!showAvatarMenu);
