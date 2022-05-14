@@ -13,7 +13,11 @@ const Logo: FC<LogoProps> = ({ isFull }) => (
 			layout='fixed'
 			alt='logo'
 		/>
-		{isFull && <span className={classes.Text} data-testid="logo-text">Tandain</span>}
+		{isFull && (
+			<span className={classes.Text} id='logo-text'>
+				Tandain
+			</span>
+		)}
 	</div>
 );
 
