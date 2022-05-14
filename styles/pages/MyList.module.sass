@@ -1,18 +1,26 @@
 @use 'styles/mediaQueries' as mq
 
-.Main
+.List
   padding: 0 2rem
-
-.Title
-  transition: width .2s ease
+  display: grid
+  grid-template-columns: 1fr
+  gap: 3rem
 
 @media screen and (min-width: mq.$md)
-  .Main
-    padding: 0 1rem
+  .List
+    display: grid
+    column-gap: 56px
+    justify-content: center
+    grid-template-columns: repeat(auto-fit, 288px) // Set the items width to 288px while all to be fit with the container 
 
-    .List
-      display: flex
-      flex-wrap: wrap
+    .Title
+      width: 100%
+      grid-column: 1 / -1 // span the all fist column
 
-      .ListItem
-        margin: 1rem
+@media screen and (min-width: mq.$lg)
+  .List
+    grid-template-columns: repeat(auto-fit, 277px)
+
+@media screen and (min-width: mq.$xl)
+  .List
+    grid-template-columns: repeat(auto-fit, 288px)
