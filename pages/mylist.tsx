@@ -79,24 +79,19 @@ const MyListPage: NextPage = () => {
 				<Sidebar />
 				<div className='w-full'>
 					<AuthenticatedHeader />
-					<main className={clsx(classes.Main, 'mt4 mb5')}>
-						<Title className={clsx(classes.Title, 'mb3 mx-auto pl1')}>
-							My List
-						</Title>
-						<ol data-testid="list" className={classes.List}>
-							{myList.map((item) => (
-								<ListItem
-									key={item.id}
-									className='mx1 mb3'
-									title={item.title}
-									sourceName={item.sourceName}
-									sourceURL={item.sourceURL}
-									imgURL={item.imgURL}
-									onDelete={() => {}}
-								/>
-							))}
-						</ol>
-					</main>
+					<ol data-testid='list' className={clsx(classes.List, 'mt4 mb5')}>
+						<Title className={clsx(classes.Title)}>My List</Title>
+						{myList.map((item) => (
+							<ListItem
+								key={item.id}
+								title={item.title}
+								sourceName={item.sourceName}
+								sourceURL={item.sourceURL}
+								imgURL={item.imgURL}
+								onDelete={() => {}}
+							/>
+						))}
+					</ol>
 				</div>
 			</Page>
 		</>
