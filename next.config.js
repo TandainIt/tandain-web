@@ -35,7 +35,7 @@ module.exports = withFederatedSidecar({
 	// your original next.config.js export
 	reactStrictMode: true,
 	webpack(config) {
-    config.output.publicPath = `${process.env.URL_CLIENT}/_next/`
+    config.output.publicPath = 'auto'
 
 		return config;
 	},
