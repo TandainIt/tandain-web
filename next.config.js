@@ -36,7 +36,6 @@ module.exports = withFederatedSidecar({
   async headers() {
     return [
       {
-        source: '*',
         locale: false,
         headers: [
           {
