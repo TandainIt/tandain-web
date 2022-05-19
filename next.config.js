@@ -33,20 +33,6 @@ module.exports = withFederatedSidecar({
 	},
 })({
 	// your original next.config.js export
-  async headers() {
-    return [
-      {
-        source: '/:all',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, no-store, max-age=0, must-revalidate',
-          }
-        ],
-      },
-    ]
-  },
 	reactStrictMode: true,
 	webpack(config) {
 		config.output.publicPath = 'auto';
