@@ -3,6 +3,10 @@
 const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
 const { dependencies } = require('./package.json');
 
+console.log('Meta URL: ', import.meta.url);
+
+const isProd = process.env.NODE_ENV === 'production'
+
 module.exports = withFederatedSidecar({
 	name: 'tandainClient', // NOTE: Don't use kebab-case
 	filename: 'static/chunks/remoteEntry.js',
@@ -32,6 +36,7 @@ module.exports = withFederatedSidecar({
 })({
 	// your original next.config.js export
 	reactStrictMode: true,
+  assetPrefix: isProd ? 'https://tandain-client.vercel.app' : '',
 	webpack(config) {
 		config.output.publicPath = 'auto';
 
