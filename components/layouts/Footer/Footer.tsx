@@ -5,6 +5,8 @@ import FooterListItem from './FooterListItem';
 
 import classes from './Footer.module.sass';
 
+console.log('Meta URL: ', import.meta.url)
+
 const Footer: FC = () => (
 	<footer data-testid='footer' className={classes.Container}>
 		<div>
