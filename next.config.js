@@ -22,12 +22,10 @@ module.exports = withFederatedSidecar({
 		},
 		react: {
 			singleton: true,
-			eager: true,
 			requiredVersion: dependencies.react,
 		},
 		'react-dom': {
 			singleton: true,
-			eager: true,
 			requiredVersion: dependencies['react-dom'],
 		},
 	},
