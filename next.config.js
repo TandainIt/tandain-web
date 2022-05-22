@@ -3,8 +3,6 @@
 const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
 const { dependencies } = require('./package.json');
 
-console.log('Meta URL: ', import.meta.url);
-
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = withFederatedSidecar({
