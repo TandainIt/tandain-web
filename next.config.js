@@ -35,7 +35,7 @@ module.exports = withFederatedSidecar({
 	// your original next.config.js export
 	reactStrictMode: true,
 	webpack(config) {
-		config.output.publicPath = 'https://tandain-client.vercel.app/';
+		config.output.publicPath = 'auto';
 
 		return config;
 	},
