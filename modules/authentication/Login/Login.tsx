@@ -4,8 +4,9 @@ import Title from '../../../components/typhographies/Title';
 import BaseButton from '../../../components/ui/BaseButton';
 import GoogleButton from '../GoogleButton';
 
-import classes from './Login.module.sass';
+import { showGoogleLoginPopup } from '@/utils/auth/google';
 
+import classes from './Login.module.sass';
 import { LoginProps } from './Login.types';
 
 const Login: FC<LoginProps> = ({ className }) => (
@@ -20,7 +21,9 @@ const Login: FC<LoginProps> = ({ className }) => (
 				Sign up now
 			</BaseButton>
 		</span>
-		<GoogleButton>Login with Google</GoogleButton>
+		<GoogleButton onClick={showGoogleLoginPopup}>
+			Login with Google
+		</GoogleButton>
 	</section>
 );
 

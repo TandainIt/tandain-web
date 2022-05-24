@@ -34,6 +34,11 @@ module.exports = withFederatedSidecar({
 })({
 	// your original next.config.js export
 	reactStrictMode: true,
+  env: {
+    CLIENT_URL: process.env.CLIENT_URL,
+    API_URL: process.env.API_URL,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
+  },
 	webpack(config) {
 		config.output.publicPath = 'auto';
 
