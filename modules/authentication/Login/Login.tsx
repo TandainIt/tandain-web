@@ -1,11 +1,10 @@
 import { FC } from 'react';
 
-import Title from '../../../components/typhographies/Title';
-import BaseButton from '../../../components/ui/BaseButton';
+import Title from '@/components/typhographies/Title';
+import BaseButton from '@/components/ui/BaseButton';
 import GoogleButton from '../GoogleButton';
 
 import { showGoogleLoginPopup } from '@/utils/auth/google';
-
 import classes from './Login.module.sass';
 import { LoginProps } from './Login.types';
 
