@@ -4,8 +4,6 @@ const GoogleIcon = () => (
 		viewBox='0 0 32 32'
 		fill='inherit'
 		xmlns='http://www.w3.org/2000/svg'
-		width='inherit'
-		height='inherit'
 		stroke='none'
 	>
 		<path
