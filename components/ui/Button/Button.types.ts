@@ -5,7 +5,7 @@ import { BaseButtonProps } from '../BaseButton';
 export interface ButtonProps extends BaseButtonProps {
 	variant?: 'solid' | 'outlined' | 'text';
 	color?: 'primary' | 'dark';
-	size?: 'sm' | 'md' | 'lg';
+	size?: 'xs' | 'sm' | 'md' | 'lg';
   iconClassName?: string;
 	startIcon?: ReactNode;
   round?: Boolean 
