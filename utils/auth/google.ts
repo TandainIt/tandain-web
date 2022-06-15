@@ -1,20 +1,23 @@
 import { loginWithGoogle } from '@/api/auth';
+import store from '@/store';
+import { setToastError } from '@/store/actions/page';
 
 const CLIENT_URL = process.env.CLIENT_URL;
 let windowRef = null;
 
-export const getPopupParams = async (e: MessageEvent) => {
+export const getPopupParams = async (e: any) => {
+	// NOTE: Check if sender of this message is from what we originally opened
 	if (e.origin === CLIENT_URL) {
 		const { code, scope } = e.data;
 
 		if (code && scope) {
 			window.removeEventListener('message', getPopupParams);
 
-      try {
-        await loginWithGoogle(code, scope);
-      } catch (err) {
-        // TODO: Call dispatch user error
-      }
+			try {
+				await loginWithGoogle(code, scope);
+			} catch (err) {
+				store.dispatch(setToastError(err));
+			}
 		}
 	}
 };
