@@ -4,6 +4,7 @@ import BaseButton from '../../../components/ui/BaseButton';
 
 import GoogleButton from '../GoogleButton';
 
+import { showGoogleLoginPopup } from '@/utils/auth/google';
 import classes from './Signup.module.sass';
 import { SingupProps } from './Signup.types';
 
@@ -19,7 +20,9 @@ const Signup: FC<SingupProps> = ({ className }) => (
 				Login now
 			</BaseButton>
 		</span>
-		<GoogleButton>Sign up with Google</GoogleButton>
+		<GoogleButton onClick={showGoogleLoginPopup}>
+			Sign up with Google
+		</GoogleButton>
 	</section>
 );
 
