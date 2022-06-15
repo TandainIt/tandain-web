@@ -37,7 +37,7 @@ const Toast: FC<ToastProps> = ({
 			<div className={classes.ToastVL}></div>
 			<i className={classes.ToastIcon}>{variantIcons[variant]}</i>
 			<div className={classes.ToastMain}>
-				<Title as='h5' className={classes.ToastTitle}>
+				<Title as='h5' size='sm' className={classes.ToastTitle}>
 					{title}
 				</Title>
 				<Text data-testid='toast-desc' size='sm' className={classes.ToastDesc}>

@@ -12,7 +12,7 @@ const Signup: FC<SingupProps> = ({ className }) => (
 		data-testid='signup-section'
 		className={`${classes.Container} ${className}`}
 	>
-		<Title size='lg'>Sign Up</Title>
+		<Title size='xl'>Sign Up</Title>
 		<span className='mt0p25 mb4'>
 			Already have an account?{' '}
 			<BaseButton as='a' href='/login' className='font-semibold'>
