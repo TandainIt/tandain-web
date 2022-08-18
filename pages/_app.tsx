@@ -1,7 +1,9 @@
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { useEffect } from 'react';
+import { ApolloProvider } from '@apollo/client';
 
+import apolloClient from '@/graphql/apollo-client';
 import store from '../store';
 import useAppDispatch from '../hooks/useAppDispatch';
 import { setToastError, toggleExpandSidebar } from '../store/actions/page';
@@ -59,9 +61,11 @@ export function ReduxProvider({ children }) {
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<ReduxProvider>
-			<Component {...pageProps} />
-		</ReduxProvider>
+		<ApolloProvider client={apolloClient}>
+			<ReduxProvider>
+				<Component {...pageProps} />
+			</ReduxProvider>
+		</ApolloProvider>
 	);
 }
 

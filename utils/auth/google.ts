@@ -1,23 +1,21 @@
-import { loginWithGoogle } from '@/api/auth';
-import store from '@/store';
-import { setToastError } from '@/store/actions/page';
+import { loginWithGoogle } from '@/graphql/authentication';
+import Router from 'next/router';
 
 const CLIENT_URL = process.env.CLIENT_URL;
+const REDIRECT_URI = `${CLIENT_URL}/auth/google-oauth`;
 let windowRef = null;
 
 export const getPopupParams = async (e: any) => {
 	// NOTE: Check if sender of this message is from what we originally opened
-	if (e.origin === CLIENT_URL) {
-		const { code, scope } = e.data;
+	if (e.origin === CLIENT_URL && e.data.code) {
+		window.removeEventListener('message', getPopupParams);
 
-		if (code && scope) {
-			window.removeEventListener('message', getPopupParams);
-
-			try {
-				await loginWithGoogle(code, scope);
-			} catch (err) {
-				store.dispatch(setToastError(err));
-			}
+		try {
+			const credentials = await loginWithGoogle(e.data.code, REDIRECT_URI);
+			// TODO: Set credentials to memory
+			Router.replace('/mylist');
+		} catch (err) {
+			// TODO: Handle error
 		}
 	}
 };

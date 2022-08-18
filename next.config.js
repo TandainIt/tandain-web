@@ -37,7 +37,8 @@ module.exports = withFederatedSidecar({
   env: {
     CLIENT_URL: process.env.CLIENT_URL,
     API_URL: process.env.API_URL,
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    API_GATEWAY_HOST: process.env.API_GATEWAY_HOST
   },
 	webpack(config) {
 		config.output.publicPath = 'auto';
