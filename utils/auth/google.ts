@@ -15,7 +15,7 @@ export const getPopupParams = async (e: any) => {
 			// TODO: Set credentials to memory
 			Router.replace('/mylist');
 		} catch (err) {
-			// TODO: Handle error
+			console.error(err);
 		}
 	}
 };

@@ -1,7 +1,10 @@
-import store from '@/store';
-import { setToastError } from '@/store/actions/page';
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+
+import store from '@/store';
+import { setToastError } from '@/store/actions/page';
+
+import { ResponseErrorBody } from './apolloClient.types';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
 	if (graphQLErrors)
@@ -16,11 +19,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       */
 
 			const { message, locations, path, extensions } = error;
-			const errorBody = extensions.responseBody;
+			const errorBody = extensions?.responseBody as ResponseErrorBody;
 
 			if (errorBody) {
-				// TODO: Check if it's global error that will shown in Toast or not
-				store.dispatch(setToastError(extensions.responseBody));
+				const error = { ...errorBody, title: 'Something went wrong' };
+				store.dispatch(setToastError(error));
 			} else {
 				console.error(
 					`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
@@ -28,7 +31,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 			}
 		});
 	if (networkError) {
-    /* 
+		/* 
 
       NOTE: These are errors encountered while attempting to communicate with your GraphQL server,
       usually resulting in a 4xx or 5xx response status code (and no data).

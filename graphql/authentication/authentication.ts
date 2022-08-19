@@ -1,6 +1,6 @@
 import { FetchResult } from '@apollo/client';
 
-import apolloClient from '../apollo-client';
+import apolloClient from '../apolloClient/apolloClient';
 import { LOGIN_WITH_GOOGLE } from './authentication.query';
 import { LoginResult } from './authentication.types';
 
@@ -16,6 +16,6 @@ export const loginWithGoogle = async (code: string, redirectUri: string) => {
 
 		return result.data.login;
 	} catch (err) {
-		// TODO: Handle error
+    throw err
 	}
 };
