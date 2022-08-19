@@ -12,8 +12,6 @@ export const loginWithGoogle = createAsyncThunk(
 
 			return credentials;
 		} catch (err) {
-      console.log('Err: ', err)
-
 			return rejectWithValue(err);
 		}
 	}

@@ -9,23 +9,29 @@ import classes from '../styles/pages/AuthPage.module.sass';
 
 import { RootState } from '@/store';
 import useAppSelector from '@/hooks/useAppSelector';
+import Spinner from '@/components/ui/Spinner';
 
 const SignupPage: NextPage = () => {
 	const router = useRouter();
-	const { credentials } = useAppSelector((state: RootState) => state.auth);
+	const { credentials, isLoading } = useAppSelector(
+		(state: RootState) => state.auth
+	);
 
-	if (credentials.idToken) router.replace('/mylist');
+	if (credentials.idToken) {
+		router.replace('/mylist');
+		return;
+	}
 
 	return (
 		<>
 			<Head>
 				<title>Sign Up</title>
 			</Head>
-			<Page className={classes.AuthPage}>
+			<Page className={classes.Page}>
 				<UnauthenticatedHeader />
-				<div className='px2'>
-					<Signup className={classes.AuthSection} />
-				</div>
+				<main className={classes.Main}>
+					{isLoading ? <Spinner className={classes.Spinner} /> : <Signup />}
+				</main>
 			</Page>
 		</>
 	);

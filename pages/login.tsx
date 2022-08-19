@@ -12,11 +12,11 @@ const LoginPage: NextPage = () => (
 		<Head>
 			<title>Login</title>
 		</Head>
-		<Page className={classes.AuthPage}>
+		<Page className={classes.Page}>
 			<UnauthenticatedHeader />
-			<div className='px2'>
-				<Login className={classes.AuthSection} />
-			</div>
+			<main className={classes.Main}>
+				<Login />
+			</main>
 		</Page>
 	</>
 );
