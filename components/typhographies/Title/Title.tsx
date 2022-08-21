@@ -1,16 +1,27 @@
 import { createElement } from 'react';
+import clsx from 'clsx';
 
 import { TitleProps } from './Title.types';
 
-import { getFontSize } from './utils';
-
 import classes from './Title.module.sass';
+import { sizes as fontSizeByKey } from '@/utils/variables';
+
+export const fontSizeByTag = {
+  h1: 'ExtraExtraExtraLarge',
+  h2: 'ExtraExtraLarge',
+  h3: 'ExtraLarge',
+  h4: 'Large',
+  h5: 'Medium',
+};
 
 const Title = ({ as = 'h1', size, className = '', ...rest }: TitleProps) => {
-	const selectedSize = getFontSize(size, as);
 
 	return createElement(as, {
-		className: `${classes.Title} ${classes[selectedSize]} ${className}`,
+		className: clsx(
+			classes.Title,
+			classes[fontSizeByKey[size] || fontSizeByTag[as]],
+			className
+		),
 		...rest,
 	});
 };
