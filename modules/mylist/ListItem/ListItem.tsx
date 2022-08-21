@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { FC } from 'react';
+import Link from 'next/link';
 
-import TrashIcon from '@/components/icons/TrashIcon';
+import { TrashLightIcon } from '@/components/icons';
 import Title from '@/components/typhographies/Title';
 import Button from '@/components/ui/Button';
+import Tooltip from '@/components/ui/Tooltip';
 
 import classes from './ListItem.module.sass';
 import { ListItemProps } from './ListItem.types';
-import Tooltip from '@/components/ui/Tooltip';
-import Link from 'next/link';
 
 const ListItem: FC<ListItemProps> = ({
 	title,
@@ -39,7 +39,7 @@ const ListItem: FC<ListItemProps> = ({
 			<div className={clsx(classes.ItemActionContainer, 'mt1p5')}>
 				<Tooltip text='Delete' pos='top'>
 					<Button
-						startIcon={<TrashIcon />}
+						startIcon={<TrashLightIcon />}
 						variant='text'
 						color='dark'
 						size='lg'

@@ -8,8 +8,7 @@ import { toggleExpandSidebar } from '@/store/actions/page';
 
 import Logo from '@/components/ui/Logo';
 import Button from '@/components/ui/Button';
-import MenuIcon from '@/components/icons/MenuIcon';
-import UserIcon from '@/components/icons/UserIcon';
+import { MenuIcon, UserIcon } from '@/components/icons';
 import BaseHeader from '@/components/layouts/Header/BaseHeader';
 import AvatarMenu from '@/components/layouts/AvatarMenu';
 
@@ -19,13 +18,13 @@ const AuthenticatedHeader: FC = () => {
 	const dispatch = useAppDispatch();
 	const avatarRef = useRef(null);
 	const avatarMenuRef = useRef(null);
-  let windowWidth = 0
+	let windowWidth = 0;
 
 	const [showAvatarMenu, setShowAvatarMenu] = useState(false);
 
-  if (typeof window !== "undefined") {
-    windowWidth = window.innerWidth;
-  }
+	if (typeof window !== 'undefined') {
+		windowWidth = window.innerWidth;
+	}
 
 	const toggleSidebar = () => dispatch(toggleExpandSidebar());
 
@@ -53,12 +52,12 @@ const AuthenticatedHeader: FC = () => {
 					className={`${classes.SidebarButton} mr2`}
 					onClick={toggleSidebar}
 				/>
-				<Logo isFull={windowWidth > 1024}/>
+				<Logo isFull={windowWidth > 1024} />
 			</div>
 			<Button
 				ref={avatarRef}
 				data-testid='avatar'
-				// startIcon={<UserIcon />}
+				startIcon={<UserIcon />}
 				className={clsx(classes.Avatar, 'p0')}
 				onClick={toggleShowAvatarMenu}
 				round

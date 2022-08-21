@@ -7,8 +7,7 @@ import useAppSelector from '@/hooks/useAppSelector';
 import { toggleExpandSidebar } from '@/store/actions/page';
 import pageSelector from '@/store/selectors/page';
 
-import ListIcon from '@/components/icons/ListIcon';
-import MenuIcon from '@/components/icons/MenuIcon';
+import { ListIcon, MenuIcon } from '@/components/icons';
 import Backdrop from '@/components/ui/Backdrop';
 import Button from '@/components/ui/Button';
 import NavItem from './NavItem';

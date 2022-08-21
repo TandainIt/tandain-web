@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStory, Story } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ListIcon from '@/components/icons/ListIcon';
+import { ListIcon } from '@/components/icons';
 import NavItem from './NavItem';
 
-const startIcons = { 'ListIcon': <ListIcon /> }
+const startIcons = { ListIcon: <ListIcon /> };
 
 export default {
 	title: 'Components/Layouts/Sidebar/NavItem',
@@ -21,14 +21,14 @@ export default {
 				type: 'boolean',
 			},
 		},
-    href: {
-      type: { name: 'string', required: true },
-      control: { type: 'text' }  
-    },
-    startIcon: {
-      options: Object.keys(startIcons),
-      mapping: startIcons,
-    }
+		href: {
+			type: { name: 'string', required: true },
+			control: { type: 'text' },
+		},
+		startIcon: {
+			options: Object.keys(startIcons),
+			mapping: startIcons,
+		},
 	},
 } as ComponentMeta<typeof NavItem>;
 

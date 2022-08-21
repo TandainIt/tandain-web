@@ -1,6 +1,4 @@
-import { createElement } from 'react';
-
-const LightIcon = () => (
+const TrashLightIcon = () => (
 	<svg
 		viewBox='0 0 32 32'
 		fill='none'
@@ -40,13 +38,4 @@ const BoldIcon = () => (
 	</svg>
 );
 
-const TrashIcon = ({ variant = 'light', ...res }) => {
-	const variants = {
-		bold: BoldIcon,
-		light: LightIcon,
-	};
-
-	return createElement(variants[variant], { ...res });
-};
-
-export default TrashIcon;
+export default TrashLightIcon;

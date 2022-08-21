@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import ListIcon from '@/components/icons/ListIcon';
+import { ListIcon } from '@/components/icons';
 import NavItem from './NavItem';
 
 describe('Sidebar/<NavItem>', () => {
