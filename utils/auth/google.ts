@@ -5,7 +5,7 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const REDIRECT_URI = `${CLIENT_URL}/auth/google-oauth`;
 let windowRef = null;
 
-export const getPopupParams = async (event: any) => {
+export const getPopupParams = async (event: MessageEvent) => {
 	/**
 	 * Get code query from URL
 	 */
