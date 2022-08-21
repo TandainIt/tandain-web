@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
@@ -42,7 +43,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 	}
 });
 
-const httpLink = new HttpLink({ uri: process.env.API_GATEWAY_HOST });
+const httpLink = new HttpLink({ uri: process.env.API_GATEWAY_HOST, fetch });
 
 const apolloClient = new ApolloClient({
 	cache: new InMemoryCache(),

@@ -1,20 +1,19 @@
-import { loginWithGoogle } from '@/api/auth';
 import { generateRandomString } from '@/__tests__/utils';
+import * as authActions from '@/store/actions/auth';
 import {
 	getPopupParams,
 	sendAuthCodeToWindowParent,
 	showGoogleLoginPopup,
 } from './google';
 
-jest.mock('@/api/auth', () => ({
-	...jest.requireActual('@/api/auth'),
-	loginWithGoogle: jest.fn((params) => params),
-}));
+const mockLoginWithGoogleAction = jest.spyOn(authActions, 'loginWithGoogle');
+
+const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI;
 
 describe('utils/auth/google', () => {
 	describe('showGoogleLoginPopup', () => {
 		it('it should open Google Login popup on the new window', () => {
-			const redirectURI = `${process.env.CLIENT_URL}/auth/google-oauth`;
+			const redirectURI = REDIRECT_URI;
 			const prompType = 'select_account';
 			const responseType = 'code';
 			const clientId = process.env.GOOGLE_CLIENT_ID;
@@ -70,67 +69,53 @@ describe('utils/auth/google', () => {
 	});
 
 	describe('getPopupParams', () => {
-		jest.mock('@/api/auth', () => ({
-			...jest.requireActual('@/api/auth'),
-			loginWithGoogle: jest.fn((params) => params),
-		}));
-
-		let loginWithGoogleMock: jest.MockedFunction<typeof loginWithGoogle>;
-
-		beforeEach(() => {
-			loginWithGoogleMock = loginWithGoogle as jest.MockedFunction<
-				typeof loginWithGoogle
-			>;
-		});
-
 		afterEach(() => {
-			loginWithGoogleMock.mockRestore();
+			mockLoginWithGoogleAction.mockRestore();
 		});
 
-		it('should call loginWithGoogle with code and scope params', () => {
-			const params = {
-				code: generateRandomString(),
-				scope: generateRandomString(),
-			};
+		it('should call loginWithGoogle action with code and redirectUri', () => {
+			const mockCode = generateRandomString();
 
-			const messageEvent = {
+			const mockMessageEvent = {
 				...new MessageEvent('message'),
 				origin: process.env.CLIENT_URL,
-				data: params,
+				data: {
+					code: mockCode,
+				},
 			};
 
-			getPopupParams(messageEvent);
+			getPopupParams(mockMessageEvent);
 
-			expect(loginWithGoogle).toHaveBeenCalledWith(params.code, params.scope);
+			expect(mockLoginWithGoogleAction).toHaveBeenCalledWith({
+				code: mockCode,
+				redirectUri: REDIRECT_URI,
+			});
 		});
 
-		it('should not call loginWithGoogle if sender of the message is not from its originally opened', () => {
-			const params = {
-				code: generateRandomString(),
-				scope: generateRandomString(),
-			};
-
-			const messageEvent = {
+		it('should not call loginWithGoogle action if sender of the message event is not from its original opener', () => {
+			const mockMessageEvent = {
 				...new MessageEvent('message'),
-				origin: generateRandomString(),
-				data: params,
+				origin: process.env.CLIENT_URL,
+				data: {
+					code: generateRandomString(),
+				},
 			};
 
-			getPopupParams(messageEvent);
+			getPopupParams(mockMessageEvent);
 
-			expect(loginWithGoogleMock).not.toHaveBeenCalled();
+			expect(mockLoginWithGoogleAction).not.toHaveBeenCalled();
 		});
 
 		it('should not call loginWithGoogle if code or scope is empty', () => {
-			const messageEvent = {
+			const mockMessageEvent = {
 				...new MessageEvent('message'),
 				origin: process.env.CLIENT_URL,
 				data: {},
 			};
 
-			getPopupParams(messageEvent);
+			getPopupParams(mockMessageEvent);
 
-			expect(loginWithGoogle).not.toHaveBeenCalled();
+			expect(mockLoginWithGoogleAction).not.toHaveBeenCalled();
 		});
 	});
 });

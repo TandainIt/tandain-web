@@ -2,14 +2,14 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import { loginWithGoogle } from '../actions/auth';
 
-const initialState = {
+export const initialState = {
 	credentials: {
 		idToken: undefined,
 		expiryDate: undefined,
 		refreshToken: undefined,
 	},
 	isLoading: false,
-  error: undefined
+	error: undefined,
 };
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -19,6 +19,10 @@ const authReducer = createReducer(initialState, (builder) => {
 		})
 		.addCase(loginWithGoogle.fulfilled, (state, { payload }) => {
 			state.credentials = payload;
+			state.isLoading = false;
+		})
+		.addCase(loginWithGoogle.rejected, (state, { payload }) => {
+			state.error = payload;
 			state.isLoading = false;
 		});
 });
