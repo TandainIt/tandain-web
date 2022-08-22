@@ -1,52 +1,85 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 import { ReduxProvider } from '../../../pages/_app';
-import Sidebar from './Sidebar';
+import Sidebar, { useSidebar } from './Sidebar';
 
-const useRouter = jest.spyOn(require('next/router'), 'useRouter');
-
-const renderSidebar = () => render(
-  <ReduxProvider>
-    <Sidebar />
-  </ReduxProvider>
+const mockUseRouter = jest.spyOn(require('next/router'), 'useRouter');
+const mockToggleExpandSidebar = jest.spyOn(
+	require('@/store/actions/page'),
+	'toggleExpandSidebar'
 );
 
-describe('Sidebar/<Sidebar>', () => {
-	useRouter.mockImplementation(() => ({
-		pathname: '/mylist',
-	}));
+const ReduxWrapper = ({ children }) => (
+	<ReduxProvider>{children}</ReduxProvider>
+);
 
-	it('should render correctly', () => {
-		renderSidebar();
+const renderSidebar = () =>
+	render(
+		<ReduxProvider>
+			<Sidebar />
+		</ReduxProvider>
+	);
 
-		const sidebar = screen.getByTestId('sidebar');
-		const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');
-		const sidebarMenu = screen.getByTestId('sidebar-menu');
-		const navList = screen.getByRole('navigation');
+describe('Sidebar', () => {
+	describe('useSidebar', () => {
+		describe('toggleSidebar', () => {
+			it('should call toggleExpandSidebar actions', () => {
+				const { result } = renderHook(() => useSidebar(), {
+					wrapper: ReduxWrapper,
+				});
 
-		expect(sidebar).toBeVisible();
-		expect(sidebarBackdrop).toBeVisible();
-		expect(sidebarMenu).toBeVisible();
-		expect(navList.childElementCount).toEqual(1);
-		expect(navList.childNodes[0]).toHaveAttribute('href', '/mylist');
+				act(() => {
+					result.current.toggleSidebar();
+				});
+
+				expect(mockToggleExpandSidebar).toHaveBeenCalledTimes(1);
+			});
+		});
 	});
 
-	it('should have the class of Expanded when sidebar toggle menu is clicked', () => {
-		renderSidebar();
+	describe('<Sidebar />', () => {
+		mockUseRouter.mockImplementation(() => ({
+			pathname: '/mylist',
+		}));
 
-		const sidebar = screen.getByTestId('sidebar');
-		const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');
-		const sidebarMenu = screen.getByTestId('sidebar-menu');
+		it('should render correctly', () => {
+			renderSidebar();
 
-		fireEvent.click(sidebarMenu);
+			const sidebar = screen.getByTestId('sidebar');
+			const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');
+			const sidebarMenu = screen.getByTestId('sidebar-menu');
+			const navList = screen.getByRole('navigation');
+			const sidebarNavItem = screen.getByRole('link');
+			const sidebarNavItemLabel = screen.getByTestId('nav-item-label');
 
-		expect(sidebar).toHaveClass('Expanded');
-		expect(sidebarBackdrop).toHaveClass('Show');
+			expect(sidebar).toBeVisible();
+			expect(sidebarBackdrop).toBeVisible();
+			expect(sidebarMenu).toBeVisible();
 
-		fireEvent.click(sidebarMenu);
+			expect(navList.childElementCount).toEqual(1);
+			expect(navList.childNodes[0]).toHaveAttribute('href', '/mylist');
 
-		expect(sidebar).not.toHaveClass('Expanded');
-		expect(sidebarBackdrop).not.toHaveClass('Show');
+			expect(sidebarNavItem).toBeVisible();
+			expect(sidebarNavItem).toHaveAttribute('href', '/mylist');
+			expect(sidebarNavItemLabel).toHaveTextContent('My List');
+		});
+
+		it('and SidebarNavItem should toggle the class of Expanded and Active when sidebar toggle menu is clicked', () => {
+			renderSidebar();
+
+			const sidebar = screen.getByTestId('sidebar');
+			const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');
+			const sidebarMenu = screen.getByTestId('sidebar-menu');
+
+			expect(sidebar).toHaveClass('Expanded');
+			expect(sidebarBackdrop).toHaveClass('Show');
+
+			fireEvent.click(sidebarMenu);
+
+			expect(sidebar).not.toHaveClass('Expanded');
+			expect(sidebarBackdrop).not.toHaveClass('Show');
+		});
 	});
 });
 

@@ -4,8 +4,8 @@ import Image from 'next/image';
 import classes from './Logo.module.sass';
 import { LogoProps } from './Logo.types';
 
-const Logo: FC<LogoProps> = ({ isFull }) => (
-	<div className={classes.Logo}>
+const Logo: FC<LogoProps> = ({ isFull, ...rest }) => (
+	<div className={classes.Logo} {...rest}>
 		<Image
 			src={'/logo48.jpg'}
 			width={40}

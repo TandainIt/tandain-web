@@ -9,12 +9,11 @@ import { toggleExpandSidebar } from '@/store/actions/page';
 import Logo from '@/components/ui/Logo';
 import Button from '@/components/ui/Button';
 import { MenuIcon, UserIcon } from '@/components/icons';
-import BaseHeader from '@/components/layouts/Header/BaseHeader';
-import AvatarMenu from '@/components/layouts/AvatarMenu';
+import AvatarMenu from '@/components/ui/AvatarMenu';
 
-import classes from './AuthenticatedHeader.module.sass';
+import classes from './Header.module.sass';
 
-const AuthenticatedHeader: FC = () => {
+export const useAuthenticatedHeader = () => {
 	const dispatch = useAppDispatch();
 	const avatarRef = useRef(null);
 	const avatarMenuRef = useRef(null);
@@ -26,38 +25,55 @@ const AuthenticatedHeader: FC = () => {
 		windowWidth = window.innerWidth;
 	}
 
-	const toggleSidebar = () => dispatch(toggleExpandSidebar());
-
 	const toggleShowAvatarMenu = () => setShowAvatarMenu(!showAvatarMenu);
 
-	const handleCloseAvatarMenu = (e: Event) => {
+	useOnClickOutside(avatarMenuRef, (e: Event) => {
+    /**
+     * Hide Avatar Menu if user click outside of it
+     */
+
 		if (avatarRef.current.contains(e.target)) return;
 
 		setShowAvatarMenu(false);
-	};
+	});
 
-	useOnClickOutside(avatarMenuRef, handleCloseAvatarMenu);
+	return {
+		dispatch,
+		windowWidth,
+		avatarRef,
+		toggleShowAvatarMenu,
+		showAvatarMenu,
+		avatarMenuRef,
+	};
+};
+
+export const AuthenticatedHeader: FC = () => {
+	const {
+		dispatch,
+		windowWidth,
+		avatarRef,
+		toggleShowAvatarMenu,
+		showAvatarMenu,
+		avatarMenuRef,
+	} = useAuthenticatedHeader();
 
 	return (
-		<BaseHeader
-			className={classes.Container}
-			data-testid='authenticated-header'
-		>
+		<header className={classes.Header} data-testid='authenticated-header'>
 			<div className='col'>
 				<Button
 					data-testid='sidebar-toggle'
 					variant='text'
 					color='primary'
 					startIcon={<MenuIcon />}
-					className={`${classes.SidebarButton} mr2`}
-					onClick={toggleSidebar}
+					className={clsx(classes.SidebarButton, 'mr2')}
+					onClick={() => dispatch(toggleExpandSidebar())}
 				/>
-				<Logo isFull={windowWidth > 1024} />
+				<Logo isFull={windowWidth > 1024} data-testid='logo' />
 			</div>
 			<Button
 				ref={avatarRef}
 				data-testid='avatar'
-				startIcon={<UserIcon />}
+				// startIcon={<UserIcon />}
 				className={clsx(classes.Avatar, 'p0')}
 				onClick={toggleShowAvatarMenu}
 				round
@@ -74,8 +90,23 @@ const AuthenticatedHeader: FC = () => {
 			{showAvatarMenu && (
 				<AvatarMenu ref={avatarMenuRef} className={classes.AvatarMenu} />
 			)}
-		</BaseHeader>
+		</header>
 	);
 };
 
-export default AuthenticatedHeader;
+export const UnauthenticatedHeader: FC = () => (
+	<header
+		data-testid='unauthenticated-header'
+		className={clsx(classes.Header, 'items-center')}
+	>
+		<Logo />
+		<div>
+			<Button variant='outlined' className='mr1' as='a' href='/login'>
+				Login
+			</Button>
+			<Button as='a' href='/signup'>
+				Get Started
+			</Button>
+		</div>
+	</header>
+);

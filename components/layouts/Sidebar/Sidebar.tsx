@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
+import Link from 'next/link';
 
 import useAppDispatch from '@/hooks/useAppDispatch';
 import useAppSelector from '@/hooks/useAppSelector';
@@ -10,17 +11,63 @@ import pageSelector from '@/store/selectors/page';
 import { ListIcon, MenuIcon } from '@/components/icons';
 import Backdrop from '@/components/ui/Backdrop';
 import Button from '@/components/ui/Button';
-import NavItem from './NavItem';
 
 import classes from './Sidebar.module.sass';
+import { SidebarNavItemProps } from './Sidebar.types';
+import Tooltip from '@/components/ui/Tooltip';
 
-const Sidebar: FC = () => {
+const SidebarNavItem: FC<SidebarNavItemProps> = ({
+	startIcon,
+	children,
+	href = '/',
+	className = '',
+	isActive,
+	isExpanded,
+}) => (
+	<Link href={href} passHref>
+		<a>
+			<div
+				className={clsx(
+					classes.SidebarNavItem,
+					isActive && classes.Active,
+					isExpanded && classes.Expanded,
+					className
+				)}
+			>
+				<Tooltip text={children} className={classes.Tooltip}>
+					<Button
+						id='nav-item-button'
+						variant='text'
+						color='primary'
+						startIcon={startIcon}
+						className={classes.Button}
+					/>
+				</Tooltip>
+				<label
+					data-testid='nav-item-label'
+					htmlFor='nav-item-button'
+					className={classes.Label}
+				>
+					{children}
+				</label>
+			</div>
+		</a>
+	</Link>
+);
+
+export const useSidebar = () => {
 	const { pathname } = useRouter();
 	const dispatch = useAppDispatch();
 
 	const { isSidebarExpanded } = useAppSelector(pageSelector);
 
 	const toggleSidebar = () => dispatch(toggleExpandSidebar());
+
+	return { pathname, isSidebarExpanded, toggleSidebar };
+};
+
+const Sidebar: FC = () => {
+	const { pathname, isSidebarExpanded, toggleSidebar } = useSidebar();
 
 	return (
 		<>
@@ -41,7 +88,7 @@ const Sidebar: FC = () => {
 					onClick={toggleSidebar}
 				/>
 				<nav className={classes.NavList}>
-					<NavItem
+					<SidebarNavItem
 						startIcon={<ListIcon />}
 						href='/mylist'
 						className='my0p25'
@@ -49,7 +96,7 @@ const Sidebar: FC = () => {
 						isActive={pathname === '/mylist'}
 					>
 						My List
-					</NavItem>
+					</SidebarNavItem>
 				</nav>
 			</div>
 		</>

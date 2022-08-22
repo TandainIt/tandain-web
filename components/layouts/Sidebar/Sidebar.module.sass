@@ -1,5 +1,6 @@
-@use 'styles/mediaQueries' as mq
 @use 'styles/colors' as c
+@use 'styles/typhographies' as t
+@use 'styles/mediaQueries' as mq
 
 .Sidebar
   height: 100vh
@@ -25,6 +26,40 @@
 .Backdrop.Show
   display: initial
 
+.SidebarNavItem
+  display: flex
+  align-items: center
+  border-radius: 0.5rem
+  color: c.$gray-darker200
+  cursor: pointer
+  width: fit-content
+
+  &:hover
+    background-color: c.$primary-lighter300
+
+  .Button
+    stroke: c.$gray-darker200
+
+    &:hover
+      background-color: unset
+
+  .Label
+    white-space: nowrap
+    font-weight: t.$semibold
+    cursor: pointer
+    overflow: hidden
+    transition: width 0.2s ease, margin 0.2s ease
+    margin-left: 0.75rem
+    width: 8rem
+
+.SidebarNavItem.Active
+  color: c.$primary-darkest
+
+  .Button
+    background-color: c.$primary-lighter300
+    stroke: c.$primary-darkest
+  
+
 @media screen and (min-width: mq.$md)
   .Sidebar
     min-height: 80vh
@@ -34,3 +69,16 @@
 
   .Backdrop.Show
     display: none
+
+  .SidebarNavItem
+    .Label
+      width: 0
+      margin-left: 0
+
+  .SidebarNavItem.Expanded
+    .Tooltip
+      display: none
+
+    .Label
+      width: 8rem
+      margin-left: 0.75rem

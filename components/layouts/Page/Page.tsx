@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import classes from './Page.module.sass';
-
 import { PageProps } from './Page.types';
 
 const Page: FC<PageProps> = ({ className, children }) => (

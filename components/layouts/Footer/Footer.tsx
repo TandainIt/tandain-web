@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import BaseButton from '@/components/ui/BaseButton';
 import Title from '@/components/typhographies/Title';
-import FooterListItem from './FooterListItem';
 
 import classes from './Footer.module.sass';
 
@@ -12,9 +12,11 @@ const Footer: FC = () => (
 				Tandain
 			</Title>
 			<ul>
-				<FooterListItem href='/about' className='my0p25'>
-					About
-				</FooterListItem>
+				<li className='my0p25'>
+					<BaseButton as='a' href='/about'>
+						About
+					</BaseButton>
+				</li>
 			</ul>
 		</div>
 	</footer>

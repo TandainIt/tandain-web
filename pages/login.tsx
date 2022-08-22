@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 
-import { UnauthenticatedHeader } from '../components/layouts/Header';
-import Page from '../components/layouts/Page';
+import { UnauthenticatedHeader, Page } from '@/components/layouts';
 import Login from '../modules/authentication/Login';
 
 import classes from '../styles/pages/AuthPage.module.sass';

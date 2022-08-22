@@ -2,9 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import clsx from 'clsx';
 
-import { AuthenticatedHeader } from '@/components/layouts/Header';
-import Page from '@/components/layouts/Page';
-import Sidebar from '@/components/layouts/Sidebar';
+import { AuthenticatedHeader, Page, Sidebar } from '@/components/layouts';
 import Title from '@/components/typhographies/Title';
 import ListItem from '@/modules/mylist/ListItem';
 
