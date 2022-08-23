@@ -3,7 +3,7 @@ import Head from 'next/head';
 import clsx from 'clsx';
 
 import { AuthenticatedHeader, Page, Sidebar } from '@/components/layouts';
-import Title from '@/components/typhographies/Title';
+import { Title } from '@/components/typhographies';
 import ListItem from '@/modules/mylist/ListItem';
 
 import classes from '@/styles/pages/MyList.module.sass';

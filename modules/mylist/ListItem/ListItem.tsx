@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 import { TrashLightIcon } from '@/components/icons';
-import Title from '@/components/typhographies/Title';
+import { Title } from '@/components/typhographies';
 import Button from '@/components/ui/Button';
 import Tooltip from '@/components/ui/Tooltip';
 

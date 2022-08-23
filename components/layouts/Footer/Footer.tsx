@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import BaseButton from '@/components/ui/BaseButton';
-import Title from '@/components/typhographies/Title';
+import { Title } from '@/components/typhographies';
 
 import classes from './Footer.module.sass';
 

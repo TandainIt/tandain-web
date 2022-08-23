@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import Title from '../../../components/typhographies/Title';
-import BaseButton from '../../../components/ui/BaseButton';
 
+import { Title } from '@/components/typhographies';
+import BaseButton from '../../../components/ui/BaseButton';
 import GoogleButton from '../GoogleButton';
 
 import classes from './Signup.module.sass';

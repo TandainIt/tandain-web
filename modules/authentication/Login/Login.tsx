@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Title from '../../../components/typhographies/Title';
+import { Title } from '@/components/typhographies';
 import BaseButton from '../../../components/ui/BaseButton';
 import GoogleButton from '../GoogleButton';
 

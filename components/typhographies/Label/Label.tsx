@@ -2,14 +2,13 @@ import clsx from 'clsx';
 import { FC } from 'react';
 
 import classes from './Label.module.sass';
-
 import { LabelProps } from './Label.types';
 
 const Label: FC<LabelProps> = ({
 	variant = 'sans-serif',
 	className,
 	children,
-	...args
+	...rest
 }) => {
 	const labelVariants = {
 		'sans-serif': classes.SansSerif,
@@ -19,7 +18,7 @@ const Label: FC<LabelProps> = ({
 	return (
 		<span
 			className={clsx(classes.Label, labelVariants[variant], className)}
-			{...args}
+			{...rest}
 		>
 			{children}
 		</span>

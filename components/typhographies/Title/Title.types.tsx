@@ -1,13 +1,8 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { ComponentSizes, HTMLPropsDetail } from '@/types';
 
-import { FontSizeByTags, FontSizeByKeys } from './utils.types';
+export type TitleTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-type HeadingElement = DetailedHTMLProps<
-	HTMLAttributes<HTMLHeadingElement>,
-	HTMLHeadingElement
->;
-
-export interface TitleProps extends HeadingElement {
-	as?: keyof FontSizeByTags;
-	size?: keyof FontSizeByKeys;
+export interface TitleProps extends HTMLPropsDetail<HTMLHeadingElement> {
+	as?: TitleTags;
+	size?: keyof ComponentSizes;
 }
