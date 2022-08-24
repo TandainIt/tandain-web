@@ -1,5 +1,5 @@
-import { HTMLPropsDetail } from '@/types';
+import { DetailHTMLProps } from '@/types';
 
-export interface LabelProps extends HTMLPropsDetail<HTMLSpanElement> {
+export interface LabelProps extends DetailHTMLProps<HTMLSpanElement> {
 	variant?: 'sans-serif' | 'serif';
 }

@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
-import { ComponentProps } from '@/utils/types';
 import classes from './Spinner.module.sass';
+import { DetailHTMLProps } from '@/types';
 
-const Spinner: FC<ComponentProps<HTMLDivElement>> = ({
+const Spinner: FC<DetailHTMLProps<HTMLDivElement>> = ({
 	className,
 	...rest
 }) => (

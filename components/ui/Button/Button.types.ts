@@ -1,9 +1,13 @@
+import { DetailHTMLProps } from '@/types';
 import { ReactNode } from 'react';
 
-import { BaseButtonProps } from '../BaseButton';
+export interface BaseButtonProps extends DetailHTMLProps<HTMLButtonElement> {
+	as?: 'button' | 'a';
+	href?: string | URL;
+}
 
 export interface ButtonProps extends BaseButtonProps {
-	variant?: 'solid' | 'outlined' | 'text';
+	variant?: 'solid' | 'outlined' | 'text' | 'base';
 	color?: 'primary' | 'dark';
 	size?: 'sm' | 'md' | 'lg';
   iconClassName?: string;

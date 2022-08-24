@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Title } from '@/components/typhographies';
-import BaseButton from '../../../components/ui/BaseButton';
+import { Button } from '@/components/ui';
 import GoogleButton from '../GoogleButton';
 
 import classes from './Signup.module.sass';
@@ -15,9 +15,9 @@ const Signup: FC<SingupProps> = ({ className }) => (
 		<Title size='lg'>Sign Up</Title>
 		<span className='mt0p25 mb4'>
 			Already have an account?{' '}
-			<BaseButton as='a' href='/login' className='font-semibold'>
+			<Button as='a' variant='base' href='/login' className='font-semibold'>
 				Login now
-			</BaseButton>
+			</Button>
 		</span>
 		<GoogleButton>Sign up with Google</GoogleButton>
 	</section>

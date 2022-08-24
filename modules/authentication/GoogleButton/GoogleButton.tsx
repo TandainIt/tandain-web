@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { GoogleIcon } from '@/components/icons';
-import Button from '../../../components/ui/Button';
+import { Button } from '@/components/ui';
 
 import classes from './GoogleButton.module.sass';
 

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import BaseButton from '@/components/ui/BaseButton';
 import { Title } from '@/components/typhographies';
+import { Button } from '@/components/ui';
 
 import classes from './Footer.module.sass';
 
@@ -13,9 +13,9 @@ const Footer: FC = () => (
 			</Title>
 			<ul>
 				<li className='my0p25'>
-					<BaseButton as='a' href='/about'>
+					<Button as='a' variant='base' href='/about'>
 						About
-					</BaseButton>
+					</Button>
 				</li>
 			</ul>
 		</div>

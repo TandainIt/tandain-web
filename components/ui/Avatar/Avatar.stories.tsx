@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import AvatarMenu from './AvatarMenu';
+import AvatarMenu from './Avatar';
 
 export default {
 	title: 'Components/Layouts/AvatarMenu',

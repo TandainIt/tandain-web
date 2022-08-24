@@ -9,12 +9,10 @@ import { toggleExpandSidebar } from '@/store/actions/page';
 import pageSelector from '@/store/selectors/page';
 
 import { ListIcon, MenuIcon } from '@/components/icons';
-import Backdrop from '@/components/ui/Backdrop';
-import Button from '@/components/ui/Button';
+import { Backdrop, Button, Tooltip } from '@/components/ui';
 
 import classes from './Sidebar.module.sass';
 import { SidebarNavItemProps } from './Sidebar.types';
-import Tooltip from '@/components/ui/Tooltip';
 
 const SidebarNavItem: FC<SidebarNavItemProps> = ({
 	startIcon,

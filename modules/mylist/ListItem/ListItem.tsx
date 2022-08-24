@@ -5,8 +5,7 @@ import Link from 'next/link';
 
 import { TrashLightIcon } from '@/components/icons';
 import { Title } from '@/components/typhographies';
-import Button from '@/components/ui/Button';
-import Tooltip from '@/components/ui/Tooltip';
+import { Button, Tooltip } from '@/components/ui';
 
 import classes from './ListItem.module.sass';
 import { ListItemProps } from './ListItem.types';

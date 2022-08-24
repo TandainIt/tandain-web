@@ -1,2 +1,2 @@
 export type { ComponentSizes } from './ComponentSizes.types';
-export type { HTMLPropsDetail } from './HTMLPropsDetail.types';
+export type { DetailHTMLProps } from './DetailHTMLProps.types';

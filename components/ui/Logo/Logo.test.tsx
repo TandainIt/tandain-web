@@ -4,7 +4,7 @@ import Logo from './Logo';
 
 describe('Logo/<Logo>', () => {
 	it('should render in with the text in the big screen', () => {
-		const { container } = render(<Logo />);
+		const { container } = render(<Logo isFull/>);
 
 		const logoImg = screen.getByRole('img');
 		const logoText = container.querySelector('#logo-text');
