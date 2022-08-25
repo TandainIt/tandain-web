@@ -9,7 +9,7 @@ export interface BaseButtonProps extends DetailHTMLProps<HTMLButtonElement> {
 export interface ButtonProps extends BaseButtonProps {
 	variant?: 'solid' | 'outlined' | 'text' | 'base';
 	color?: 'primary' | 'dark';
-	size?: 'sm' | 'md' | 'lg';
+	size?: 'xs' | 'sm' | 'md' | 'lg';
   iconClassName?: string;
 	startIcon?: ReactNode;
   round?: Boolean 

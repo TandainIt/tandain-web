@@ -5,6 +5,7 @@ import { Title } from '@/components/typhographies';
 import { Button } from '@/components/ui';
 import { UnauthenticatedHeader, Page } from '@/components/layouts';
 import { AuthGoogleButton } from '@/modules/auth';
+import { showGoogleLoginPopup } from '@/utils/auth/google';
 
 import classes from '@/modules/auth/AuthPage/AuthPage.module.sass';
 
@@ -13,7 +14,7 @@ const LoginPage: NextPage = () => (
 		<Head>
 			<title>Login</title>
 		</Head>
-		<Page className={classes.AuthPage}>
+		<Page className={classes.Page}>
 			<UnauthenticatedHeader />
 			<div className='px2'>
 				<section className={classes.Section}>
@@ -29,7 +30,9 @@ const LoginPage: NextPage = () => (
 							Sign up now
 						</Button>
 					</span>
-					<AuthGoogleButton>Login with Google</AuthGoogleButton>
+					<AuthGoogleButton onClick={showGoogleLoginPopup}>
+						Login with Google
+					</AuthGoogleButton>
 				</section>
 			</div>
 		</Page>

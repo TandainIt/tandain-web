@@ -43,7 +43,7 @@ const Title: FC<TitleProps> = ({
 
 	return createElement(as, {
 		className: `${classes.Title} ${classes[selectedSize]} ${className}`,
-		...rest,
+		rest,
 	});
 };
 

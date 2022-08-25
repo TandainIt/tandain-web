@@ -13,11 +13,9 @@ const Logo: FC<LogoProps> = ({ isFull, ...rest }) => (
 			layout='fixed'
 			alt='logo'
 		/>
-		{isFull && (
-			<span className={classes.Text} id='logo-text'>
-				Tandain
-			</span>
-		)}
+		<span className={classes.Text} id='logo-text'>
+			Tandain
+		</span> 
 	</div>
 );
 

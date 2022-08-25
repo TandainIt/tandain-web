@@ -1,4 +1,5 @@
 @use 'styles/mediaQueries' as mq
+@use 'styles/colors' as c
 
 .AuthPage
   min-height: 768px
@@ -9,7 +10,13 @@
   margin: 0 auto
   display: flex
   flex-direction: column
-  width: 320px
+  width: 20rem
+
+  .ErrorMessage
+    color: c.$red-default
+    width: 100%
+    text-align: center
+    font-size: 12px
 
 @media screen and (max-width: mq.$xs)
   .Section

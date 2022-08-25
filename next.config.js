@@ -3,8 +3,6 @@
 const { withFederatedSidecar } = require('@module-federation/nextjs-mf');
 const { dependencies } = require('./package.json');
 
-const isProd = process.env.NODE_ENV === 'production'
-
 module.exports = withFederatedSidecar({
 	name: 'tandainClient', // NOTE: Don't use kebab-case
 	filename: 'static/chunks/remoteEntry.js',
@@ -33,6 +31,13 @@ module.exports = withFederatedSidecar({
 })({
 	// your original next.config.js export
 	reactStrictMode: true,
+	env: {
+		CLIENT_URL: process.env.CLIENT_URL,
+		API_URL: process.env.API_URL,
+		GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+		API_GATEWAY_HOST: process.env.API_GATEWAY_HOST,
+		GOOGLE_REDIRECT_URI: process.env.GOOGLE_REDIRECT_URI,
+	},
 	webpack(config) {
 		config.output.publicPath = 'auto';
 
