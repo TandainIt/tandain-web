@@ -3,11 +3,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { RootState } from '@/store';
-// import Spinner from '@/components/ui/Spinner';
 
 import { showGoogleLoginPopup } from '@/utils/auth/google';
 import { Title } from '@/components/typhographies';
-import { Button } from '@/components/ui';
+import { Button, Spinner } from '@/components/ui';
 import { Page, UnauthenticatedHeader } from '@/components/layouts';
 import { AuthGoogleButton } from '@/modules/auth';
 
@@ -24,9 +23,13 @@ const useSignUpPage = () => {
 		router.replace('/mylist');
 		return;
 	}
+
+	return { isLoading };
 };
 
 const SignupPage: NextPage = () => {
+	const { isLoading } = useSignUpPage();
+
 	return (
 		<>
 			<Head>
@@ -35,23 +38,27 @@ const SignupPage: NextPage = () => {
 			<Page className={classes.AuthPage}>
 				<UnauthenticatedHeader />
 				<main className={classes.Main}>
-					<section className={classes.Section}>
-						<Title size='lg'>Sign Up</Title>
-						<span className='mt0p25 mb4'>
-							Already have an account?{' '}
-							<Button
-								as='a'
-								variant='base'
-								href='/login'
-								className='font-semibold'
-							>
-								Login now
-							</Button>
-						</span>
-						<AuthGoogleButton onClick={showGoogleLoginPopup}>
-							Sign up with Google
-						</AuthGoogleButton>
-					</section>
+					{isLoading ? (
+						<Spinner className={classes.Spinner} />
+					) : (
+						<section className={classes.Section}>
+							<Title size='lg'>Sign Up</Title>
+							<span className='mt0p25 mb4'>
+								Already have an account?{' '}
+								<Button
+									as='a'
+									variant='base'
+									href='/login'
+									className='font-semibold'
+								>
+									Login now
+								</Button>
+							</span>
+							<AuthGoogleButton onClick={showGoogleLoginPopup}>
+								Sign up with Google
+							</AuthGoogleButton>
+						</section>
+					)}
 				</main>
 			</Page>
 		</>
