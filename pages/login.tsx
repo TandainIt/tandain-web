@@ -14,9 +14,9 @@ const LoginPage: NextPage = () => (
 		<Head>
 			<title>Login</title>
 		</Head>
-		<Page className={classes.Page}>
+		<Page className={classes.AuthPage}>
 			<UnauthenticatedHeader />
-			<div className='px2'>
+			<main className={classes.Main}>
 				<section className={classes.Section}>
 					<Title size='lg'>Login</Title>
 					<span className='mt0p25 mb4'>
@@ -34,7 +34,7 @@ const LoginPage: NextPage = () => (
 						Login with Google
 					</AuthGoogleButton>
 				</section>
-			</div>
+			</main>
 		</Page>
 	</>
 );
