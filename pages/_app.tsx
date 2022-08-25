@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { useEffect } from 'react';
 
 import store from '../store';
-import useAppDispatch from '../hooks/useAppDispatch';
+import { useAppDispatch } from '@/hooks';
 import { toggleExpandSidebar } from '../store/actions/page';
 
 

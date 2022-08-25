@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 import { FC } from 'react';
 import Link from 'next/link';
 
-import useAppDispatch from '@/hooks/useAppDispatch';
-import useAppSelector from '@/hooks/useAppSelector';
+import { useAppSelector, useAppDispatch } from '@/hooks';
 import { toggleExpandSidebar } from '@/store/actions/page';
 import pageSelector from '@/store/selectors/page';
 

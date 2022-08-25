@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import clsx from 'clsx';
 
-import useAppDispatch from '@/hooks/useAppDispatch';
+import { useAppDispatch } from '@/hooks';
 import { toggleExpandSidebar } from '@/store/actions/page';
 
 import { Avatar, Button, Logo } from '@/components/ui';

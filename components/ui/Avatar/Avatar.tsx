@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { UserIcon } from '@/components/icons';
 import { Button } from '@/components/ui';
-import useOnClickOutside from '@/hooks/useOnClickOutside';
+import { useOnClickOutside } from '@/hooks';
 
 import classes from './Avatar.module.sass';
 import {
