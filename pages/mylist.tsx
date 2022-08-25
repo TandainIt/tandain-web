@@ -4,9 +4,9 @@ import clsx from 'clsx';
 
 import { AuthenticatedHeader, Page, Sidebar } from '@/components/layouts';
 import { Title } from '@/components/typhographies';
-import ListItem from '@/modules/mylist/ListItem';
+import { ArticleListItem } from '@/modules/article';
 
-import classes from '@/styles/pages/MyList.module.sass';
+import classes from '@/modules/article/MyListPage/MyListPage.module.sass';
 
 const MyListPage: NextPage = () => {
 	const myList = [
@@ -80,7 +80,7 @@ const MyListPage: NextPage = () => {
 					<ol data-testid='list' className={clsx(classes.List, 'mt4 mb5')}>
 						<Title className={clsx(classes.Title)}>My List</Title>
 						{myList.map((item) => (
-							<ListItem
+							<ArticleListItem
 								key={item.id}
 								title={item.title}
 								sourceName={item.sourceName}

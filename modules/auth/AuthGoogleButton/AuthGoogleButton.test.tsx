@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
 
-import GoogleButton from './GoogleButton';
+import AuthGoogleButton from './AuthGoogleButton';
 
-describe('GoogleButton/<GoogleButton>', () => {
+describe('AuthGoogleButton/<AuthGoogleButton>', () => {
 	it('should render correctly', () => {
-		render(<GoogleButton></GoogleButton>);
+		render(<AuthGoogleButton />);
 
 		const googleButton = screen.getByRole('button');
 
 		expect(googleButton).toBeVisible();
-		expect(googleButton).toHaveClass('GoogleButton');
+		expect(googleButton).toHaveClass('AuthGoogleButton');
 		expect(googleButton.querySelector('#google-icon')).toBeTruthy();
 	});
 });

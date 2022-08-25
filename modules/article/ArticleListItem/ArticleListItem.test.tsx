@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import ListItem from './ListItem';
+import ArticleListItem from './ArticleListItem';
 
-describe('mylist/ListItem', () => {
+describe('article/ArticleListItem', () => {
 	it('should render correctly', () => {
 		const onDeleteMock = jest.fn();
 
@@ -14,7 +14,7 @@ describe('mylist/ListItem', () => {
 		};
 
 		render(
-			<ListItem
+			<ArticleListItem
 				title={item.title}
 				sourceName={item.sourceName}
 				sourceURL={item.sourceURL}

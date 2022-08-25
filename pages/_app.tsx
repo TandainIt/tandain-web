@@ -6,7 +6,6 @@ import store from '../store';
 import { useAppDispatch } from '@/hooks';
 import { toggleExpandSidebar } from '../store/actions/page';
 
-
 import { Footer } from '@/components/layouts';
 
 import '../styles/index.sass';

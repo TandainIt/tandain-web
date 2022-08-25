@@ -2,7 +2,7 @@
 @use 'styles/colors' as c
 @use 'styles/mediaQueries' as mq
 
-.ListItem
+.ArticleListItem
   display: flex
 
   .ItemMain
@@ -50,7 +50,7 @@
     min-width: 208px
 
 @media screen and (min-width: mq.$md)
-  .ListItem
+  .ArticleListItem
     width: 288px
     flex-direction: column-reverse
 
@@ -74,9 +74,9 @@
         visibility: visible
 
 @media screen and (min-width: mq.$lg)
-  .ListItem
+  .ArticleListItem
     width: 277px
 
 @media screen and (min-width: mq.$xl)
-  .ListItem
+  .ArticleListItem
     width: 288px

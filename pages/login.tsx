@@ -1,10 +1,12 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 
+import { Title } from '@/components/typhographies';
+import { Button } from '@/components/ui';
 import { UnauthenticatedHeader, Page } from '@/components/layouts';
-import Login from '../modules/authentication/Login';
+import { AuthGoogleButton } from '@/modules/auth';
 
-import classes from '../styles/pages/AuthPage.module.sass';
+import classes from '@/modules/auth/AuthPage/AuthPage.module.sass';
 
 const LoginPage: NextPage = () => (
 	<>
@@ -14,7 +16,21 @@ const LoginPage: NextPage = () => (
 		<Page className={classes.AuthPage}>
 			<UnauthenticatedHeader />
 			<div className='px2'>
-				<Login className={classes.AuthSection} />
+				<section className={classes.Section}>
+					<Title size='lg'>Login</Title>
+					<span className='mt0p25 mb4'>
+						Don&apos;t have an account?&nbsp;
+						<Button
+							as='a'
+							variant='base'
+							href='/signup'
+							className='font-semibold'
+						>
+							Sign up now
+						</Button>
+					</span>
+					<AuthGoogleButton>Login with Google</AuthGoogleButton>
+				</section>
 			</div>
 		</Page>
 	</>

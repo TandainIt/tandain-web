@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import MyList from '@/pages/mylist';
+import MyListPage from '@/pages/mylist';
 import { ReduxProvider } from '@/pages/_app';
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
@@ -8,11 +8,11 @@ const useRouter = jest.spyOn(require('next/router'), 'useRouter');
 const renderMyListPage = () =>
 	render(
 		<ReduxProvider>
-			<MyList />
+			<MyListPage />
 		</ReduxProvider>
 	);
 
-describe('pages/MyList', () => {
+describe('pages/MyListPage', () => {
 	beforeEach(() => {
 		useRouter.mockImplementation(() => ({
 			pathname: '/mylist',

@@ -7,19 +7,19 @@ import { TrashLightIcon } from '@/components/icons';
 import { Title } from '@/components/typhographies';
 import { Button, Tooltip } from '@/components/ui';
 
-import classes from './ListItem.module.sass';
-import { ListItemProps } from './ListItem.types';
+import classes from './ArticleListItem.module.sass';
+import { ArticleListItemProps } from './ArticleListItem.types';
 
-const ListItem: FC<ListItemProps> = ({
+const ArticleListItem: FC<ArticleListItemProps> = ({
 	title,
 	sourceName,
 	sourceURL,
-	imgURL = '/',
+	imgURL,
 	className,
 	onDelete,
 	...args
 }) => (
-	<li className={clsx(classes.ListItem, className)} {...args}>
+	<li className={clsx(classes.ArticleListItem, className)} {...args}>
 		<div className={classes.ItemMain}>
 			<div>
 				<Link href='/' passHref>
@@ -62,6 +62,6 @@ const ListItem: FC<ListItemProps> = ({
 	</li>
 );
 
-ListItem.displayName = 'ListItem';
+ArticleListItem.displayName = 'ArticleListItem';
 
-export default ListItem;
+export default ArticleListItem;

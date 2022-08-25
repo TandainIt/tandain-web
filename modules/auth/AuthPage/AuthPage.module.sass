@@ -1,10 +1,16 @@
 @use 'styles/mediaQueries' as mq
 
-.Container
+.AuthPage
+  min-height: 768px
+
+.Section
+  top: 128px
+  position: relative
+  margin: 0 auto
   display: flex
   flex-direction: column
   width: 320px
 
 @media screen and (max-width: mq.$xs)
-  .Container
+  .Section
     width: unset

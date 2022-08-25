@@ -1,12 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ListItem from './ListItem';
-
-import tempImage from '@/public/temp/my-list-item-img.png'
+import ArticleListItem from './ArticleListItem';
 
 export default {
-	title: 'Modules/MyList/ListItem',
-	component: ListItem,
+	title: 'Modules/Article/ArticleListItem',
+	component: ArticleListItem,
 	argTypes: {
 		title: {
 			type: { name: 'string', required: true },
@@ -28,8 +26,8 @@ export default {
 			type: { name: 'function', required: true },
 		},
 	},
-} as ComponentMeta<typeof ListItem>;
+} as ComponentMeta<typeof ArticleListItem>;
 
-export const Default: ComponentStory<typeof ListItem> = (args) => (
-	<ListItem {...args} />
+export const Default: ComponentStory<typeof ArticleListItem> = (args) => (
+	<ArticleListItem {...args} />
 );
