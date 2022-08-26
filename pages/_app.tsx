@@ -4,23 +4,21 @@ import { useEffect } from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { useRouter } from 'next/router';
 
-import store from '../store';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setToastError, toggleExpandSidebar } from '../store/actions/page';
+import store from '@/store';
 
 import Toast from '@/components/ui/Toast';
 import { Footer } from '@/components/layouts';
 import apolloClient from '@/loaders/apolloClient';
 
-import '../styles/index.sass';
-
 import '@/styles/index.sass';
-import pageSelector from '@/store/selectors/page';
+import { RootState } from '@/types';
 
 function MyComponent({ children }) {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const { error } = useAppSelector(pageSelector);
+	const { error } = useAppSelector(({ page }: RootState) => page);
 
 	function hideToast() {
 		dispatch(setToastError(undefined));

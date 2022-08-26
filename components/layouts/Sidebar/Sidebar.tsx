@@ -5,13 +5,13 @@ import Link from 'next/link';
 
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { toggleExpandSidebar } from '@/store/actions/page';
-import pageSelector from '@/store/selectors/page';
 
 import { ListIcon, MenuIcon } from '@/components/icons';
 import { Backdrop, Button, Tooltip } from '@/components/ui';
 
 import classes from './Sidebar.module.sass';
 import { SidebarNavItemProps } from './Sidebar.types';
+import { RootState } from '@/types';
 
 const SidebarNavItem: FC<SidebarNavItemProps> = ({
 	startIcon,
@@ -56,7 +56,7 @@ export const useSidebar = () => {
 	const { pathname } = useRouter();
 	const dispatch = useAppDispatch();
 
-	const { isSidebarExpanded } = useAppSelector(pageSelector);
+	const { isSidebarExpanded } = useAppSelector(({ page }: RootState) => page);
 
 	const toggleSidebar = () => dispatch(toggleExpandSidebar());
 
