@@ -4,13 +4,13 @@ import {
 	getPopupParams,
 	sendAuthCodeToWindowParent,
 	showGoogleLoginPopup,
-} from './google';
+} from './auth';
 
 const mockLoginWithGoogleAction = jest.spyOn(authActions, 'loginWithGoogle');
 
 const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI;
 
-describe('utils/auth/google', () => {
+describe('auth/utils', () => {
 	describe('showGoogleLoginPopup', () => {
 		it('it should open Google Login popup on the new window', () => {
 			const redirectURI = REDIRECT_URI;

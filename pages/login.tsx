@@ -5,7 +5,7 @@ import { Title } from '@/components/typhographies';
 import { Button } from '@/components/ui';
 import { UnauthenticatedHeader, Page } from '@/components/layouts';
 import { AuthGoogleButton } from '@/modules/auth';
-import { showGoogleLoginPopup } from '@/utils/auth/google';
+import { showGoogleLoginPopup } from '@/modules/auth/utils';
 
 import classes from '@/modules/auth/AuthPage/AuthPage.module.sass';
 

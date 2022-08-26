@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { LoginParams, loginWithGoogleMutation } from '@/graphql/auth';
+import { LoginParams, loginWithGoogleMutation } from '@/modules/auth/graphql';
 
 export const loginWithGoogle = createAsyncThunk(
 	'user/login',

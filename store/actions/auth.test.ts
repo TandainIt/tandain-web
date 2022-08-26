@@ -1,10 +1,12 @@
 import { generateRandomString } from '@/__tests__/utils';
-import * as authGraphQL from '@/graphql/auth/auth';
+import { configureStore } from '@reduxjs/toolkit';
+
+import * as authGraphQL from '@/modules/auth/graphql/auth';
 import { loginWithGoogle } from './auth';
+
 import authReducer, {
 	initialState as initialAuthState,
 } from '../reducers/auth';
-import { configureStore } from '@reduxjs/toolkit';
 
 const mockLoginWithGoogleMutation = jest.spyOn(
 	authGraphQL,

@@ -9,14 +9,13 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setToastError, toggleExpandSidebar } from '../store/actions/page';
 
 import Toast from '@/components/ui/Toast';
+import { Footer } from '@/components/layouts';
+import apolloClient from '@/loaders/apolloClient';
 
 import '../styles/index.sass';
 
-// import classes from '@/styles/pages/App.module.sass';
 import '@/styles/index.sass';
 import pageSelector from '@/store/selectors/page';
-import { Footer } from '@/components/layouts';
-import apolloClient from '@/graphql/apolloClient';
 
 function MyComponent({ children }) {
 	const router = useRouter();

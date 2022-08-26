@@ -1,7 +1,8 @@
 import { FetchResult } from '@apollo/client';
 
-import apolloClient from '../apolloClient/apolloClient';
+import apolloClient from '@/loaders/apolloClient';
 import { LOGIN_WITH_GOOGLE } from './auth.query';
+
 import { LoginParams, LoginResult } from './auth.types';
 
 export const loginWithGoogleMutation = async ({
