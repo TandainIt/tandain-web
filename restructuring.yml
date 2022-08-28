@@ -1,0 +1,75 @@
+# 1. Restructuring icons to assets
+# 2. Restructuring layout components
+# 3. Restructuring typhography components
+# 4. Restructuring ui components
+# 5. Restructuring hooks
+# 6. Resructuring auth modules
+# 7. Restructuring article modules
+# 8. Restructuring styles (Use more SASS features)
+# 9. Restructuring utils
+# 10. Restructuring types
+
+# NOTE
+# 1. Optimize aliases for each first-level and/or secondary-level folder
+# 2. Use more SASS features for styles
+
+assets
+  - icons
+components
+  - layouts
+      - Footer 
+      - Header
+      - Page
+      - Sidebar
+      - index.ts
+  - typhographies
+      - Label
+      - Title
+      - index.ts
+  - ui
+      - Avatar
+      - Backdrop
+      - Button
+      - Logo
+      - Spinner
+      - Tooltip
+      - index.ts
+hooks
+  - useAppDispatch
+  - useAppSelector
+  - useOnClickOutside
+  - index.ts
+modules
+  - auth
+      - AuthPage
+      - AuthGoogleButton
+      - utils
+      - graphql
+  - article
+      - ArticlePage
+      - ArticleDetail
+      - ArticleList
+      - ArticleItem
+      - utils
+      - graphql
+pages
+public
+styles
+  - globals.sass
+  - utils.sass
+  - variables.sass
+  - index.sass
+  - 
+utils
+  - test
+    - test.ts
+    - test.types.ts
+    - index.ts
+  - utils
+    - utils.ts
+    - ...
+    - index.ts
+  - variables
+    - variables.ts
+    - index.ts
+types

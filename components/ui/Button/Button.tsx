@@ -45,7 +45,6 @@ const Button: FC<ButtonProps> = forwardRef(
 				href={href}
 				className={clsx(
 					className,
-					classes.Button,
 					classes[capitalize(variant)],
 					classes[capitalize(color)],
 					variant !== 'base' && classes[buttonSizes[size]],
