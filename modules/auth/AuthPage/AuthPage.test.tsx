@@ -2,11 +2,20 @@ import { render, screen } from '@testing-library/react';
 
 import SignUp from '@/pages/signup';
 import Login from '@/pages/login';
+import { ReduxProvider } from '@/pages/_app';
+
+jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => ({
+	asPath: '/mylist',
+}));
 
 describe('modules/auth', () => {
 	describe('SignUpPage', () => {
 		it('should render correctly', () => {
-			render(<SignUp />);
+			render(
+				<ReduxProvider>
+					<SignUp />
+				</ReduxProvider>
+			);
 
 			const unauthenticatedHeader = screen.getByTestId(
 				'unauthenticated-header'
@@ -27,7 +36,11 @@ describe('modules/auth', () => {
 
 	describe('LoginPage', () => {
 		it('should render correctly', () => {
-			render(<Login />);
+			render(
+				<ReduxProvider>
+					<Login />
+				</ReduxProvider>
+			);
 
 			const unauthenticatedHeader = screen.getByTestId(
 				'unauthenticated-header'

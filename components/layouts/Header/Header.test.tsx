@@ -1,16 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react-hooks';
 
 import { ReduxProvider } from '@/pages/_app';
-import {
-	AuthenticatedHeader,
-	UnauthenticatedHeader,
-	useAuthenticatedHeader,
-} from './Header';
+import { AuthenticatedHeader, UnauthenticatedHeader } from './Header';
 
-const ReduxWrapper = ({ children }) => (
-	<ReduxProvider>{children}</ReduxProvider>
-);
+jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => ({
+	asPath: '/mylist',
+}));
 
 const mockToggleExpandSidebar = jest.spyOn(
 	require('@/store/actions/page'),

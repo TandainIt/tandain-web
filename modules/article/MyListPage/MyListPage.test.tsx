@@ -25,7 +25,7 @@ describe('pages/MyListPage', () => {
 		const authenticatedHeader = screen.getByTestId('authenticated-header');
 		const sidebar = screen.getByTestId('sidebar');
 		const myListTitle = container.querySelector('h1');
-		const myList = screen.getByRole('list');
+		const myList = screen.getByTestId('list');
 
 		expect(authenticatedHeader).toBeVisible();
 		expect(sidebar).toBeVisible();
