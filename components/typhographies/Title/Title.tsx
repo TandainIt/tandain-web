@@ -5,7 +5,7 @@ import { TitleProps, TitleTags } from './Title.types';
 import { ComponentSizes } from '@/types';
 
 const useTitle = (as, size) => {
-	const getFontSize = (size: keyof ComponentSizes, tag?: TitleTags) => {
+	const getFontSize = (fontTag: TitleTags, fontSize?: keyof ComponentSizes) => {
 		const fontSizes = {
 			xl: 'ExtraLarge',
 			lg: 'Large',
@@ -23,7 +23,7 @@ const useTitle = (as, size) => {
 			h6: 'ExtraExtraSmall',
 		};
 
-		return size ? fontSizes[size] : fontSizeByTags[tag];
+		return size ? fontSizes[fontSize] : fontSizeByTags[fontTag];
 	};
 
 	const selectedSize = getFontSize(as, size);
