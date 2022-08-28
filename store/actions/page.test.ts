@@ -1,5 +1,5 @@
-import { configureTestStore } from '../../__tests__/utils';
 import { toggleExpandSidebar } from './page';
+import { configureTestStore } from '@/utils/test';
 
 describe('actions/page', () => {
 	let store: ReturnType<typeof configureTestStore>;

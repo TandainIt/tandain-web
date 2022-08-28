@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import { sizes as buttonSizes } from '@/utils/variables';
-import { capitalize } from '@/utils/string';
+import { capitalize } from '@/utils/global';
 
 import classes from './Button.module.sass';
 import { ButtonProps, BaseButtonProps } from './Button.types';

@@ -1,6 +1,6 @@
-import { generateRandomString } from '@/__tests__/utils';
 import apolloClient from '@/loaders/apolloClient';
 import { loginWithGoogleMutation } from './auth';
+import { generateRandomString } from '@/utils/global';
 
 const REDIRECT_URI = `${process.env.CLIENT_URL}/auth/google-oauth`;
 

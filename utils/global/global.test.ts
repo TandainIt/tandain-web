@@ -1,7 +1,6 @@
-import { generateRandomString } from '@/__tests__/utils';
-import { capitalize } from './string';
+import { capitalize, generateRandomString } from './global';
 
-describe('utils/string', () => {
+describe('utils/global', () => {
 	describe('capitalize', () => {
 		it('should capitalize first letter of the string', () => {
 			const string = generateRandomString();
@@ -15,6 +14,21 @@ describe('utils/string', () => {
 
 			expect(firstCapitalizedString).toEqual(uppercasedFirstLetter);
 			expect(restCapitalizedString).toEqual(restString);
+		});
+	});
+
+  describe('generateRandomString', () => {
+		it('should generate random string', () => {
+			const randomString = generateRandomString();
+
+			expect(typeof randomString).toEqual('string');
+		});
+
+		it('should generate random string with length accordance by param', () => {
+			const randomString = generateRandomString(128);
+
+			expect(typeof randomString).toEqual('string');
+			expect(randomString.length).toEqual(128);
 		});
 	});
 });

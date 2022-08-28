@@ -28,6 +28,7 @@ const customJestConfig = {
 		// Handle module aliases
 		'@/(.*)': '<rootDir>/$1',
 	},
+  modulePathIgnorePatterns: ["<rootDir>/utils/test"]
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

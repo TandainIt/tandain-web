@@ -1,5 +1,5 @@
-import { generateRandomString } from '@/__tests__/utils';
 import * as authActions from '@/store/actions/auth';
+import { generateRandomString } from '@/utils/global';
 import {
 	getPopupParams,
 	sendAuthCodeToWindowParent,
