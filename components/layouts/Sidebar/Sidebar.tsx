@@ -20,9 +20,10 @@ const SidebarNavItem: FC<SidebarNavItemProps> = ({
 	className = '',
 	isActive,
 	isExpanded,
+	...rest
 }) => (
 	<Link href={href} passHref>
-		<a>
+		<a {...rest}>
 			<div
 				className={clsx(
 					classes.SidebarNavItem,
@@ -40,11 +41,7 @@ const SidebarNavItem: FC<SidebarNavItemProps> = ({
 						className={classes.Button}
 					/>
 				</Tooltip>
-				<label
-					data-testid='nav-item-label'
-					htmlFor='nav-item-button'
-					className={classes.Label}
-				>
+				<label htmlFor='nav-item-button' className={classes.Label}>
 					{children}
 				</label>
 			</div>
@@ -86,6 +83,7 @@ const Sidebar: FC = () => {
 				/>
 				<nav className={classes.NavList}>
 					<SidebarNavItem
+						data-testid='sidebar-mylist-item'
 						startIcon={<ListIcon />}
 						href='/mylist'
 						className='my0p25'

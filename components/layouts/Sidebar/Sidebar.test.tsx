@@ -49,9 +49,10 @@ describe('Sidebar', () => {
 			const sidebar = screen.getByTestId('sidebar');
 			const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');
 			const sidebarMenu = screen.getByTestId('sidebar-menu');
+
 			const navList = screen.getByRole('navigation');
-			const sidebarNavItem = screen.getByRole('link');
-			const sidebarNavItemLabel = screen.getByTestId('nav-item-label');
+
+			const sidebarMyListItem = screen.getByTestId('sidebar-mylist-item');
 
 			expect(sidebar).toBeVisible();
 			expect(sidebarBackdrop).toBeVisible();
@@ -60,9 +61,7 @@ describe('Sidebar', () => {
 			expect(navList.childElementCount).toEqual(1);
 			expect(navList.childNodes[0]).toHaveAttribute('href', '/mylist');
 
-			expect(sidebarNavItem).toBeVisible();
-			expect(sidebarNavItem).toHaveAttribute('href', '/mylist');
-			expect(sidebarNavItemLabel).toHaveTextContent('My List');
+			expect(sidebarMyListItem).toBeVisible();
 		});
 
 		it('and SidebarNavItem should toggle the class of Expanded and Active when sidebar toggle menu is clicked', () => {
