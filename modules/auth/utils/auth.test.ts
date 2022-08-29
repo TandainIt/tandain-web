@@ -1,4 +1,3 @@
-import * as authActions from '@/store/actions/auth';
 import { generateRandomString } from '@/utils/global';
 import {
 	getPopupParams,
@@ -6,7 +5,10 @@ import {
 	showGoogleLoginPopup,
 } from './auth';
 
-const mockLoginWithGoogleAction = jest.spyOn(authActions, 'loginWithGoogle');
+const mockLoginWithGoogleAction = jest.spyOn(
+	require('@/store/actions/auth'),
+	'loginWithGoogle'
+);
 
 const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI;
 

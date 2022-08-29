@@ -16,8 +16,8 @@ import { RootState } from '@/types';
 const SidebarNavItem: FC<SidebarNavItemProps> = ({
 	startIcon,
 	children,
-	href = '/',
-	className = '',
+	href,
+	className,
 	isActive,
 	isExpanded,
 	...rest

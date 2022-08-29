@@ -4,18 +4,6 @@ import Avatar from './Avatar';
 
 describe('Avatar/<Avatar />', () => {
 	it('should render correctly', () => {
-		// render(<AvatarMenu />);
-
-		// const name = screen.getByTestId('name');
-		// const email = screen.getByTestId('email');
-		// const aboutButton = screen.getByText(/about/i);
-		// const logoutButton = screen.getByText(/logout/i);
-
-		// expect(name).toBeVisible();
-		// expect(email).toBeVisible();
-		// expect(aboutButton).toHaveAttribute('href', '/about');
-		// expect(logoutButton).toBeVisible();
-
 		render(<Avatar />);
 
 		const avatarButton = screen.getByTestId('avatar-button');
@@ -38,14 +26,31 @@ describe('Avatar/<Avatar />', () => {
 	});
 
 	it('should show the menu if avatar button is clicked', () => {
-		render(<Avatar />);
+		const { container } = render(<Avatar />);
 
 		const avatarButton = screen.getByTestId('avatar-button');
 
 		fireEvent.click(avatarButton);
-		const avatarMenu = screen.getByTestId('avatar-menu');
+		const avatarMenu = container.querySelector('#avatar-menu');
 
 		expect(avatarButton).toBeVisible();
 		expect(avatarMenu).toBeVisible();
+
+    fireEvent.click(avatarButton);
+    expect(avatarMenu).not.toBeVisible();
+	});
+
+	it('should hide the menu if the menu is shown and avatar button is clicked', () => {
+		const { container } = render(<Avatar />);
+
+		const avatarButton = screen.getByTestId('avatar-button');
+
+		fireEvent.click(avatarButton);
+		fireEvent.mouseDown(document);
+
+		const avatarMenu = container.querySelector('#avatar-menu');
+
+		expect(avatarButton).toBeVisible();
+		expect(avatarMenu).toBeFalsy();
 	});
 });

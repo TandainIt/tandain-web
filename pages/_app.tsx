@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setToastError, toggleExpandSidebar } from '../store/actions/page';
 import store from '@/store';
 
-import Toast from '@/components/ui/Toast';
+import { Toast } from '@/components/ui';
 import { Footer } from '@/components/layouts';
 import apolloClient from '@/loaders/apolloClient';
 

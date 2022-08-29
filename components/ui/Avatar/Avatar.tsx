@@ -17,6 +17,7 @@ const AvatarMenu: FC<AvatarMenuProps> = forwardRef(
 	({ className }, ref: ForwardedRef<HTMLDivElement>) => (
 		<div
 			ref={ref}
+			id='avatar-menu'
 			data-testid='avatar-menu'
 			className={clsx(classes.AvatarMenu, className)}
 		>

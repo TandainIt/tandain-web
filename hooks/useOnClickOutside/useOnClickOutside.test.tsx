@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { createRef } from 'react';
 
@@ -8,14 +8,12 @@ describe('hooks/useOnClickOutside', () => {
 	it('calls handler when click is outside element', () => {
 		// Arrange
 		const handler = jest.fn();
-		const test = jest.fn();
 		const ref = createRef<HTMLDivElement>();
 		render(<div ref={ref}></div>);
 
 		// Act
 		renderHook(() => useOnClickOutside(ref, handler));
-		const mouseDownEvent = new Event('mousedown');
-		document.dispatchEvent(mouseDownEvent);
+		fireEvent.mouseDown(document);
 
 		// Assert
 		expect(handler).toBeCalledTimes(1);
@@ -31,8 +29,7 @@ describe('hooks/useOnClickOutside', () => {
 
 		// Act
 		renderHook(() => useOnClickOutside(ref, handler));
-		const mouseDownEvent = new Event('mousedown');
-		divEl.dispatchEvent(mouseDownEvent);
+		fireEvent.mouseDown(divEl);
 
 		//  Assert
 		expect(handler).not.toBeCalled();

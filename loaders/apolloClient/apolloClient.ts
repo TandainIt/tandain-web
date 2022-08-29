@@ -39,7 +39,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
     */
 
-		console.log(`[Network error]: ${networkError}`);
+		const error = {
+			title: 'Network Error',
+			message: 'Check your internet connection and try again',
+		};
+		store.dispatch(setToastError(error));
 	}
 });
 
