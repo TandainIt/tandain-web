@@ -1,18 +1,17 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
-import Button from '../Button';
 import CloseIcon from '@/components/icons/CloseIcon';
 import DangerIcon from '@/components/icons/DangerIcon';
 import InfoIcon from '@/components/icons/InfoIcon';
 import SuccessIcon from '@/components/icons/SuccessIcon';
 import WarningIcon from '@/components/icons/WarningIcon';
-import Text from '@/components/typhographies/Text';
-import Title from '@/components/typhographies/Title';
-import { capitalize } from '@/utils/string';
+import { capitalize } from '@/utils/global';
 
 import classes from './Toast.module.sass';
 import { ToastProps } from './Toast.types';
+import { Title, Text } from '@/components/typhographies';
+import Button from '../Button/Button';
 
 const Toast: FC<ToastProps> = ({
 	title,

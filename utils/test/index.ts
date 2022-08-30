@@ -1,0 +1,1 @@
+export { configureTestStore } from './test';

@@ -8,7 +8,6 @@ module.exports = withFederatedSidecar({
 	filename: 'static/chunks/remoteEntry.js',
 	exposes: {
 		'./TrashIcon': './components/icons/TrashIcon.tsx',
-		'./CheckmarkIcon': './components/icons/CheckmarkIcon.tsx',
 		'./Button': './components/ui/Button/index.ts',
 		'./Spinner': './components/ui/Spinner/index.ts',
 		'./Tooltip': './components/ui/Tooltip/index.ts',

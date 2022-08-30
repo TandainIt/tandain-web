@@ -1,0 +1,56 @@
+@use 'styles/colors' as c
+@use 'styles/typhographies' as t
+@use 'styles/mediaQueries' as mq
+
+.AvatarButton
+  background-color: c.$gray-darker !important
+  fill: c.$gray-lighter
+  width: 2.5rem
+  height: 2.5rem
+  position: relative
+
+  &:hover
+    background-color: c.$gray-darker200
+
+  svg
+    width: 1.25rem
+    height: 1.25rem
+
+  .Img
+    border-radius: 50%
+    object-fit: cover
+
+.AvatarMenu
+  max-width: 14rem
+  position: absolute
+  z-index: 10
+  padding: 1rem 0.5rem
+  border: 1px solid c.$gray-default
+  border-radius: 0.75rem
+  background-color: c.$white
+
+  .TopPanel
+    padding: 0.5rem 1rem
+
+    .Name,
+    .Email
+      display: block
+
+    .Name
+      font-weight: t.$semibold
+
+    .Email
+      font-size: 0.875rem
+      color: c.$gray-darker
+      overflow: hidden
+      text-overflow: ellipsis
+
+  .Separator
+    border: none
+    border-bottom: 1px solid c.$gray-default
+
+  .Button
+    width: 100%
+    justify-content: flex-start
+    font-weight: t.$semibold
+    color: c.$black-default

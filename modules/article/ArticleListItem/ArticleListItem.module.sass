@@ -1,0 +1,82 @@
+@use 'styles/typhographies' as t
+@use 'styles/colors' as c
+@use 'styles/mediaQueries' as mq
+
+.ArticleListItem
+  display: flex
+
+  .ItemMain
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+  .ItemTitle
+    font-weight: t.$bold
+
+  .ItemSource
+    color: c.$gray-darker200
+    font-size: 0.875rem
+
+    &:hover
+      text-decoration: underline
+
+  .ItemActionContainer
+    display: flex
+    justify-content: flex-end
+
+  .ItemImgContainer
+    border-radius: 0.75rem
+    background-color: c.$gray-darker200
+    aspect-ratio: 3 / 2
+    position: relative
+    margin-left: 1.5rem
+
+  .ItemImg
+    border-radius: 0.75rem
+
+@media screen and (max-width: mq.$sm)
+  .ItemTitle
+    font-size: 1rem
+
+  .ItemImgContainer
+    min-width: 176px
+
+@media screen and (min-width: mq.$sm)
+  .ItemTitle
+    font-size: 1.25rem
+
+  .ItemImgContainer
+    min-width: 208px
+
+@media screen and (min-width: mq.$md)
+  .ArticleListItem
+    width: 288px
+    flex-direction: column-reverse
+
+    .ItemImgContainer
+      margin-bottom: 1rem
+      margin-left: 0
+
+    .ItemActionContainer
+      visibility: hidden
+
+      .ItemAction
+        height: 2.5rem
+        padding: 0 0.5rem
+
+        .ItemActionIcon
+          width: 1.5rem
+          height: 1.5rem
+
+    &:hover
+      .ItemActionContainer
+        visibility: visible
+
+@media screen and (min-width: mq.$lg)
+  .ArticleListItem
+    width: 277px
+
+@media screen and (min-width: mq.$xl)
+  .ArticleListItem
+    width: 288px

@@ -1,0 +1,38 @@
+@use 'styles/mediaQueries' as mq
+@use 'styles/colors' as c
+
+.AuthPage
+  min-height: 768px
+  flex-direction: column
+
+.Main
+  display: flex
+  justify-content: center
+  padding: 128px 0
+
+.Spinner
+  margin: 120px 0
+  width: 2.5rem
+  height: 2.5rem
+  border-width: 0.325rem
+
+.Section
+  display: flex
+  flex-direction: column
+  width: 20rem
+
+  .Spinner
+    margin: 120px 0
+    width: 2.5rem
+    height: 2.5rem
+    border-width: 0.325rem
+
+  .ErrorMessage
+    color: c.$red-default
+    width: 100%
+    text-align: center
+    font-size: 12px
+
+@media screen and (max-width: mq.$xs)
+  .Section
+    width: unset

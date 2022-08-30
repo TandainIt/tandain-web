@@ -1,6 +1,6 @@
 @use 'styles/colors' as c
 
-.Button
+%button
   border-radius: 0.5rem
   font-weight: 500
   transition: background ease-in 0.1s, color ease-in 0.1s
@@ -13,13 +13,24 @@
 // ===== VARIANT =====
 
 .Solid
+  @extend %button
   border: none
   color: c.$white
   fill: c.$white
 
 .Outlined
+  @extend %button
   border-style: solid
   border-width: 2px
+
+.Text
+  @extend %button
+  border: none
+
+.Base
+  @extend %button
+  padding: initial
+  height: initial
 
 // ===== COLOR =====
 

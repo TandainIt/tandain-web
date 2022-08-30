@@ -1,27 +1,67 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
+import Link from 'next/link';
 
-import useAppDispatch from '@/hooks/useAppDispatch';
-import useAppSelector from '@/hooks/useAppSelector';
+import { useAppSelector, useAppDispatch } from '@/hooks';
 import { toggleExpandSidebar } from '@/store/actions/page';
-import pageSelector from '@/store/selectors/page';
 
-import ListIcon from '@/components/icons/ListIcon';
-import MenuIcon from '@/components/icons/MenuIcon';
-import Backdrop from '@/components/ui/Backdrop';
-import Button from '@/components/ui/Button';
-import NavItem from './NavItem';
+import { ListIcon, MenuIcon } from '@/components/icons';
+import { Backdrop, Button, Tooltip } from '@/components/ui';
 
 import classes from './Sidebar.module.sass';
+import { SidebarNavItemProps } from './Sidebar.types';
+import { RootState } from '@/types';
 
-const Sidebar: FC = () => {
+const SidebarNavItem: FC<SidebarNavItemProps> = ({
+	startIcon,
+	children,
+	href,
+	className,
+	isActive,
+	isExpanded,
+	...rest
+}) => (
+	<Link href={href} passHref>
+		<a {...rest}>
+			<div
+				className={clsx(
+					classes.SidebarNavItem,
+					isActive && classes.Active,
+					isExpanded && classes.Expanded,
+					className
+				)}
+			>
+				<Tooltip text={children} className={classes.Tooltip}>
+					<Button
+						id='nav-item-button'
+						variant='text'
+						color='primary'
+						startIcon={startIcon}
+						className={classes.Button}
+					/>
+				</Tooltip>
+				<label htmlFor='nav-item-button' className={classes.Label}>
+					{children}
+				</label>
+			</div>
+		</a>
+	</Link>
+);
+
+export const useSidebar = () => {
 	const { pathname } = useRouter();
 	const dispatch = useAppDispatch();
 
-	const { isSidebarExpanded } = useAppSelector(pageSelector);
+	const { isSidebarExpanded } = useAppSelector(({ page }: RootState) => page);
 
 	const toggleSidebar = () => dispatch(toggleExpandSidebar());
+
+	return { pathname, isSidebarExpanded, toggleSidebar };
+};
+
+const Sidebar: FC = () => {
+	const { pathname, isSidebarExpanded, toggleSidebar } = useSidebar();
 
 	return (
 		<>
@@ -42,7 +82,8 @@ const Sidebar: FC = () => {
 					onClick={toggleSidebar}
 				/>
 				<nav className={classes.NavList}>
-					<NavItem
+					<SidebarNavItem
+						data-testid='sidebar-mylist-item'
 						startIcon={<ListIcon />}
 						href='/mylist'
 						className='my0p25'
@@ -50,7 +91,7 @@ const Sidebar: FC = () => {
 						isActive={pathname === '/mylist'}
 					>
 						My List
-					</NavItem>
+					</SidebarNavItem>
 				</nav>
 			</div>
 		</>

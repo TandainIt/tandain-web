@@ -1,0 +1,54 @@
+@use 'styles/mediaQueries' as mq
+@use 'styles/colors' as c
+
+.Header
+  padding: 1.25rem 4rem
+  display: flex
+  justify-content: space-between
+
+  .Avatar
+    background-color: c.$gray-darker
+    fill: c.$gray-lighter
+
+    &:hover
+      background-color: c.$gray-darker200
+
+  .AvatarImg
+    border-radius: 50%
+    object-fit: cover
+
+  .AvatarMenu
+    top: 4.5rem
+    right: 1rem
+
+@media screen and (max-width: mq.$sm)
+  .Header
+    padding: 1.5rem 2rem
+
+@media screen and (min-width: mq.$sm)
+  .Header
+    padding: 1.5rem 3rem
+
+    .AvatarMenu
+      right: 2rem
+
+@media screen and (min-width: mq.$md)
+  .Header
+    padding: 1.25rem 3rem
+
+    .SidebarButton
+      display: none
+
+@media screen and (min-width: mq.$lg)
+  .Header
+    padding: 1.25rem 4rem
+
+    .AvatarMenu
+      right: 3rem
+
+@media screen and (min-width: mq.$xl)
+  .Header
+    padding: 1.25rem 4.5rem
+
+    .AvatarMenu
+      right: 3.5rem

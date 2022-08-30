@@ -1,7 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { DetailHTMLProps } from '@/types';
 
-export interface TooltipProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+export interface TooltipProps extends DetailHTMLProps<HTMLSpanElement> {
 	text: String;
 	pos?: 'top' | 'right' | 'bottom' | 'left';
 }

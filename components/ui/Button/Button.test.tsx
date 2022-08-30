@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import GoogleIcon from '@/components/icons/GoogleIcon';
+import { GoogleIcon } from '@/components/icons';
 import Button from './Button';
 
 describe('Button/<Button>', () => {
@@ -9,7 +9,7 @@ describe('Button/<Button>', () => {
 
 		const button = screen.getByRole('button');
 
-		expect(button).toHaveClass('Button Medium Solid Primary');
+		expect(button).toHaveClass('Medium Solid Primary');
 	});
 
 	it('should render with the correct variant classes', () => {

@@ -1,14 +1,25 @@
 import { FC, forwardRef } from 'react';
 import clsx from 'clsx';
-
-import BaseButton from '../BaseButton/BaseButton';
-
-import { ButtonProps } from './';
+import Link from 'next/link';
 
 import { sizes as buttonSizes } from '@/utils/variables';
-import { capitalize } from '@/utils/string';
+import { capitalize } from '@/utils/global';
 
 import classes from './Button.module.sass';
+import { ButtonProps, BaseButtonProps } from './Button.types';
+
+const BaseButton: FC<BaseButtonProps> = forwardRef(
+	({ as = 'button', href, children, className, ...rest }, ref) =>
+		as === 'a' && href ? (
+			<Link href={href} passHref>
+				<a className={className}>{children}</a>
+			</Link>
+		) : (
+			<button ref={ref} className={className} {...rest}>
+				{children}
+			</button>
+		)
+);
 
 const Button: FC<ButtonProps> = forwardRef(
 	(
@@ -33,13 +44,12 @@ const Button: FC<ButtonProps> = forwardRef(
 				as={as}
 				href={href}
 				className={clsx(
-					classes.Button,
-					classes[buttonSizes[size]],
+					className,
 					classes[capitalize(variant)],
 					classes[capitalize(color)],
+					variant !== 'base' && classes[buttonSizes[size]],
 					round && classes.Round,
-					!children && classes.IconOnly,
-					className
+					!children && classes.IconOnly
 				)}
 				{...rest}
 			>
@@ -54,6 +64,7 @@ const Button: FC<ButtonProps> = forwardRef(
 	}
 );
 
+BaseButton.displayName = 'BaseButton';
 Button.displayName = 'Button';
 
 export default Button;

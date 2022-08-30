@@ -2,16 +2,17 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import Page from '../components/layouts/Page';
-import { UnauthenticatedHeader } from '../components/layouts/Header';
-import Signup from '../modules/authentication/Signup';
-import classes from '../styles/pages/AuthPage.module.sass';
+import { AuthGoogleButton } from '@/modules/auth';
+import { showGoogleLoginPopup } from '@/modules/auth/utils';
+import { Title } from '@/components/typhographies';
+import { Button, Spinner } from '@/components/ui';
+import { Page, UnauthenticatedHeader } from '@/components/layouts';
 
-import { RootState } from '@/store';
-import useAppSelector from '@/hooks/useAppSelector';
-import Spinner from '@/components/ui/Spinner';
+import classes from '@/modules/auth/AuthPage/AuthPage.module.sass';
+import { useAppSelector } from '@/hooks';
+import { RootState } from '@/types';
 
-const SignupPage: NextPage = () => {
+const useSignUpPage = () => {
 	const router = useRouter();
 	const { credentials, isLoading } = useAppSelector(
 		(state: RootState) => state.auth
@@ -22,15 +23,41 @@ const SignupPage: NextPage = () => {
 		return;
 	}
 
+	return { isLoading };
+};
+
+const SignupPage: NextPage = () => {
+	const { isLoading } = useSignUpPage();
+
 	return (
 		<>
 			<Head>
 				<title>Sign Up</title>
 			</Head>
-			<Page className={classes.Page}>
+			<Page className={classes.AuthPage}>
 				<UnauthenticatedHeader />
 				<main className={classes.Main}>
-					{isLoading ? <Spinner className={classes.Spinner} /> : <Signup />}
+					{isLoading ? (
+						<Spinner className={classes.Spinner} />
+					) : (
+						<section className={classes.Section}>
+							<Title size='lg'>Sign Up</Title>
+							<span className='mt0p25 mb4'>
+								Already have an account?{' '}
+								<Button
+									as='a'
+									variant='base'
+									href='/login'
+									className='font-semibold'
+								>
+									Login now
+								</Button>
+							</span>
+							<AuthGoogleButton onClick={showGoogleLoginPopup}>
+								Sign up with Google
+							</AuthGoogleButton>
+						</section>
+					)}
 				</main>
 			</Page>
 		</>

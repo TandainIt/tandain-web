@@ -4,23 +4,21 @@ import { useEffect } from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { useRouter } from 'next/router';
 
-import apolloClient from '@/graphql/apolloClient';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { setToastError, toggleExpandSidebar } from '../store/actions/page';
 import store from '@/store';
-import pageSelector from '@/store/selectors/page';
-import { setToastError, toggleExpandSidebar } from '@/store/actions/page';
-import useAppDispatch from '@/hooks/useAppDispatch';
-import useAppSelector from '@/hooks/useAppSelector';
 
-import Toast from '@/components/ui/Toast';
-import Footer from '@/components/layouts/Footer';
+import { Toast } from '@/components/ui';
+import { Footer } from '@/components/layouts';
+import apolloClient from '@/loaders/apolloClient';
 
-import classes from '@/styles/pages/App.module.sass';
 import '@/styles/index.sass';
+import { RootState } from '@/types';
 
 function MyComponent({ children }) {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const { error } = useAppSelector(pageSelector);
+	const { error } = useAppSelector(({ page }: RootState) => page);
 
 	function hideToast() {
 		dispatch(setToastError(undefined));
@@ -49,7 +47,7 @@ function MyComponent({ children }) {
 			{children}
 			{!!error && (
 				<Toast
-					className={classes.Toast}
+					// className={classes.Toast}
 					title={error.title}
 					description={error.message}
 					onClose={hideToast}
