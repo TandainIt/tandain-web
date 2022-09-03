@@ -66,7 +66,7 @@ export function ReduxProvider({ children }) {
 	);
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
 	return (
 		<ApolloProvider client={apolloClient}>
 			<ReduxProvider>

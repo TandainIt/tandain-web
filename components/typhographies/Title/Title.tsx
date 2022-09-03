@@ -3,17 +3,10 @@ import { createElement, FC } from 'react';
 import classes from './Title.module.sass';
 import { TitleProps, TitleTags } from './Title.types';
 import { ComponentSizes } from '@/types';
+import { sizes as fontSizes } from '@/utils/variables';
 
-const useTitle = (as, size) => {
+const useTitle = (as: TitleTags, size: keyof ComponentSizes) => {
 	const getFontSize = (fontTag: TitleTags, fontSize?: keyof ComponentSizes) => {
-		const fontSizes = {
-			xl: 'ExtraLarge',
-			lg: 'Large',
-			md: 'Medium',
-			sm: 'Small',
-			xs: 'ExtraSmall',
-		};
-
 		const fontSizeByTags = {
 			h1: 'ExtraLarge',
 			h2: 'Large',
