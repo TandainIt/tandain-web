@@ -1,10 +1,26 @@
 @use './typhographies' as t
-@use './_mixins' as m
+@use './_variables' as var
 
-// Flex
+// Display
+
+@each $value in var.$display
+  .#{$value}
+    display: #{$value}
+
+// Flex Direction
+
+@each $key, $value in var.$flex-directions
+  .flex-#{$key}
+    flex-direction: #{$value}
 
 .col
   display: inline-flex
+
+// Gap
+
+@for $i from 1 through 20
+  .gap-#{$i}
+    gap: (0.25 * $i) + rem
 
 // Text Align
 

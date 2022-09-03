@@ -6,13 +6,15 @@ import { sizes as buttonSizes } from '@/utils/variables';
 import { capitalize } from '@/utils/global';
 
 import classes from './Button.module.sass';
-import { ButtonProps, BaseButtonProps } from './Button.types';
+import { ButtonProps } from './Button.types';
 
-const BaseButton: FC<BaseButtonProps> = forwardRef(
+const BaseButton: FC<any> = forwardRef(
 	({ as = 'button', href, children, className, ...rest }, ref) =>
 		as === 'a' && href ? (
 			<Link href={href} passHref>
-				<a className={className}>{children}</a>
+				<a className={className} {...rest}>
+					{children}
+				</a>
 			</Link>
 		) : (
 			<button ref={ref} className={className} {...rest}>

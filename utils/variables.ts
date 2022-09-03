@@ -4,10 +4,10 @@ export const sizes = {
 	md: 'Medium',
 	lg: 'Large',
 	xl: 'ExtraLarge',
-  xxl: 'ExtraExtralarge',
+	xxl: 'ExtraExtraLarge',
 };
 
 export const fontTypes = {
-  'sans-serif': 'SansSerif',
-  serif: 'Serif',
+	'sans-serif': 'SansSerif',
+	serif: 'Serif',
 };

@@ -8,6 +8,7 @@ import { Avatar, Button, Logo } from '@/components/ui';
 import { MenuIcon } from '@/components/icons';
 
 import classes from './Header.module.sass';
+import { HeaderProps } from './Header.types';
 
 export const useAuthenticatedHeader = () => {
 	const dispatch = useAppDispatch();
@@ -23,12 +24,16 @@ export const useAuthenticatedHeader = () => {
 	};
 };
 
-export const AuthenticatedHeader: FC = () => {
+export const AuthenticatedHeader: FC<HeaderProps> = ({ ...rest }) => {
 	const { dispatch, windowWidth } = useAuthenticatedHeader();
 
 	return (
-		<header className={classes.Header} data-testid='authenticated-header'>
-			<div className='col'>
+		<header
+			className={classes.Header}
+			data-testid='authenticated-header'
+			{...rest}
+		>
+			<div className='inline-flex'>
 				<Button
 					data-testid='sidebar-toggle'
 					variant='text'
@@ -47,10 +52,14 @@ export const AuthenticatedHeader: FC = () => {
 	);
 };
 
-export const UnauthenticatedHeader: FC = () => (
+export const UnauthenticatedHeader: FC<HeaderProps> = ({
+	className,
+	...rest
+}) => (
 	<header
 		data-testid='unauthenticated-header'
-		className={clsx(classes.Header, 'items-center')}
+		className={clsx(classes.Header, 'items-center', className)}
+		{...rest}
 	>
 		<Logo />
 		<div>
