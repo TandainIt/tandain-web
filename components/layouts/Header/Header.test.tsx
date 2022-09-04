@@ -8,7 +8,7 @@ jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => ({
 }));
 
 const mockToggleExpandSidebar = jest.spyOn(
-	require('@/store/actions/page'),
+	require('@/store/actions/page/page'),
 	'toggleExpandSidebar'
 );
 

@@ -3,12 +3,10 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import { ReduxProvider } from '../../../pages/_app';
 import Sidebar, { useSidebar } from './Sidebar';
+import * as pageActions from '@/store/actions/page/page';
 
 const mockUseRouter = jest.spyOn(require('next/router'), 'useRouter');
-const mockToggleExpandSidebar = jest.spyOn(
-	require('@/store/actions/page'),
-	'toggleExpandSidebar'
-);
+const mockToggleExpandSidebar = jest.spyOn(pageActions, 'toggleExpandSidebar');
 
 const ReduxWrapper = ({ children }) => (
 	<ReduxProvider>{children}</ReduxProvider>

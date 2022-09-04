@@ -1,7 +1,7 @@
 import * as authGraphQL from '@/modules/auth/graphql/auth';
 import { loginWithGoogle } from './auth';
 
-import { initialState as initialAuthState } from '../reducers/auth';
+import { initialState as initialAuthState } from '../../reducers/auth';
 import { generateRandomString } from '@/utils/global';
 import { configureTestStore } from '@/utils/test';
 

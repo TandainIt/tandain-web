@@ -2,15 +2,15 @@ import { ReduxProvider } from '@/pages/_app';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import * as toastModule from './Toast';
-let { default: Toast, useAppToast } = toastModule;
+import Toast, { useAppToast } from './Toast';
+import * as toastActions from '@/store/actions/toast/toast';
 
 const mockUseRouter = jest.spyOn(require('next/router'), 'useRouter');
 const mockAppSelector = jest.spyOn(
 	require('@/hooks/useAppSelector'),
 	'useAppSelector'
 );
-const mockHideToast = jest.spyOn(require('@/store/actions/toast'), 'hideToast');
+const mockHideToast = jest.spyOn(toastActions, 'hideToast');
 
 describe('Toast', () => {
 	mockUseRouter.mockReturnValue({
