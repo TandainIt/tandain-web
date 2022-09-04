@@ -1,3 +1,3 @@
 export { default as useAppDispatch } from './useAppDispatch';
-export { default as useAppSelector } from './useAppSelector';
+export { useAppSelector } from './useAppSelector';
 export { default as useOnClickOutside } from './useOnClickOutside/useOnClickOutside';

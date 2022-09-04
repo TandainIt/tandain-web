@@ -1,27 +1,48 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-import CloseIcon from '@/components/icons/CloseIcon';
-import DangerIcon from '@/components/icons/DangerIcon';
-import InfoIcon from '@/components/icons/InfoIcon';
-import SuccessIcon from '@/components/icons/SuccessIcon';
-import WarningIcon from '@/components/icons/WarningIcon';
-import { capitalize } from '@/utils/global';
+import {
+	CloseIcon,
+	DangerIcon,
+	InfoIcon,
+	SuccessIcon,
+	WarningIcon,
+} from '@/components/icons';
+import { Title, Text } from '@/components/typhographies';
+import { Button } from '@/components/ui';
 
 import classes from './Toast.module.sass';
-import { ToastProps } from './Toast.types';
-import { Title, Text } from '@/components/typhographies';
-import Button from '../Button/Button';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { hideToast } from '@/store/actions/toast';
+import { capitalize } from '@/utils/global';
 
-const Toast: FC<ToastProps> = ({
-	title,
-	description,
-	variant = 'danger',
-	onClose,
-	className,
-	...args
-}) => {
-	const variantIcons = {
+export const useAppToast = () => {
+	const { asPath } = useRouter();
+	const dispatch = useAppDispatch();
+
+	const toast = useAppSelector(({ toast }) => toast);
+
+	function onClose() {
+		dispatch(hideToast());
+	}
+
+	useEffect(() => {
+		/**
+		 * Hide Toast whenever route is change
+		 */
+
+		if (!!toast.message) hideToast();
+	}, [asPath]); // eslint-disable-line
+
+	return { toast, onClose };
+};
+
+const Toast: FC = () => {
+	const { toast, onClose } = useAppToast();
+	const { title, message, variant, isShow } = toast;
+
+	const icons = {
 		danger: <DangerIcon />,
 		warning: <WarningIcon />,
 		info: <InfoIcon />,
@@ -30,18 +51,25 @@ const Toast: FC<ToastProps> = ({
 
 	return (
 		<div
-			className={clsx(classes.Toast, classes[capitalize(variant)], className)}
+			className={clsx(
+				classes.Toast,
+				classes[capitalize(variant)],
+				isShow && classes.ToastShow
+			)}
 			data-testid='toast'
-			{...args}
 		>
 			<div className={classes.ToastVL}></div>
-			<i className={classes.ToastIcon}>{variantIcons[variant]}</i>
+			<i className={classes.ToastIcon}>{icons[variant]}</i>
 			<div className={classes.ToastMain}>
 				<Title as='h5' size='sm' className={classes.ToastTitle}>
 					{title}
 				</Title>
-				<Text data-testid='toast-desc' size='sm' className={classes.ToastDesc}>
-					{description}
+				<Text
+					data-testid='toast-message'
+					size='sm'
+					className={classes.ToastDesc}
+				>
+					{message}
 				</Text>
 			</div>
 			<Button

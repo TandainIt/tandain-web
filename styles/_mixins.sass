@@ -2,26 +2,26 @@
 
 // Media Queries
 
-@mixin phone()
+@mixin mq-phone()
   @media screen and (max-width: #{var.$phone - 1px})
     @content
 
-@mixin phone-lg()
+@mixin mq-phone-lg()
   @media screen and (min-width: #{var.$phone})
     @content
 
-@mixin tablet()
+@mixin mq-tablet()
   @media screen and (min-width: #{var.$tablet})
     @content
 
-@mixin tablet-lg()
+@mixin mq-tablet-lg()
   @media screen and (min-width: #{var.$tablet-lg})
     @content
 
-@mixin desktop()
+@mixin mq-desktop()
   @media screen and (min-width: #{var.$desktop})
     @content
 
-@mixin desktop-lg()
+@mixin mq-desktop-lg()
   @media screen and (min-width: #{var.$desktop-lg})
     @content
