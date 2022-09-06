@@ -1,1 +1,1 @@
-export { loginWithGoogle } from './auth';
+export { loginWithGoogle, refreshGoogleToken } from './auth';

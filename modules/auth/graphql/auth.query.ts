@@ -9,3 +9,13 @@ export const LOGIN_WITH_GOOGLE = gql`
 		}
 	}
 `;
+
+export const REFRESH_TOKEN = gql`
+	mutation RefreshToken($refreshToken: String!) {
+		refreshToken(body: { refreshToken: $refreshToken }) {
+			idToken
+			refreshToken
+			expiryDate
+		}
+	}
+`;

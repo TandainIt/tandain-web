@@ -30,7 +30,7 @@ module.exports = withFederatedSidecar({
 	},
 })({
 	// your original next.config.js export
-	reactStrictMode: true,
+	reactStrictMode: false,
 	env: {
 		CLIENT_URL: process.env.CLIENT_URL,
 		API_URL: process.env.API_URL,
