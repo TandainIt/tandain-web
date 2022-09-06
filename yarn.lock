@@ -2662,7 +2662,7 @@
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^5.16.4":
+"@testing-library/jest-dom@^5.16.5":
   version "5.16.5"
   resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz#3912846af19a29b2dbf32a6ae9c31ef52580074e"
   integrity sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==
@@ -6993,6 +6993,11 @@ inline-style-parser@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
+
+instead@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/instead/-/instead-1.0.3.tgz#e27bcc9b977e9c3fbf6880d28451ac1afe7542b2"
+  integrity sha512-7EUe8+ZmvERjdLwrEc1/CdErN8n8XYdF/uI+n8aLbs6Uf/wyqUXyFrCQ8HYADBFaz4+IqGiPVSTInpkMwqrXuw==
 
 internal-slot@^1.0.3:
   version "1.0.3"

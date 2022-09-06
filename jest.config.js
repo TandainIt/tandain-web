@@ -36,6 +36,8 @@ collectCoverageFrom: [
 		'!<rootDir>/**/index.{ts,tsx}',
 		'!<rootDir>/**/*.stories.{ts,tsx}',
     '!<rootDir>/loaders/**/*.{ts,tsx}',
+    '!<rootDir>/pages/_app.tsx',
+    '!<rootDir>/pages/_document.tsx',
 	],
 };
 

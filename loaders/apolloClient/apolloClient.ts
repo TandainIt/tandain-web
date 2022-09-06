@@ -3,9 +3,9 @@ import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
 import store from '@/store';
-import { setToastError } from '@/store/actions/page';
 
 import { ResponseErrorBody } from './apolloClient.types';
+import { setToast } from '@/store/actions/toast';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
 	if (graphQLErrors)
@@ -23,8 +23,18 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 			const errorBody = extensions?.responseBody as ResponseErrorBody;
 
 			if (errorBody) {
-				const error = { ...errorBody, title: 'Something went wrong' };
-				store.dispatch(setToastError(error));
+				const error = {
+					title: 'Something went wrong',
+					message: errorBody.message,
+				};
+
+				store.dispatch(
+					setToast({
+						...error,
+						variant: 'danger',
+						isShow: true,
+					})
+				);
 			} else {
 				console.error(
 					`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
@@ -38,12 +48,18 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       usually resulting in a 4xx or 5xx response status code (and no data).
 
     */
-
 		const error = {
 			title: 'Network Error',
 			message: 'Check your internet connection and try again',
 		};
-		store.dispatch(setToastError(error));
+
+		store.dispatch(
+			setToast({
+				...error,
+				variant: 'danger',
+				isShow: true,
+			})
+		);
 	}
 });
 

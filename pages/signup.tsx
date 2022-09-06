@@ -1,33 +1,17 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import { AuthGoogleButton } from '@/modules/auth';
 import { showGoogleLoginPopup } from '@/modules/auth/utils';
 import { Title } from '@/components/typhographies';
 import { Button, Spinner } from '@/components/ui';
 import { Page, UnauthenticatedHeader } from '@/components/layouts';
+import { useAuth } from '@/modules/auth/hooks';
 
 import classes from '@/modules/auth/AuthPage/AuthPage.module.sass';
-import { useAppSelector } from '@/hooks';
-import { RootState } from '@/types';
-
-const useSignUpPage = () => {
-	const router = useRouter();
-	const { credentials, isLoading } = useAppSelector(
-		(state: RootState) => state.auth
-	);
-
-	if (credentials.idToken) {
-		router.replace('/mylist');
-		return;
-	}
-
-	return { isLoading };
-};
 
 const SignupPage: NextPage = () => {
-	const { isLoading } = useSignUpPage();
+	const { isLoading } = useAuth('/mylist');
 
 	return (
 		<>

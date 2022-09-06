@@ -1,9 +1,14 @@
 import { FetchResult } from '@apollo/client';
 
 import apolloClient from '@/loaders/apolloClient';
-import { LOGIN_WITH_GOOGLE } from './auth.query';
+import { LOGIN_WITH_GOOGLE, REFRESH_TOKEN } from './auth.query';
 
-import { LoginParams, LoginResult } from './auth.types';
+import {
+	LoginParams,
+	LoginResult,
+	RefreshTokenParams,
+	RefreshTokenSuccess,
+} from './auth.types';
 
 export const loginWithGoogleMutation = async ({
 	code,
@@ -19,6 +24,23 @@ export const loginWithGoogleMutation = async ({
 		});
 
 		return result.data.login;
+	} catch (err) {
+		throw err;
+	}
+};
+
+export const refreshTokenMutation = async ({
+	refreshToken,
+}: RefreshTokenParams) => {
+	try {
+		const result: FetchResult<RefreshTokenSuccess> = await apolloClient.mutate({
+			mutation: REFRESH_TOKEN,
+			variables: {
+				refreshToken,
+			},
+		});
+
+		return result.data.refreshToken;
 	} catch (err) {
 		throw err;
 	}

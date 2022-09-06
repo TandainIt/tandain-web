@@ -1,19 +1,61 @@
 import { render, screen } from '@testing-library/react';
 
-import SignUp from '@/pages/signup';
+import SignUpPage from '@/pages/signup';
 import Login from '@/pages/login';
 import { ReduxProvider } from '@/pages/_app';
+import * as useAppSelector from '@/hooks/useAppSelector';
+import { generateRandomString } from '@/utils/global';
 
-jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => ({
-	asPath: '/mylist',
-}));
+const mockUseRouter = jest
+	.spyOn(require('next/router'), 'useRouter')
+	.mockImplementation(() => ({
+		asPath: '/login',
+		replace: jest.fn(),
+	}));
+
+const mockAppSelector = jest.spyOn(useAppSelector, 'useAppSelector');
 
 describe('modules/auth', () => {
 	describe('SignUpPage', () => {
-		it('should render correctly', () => {
+		mockUseRouter.mockReturnValue({
+			asPath: '/signup',
+			replace: jest.fn(),
+		});
+
+		it('should show login spinner', () => {
+			mockAppSelector.mockReturnValue({
+				credentials: {
+					idToken: generateRandomString(),
+				},
+				isLoading: true,
+			});
+
 			render(
 				<ReduxProvider>
-					<SignUp />
+					<SignUpPage />
+				</ReduxProvider>
+			);
+
+			const unauthenticatedHeader = screen.getByTestId(
+				'unauthenticated-header'
+			);
+			const spinner = screen.getByTestId('spinner');
+
+			expect(unauthenticatedHeader).toBeVisible();
+			expect(spinner).toBeVisible();
+		});
+
+		it('should show sign up form', () => {
+			mockAppSelector.mockReturnValue({
+				credentials: {
+					idToken: undefined,
+				},
+				isLoading: false,
+			});
+
+			render(
+				<ReduxProvider>
+					<SignUpPage />
 				</ReduxProvider>
 			);
 
@@ -35,7 +77,42 @@ describe('modules/auth', () => {
 	});
 
 	describe('LoginPage', () => {
-		it('should render correctly', () => {
+		mockUseRouter.mockReturnValue({
+			asPath: '/login',
+			replace: jest.fn(),
+		});
+
+		it('should show login spinner', () => {
+			mockAppSelector.mockReturnValue({
+				credentials: {
+					idToken: generateRandomString(),
+				},
+				isLoading: true,
+			});
+
+			render(
+				<ReduxProvider>
+					<Login />
+				</ReduxProvider>
+			);
+
+			const unauthenticatedHeader = screen.getByTestId(
+				'unauthenticated-header'
+			);
+			const spinner = screen.getByTestId('spinner');
+
+			expect(unauthenticatedHeader).toBeVisible();
+			expect(spinner).toBeVisible();
+		});
+
+		it('should show login form', () => {
+			mockAppSelector.mockReturnValue({
+				credentials: {
+					idToken: undefined,
+				},
+				isLoading: false,
+			});
+
 			render(
 				<ReduxProvider>
 					<Login />

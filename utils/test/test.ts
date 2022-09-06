@@ -1,6 +1,8 @@
+import { configureStore } from '@reduxjs/toolkit';
+
 import authReducer from '@/store/reducers/auth';
 import pageReducer from '@/store/reducers/page';
-import { configureStore } from '@reduxjs/toolkit';
+import toastReducer from '@/store/reducers/toast';
 
 import { mockDispatchType } from './test.types';
 
@@ -9,6 +11,7 @@ export const configureTestStore = () => {
 		reducer: {
 			page: pageReducer,
 			auth: authReducer,
+			toast: toastReducer,
 		},
 	});
 

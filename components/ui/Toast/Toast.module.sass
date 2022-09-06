@@ -1,4 +1,5 @@
 @use 'styles/colors' as c
+@use 'styles/mixins' as m
 
 .Toast
   padding: 0.75rem 1rem 0.75rem 0.75rem
@@ -7,9 +8,14 @@
   align-items: center
   gap: 0.75rem
   height: fit-content
-  width: 22.375rem
   color: c.$white
   fill: currentColor
+  position: fixed
+  z-index: 10
+  bottom: 1.5rem
+  width: calc(100% - 3rem)
+  transition: right 0.25s ease-in-out
+  right: -100%
 
   .ToastIcon
     height: 2.5rem
@@ -32,6 +38,13 @@
   .CloseBtn:hover
     background-color: c.$red-darker
 
+.ToastShow
+  right: 1.5rem
+
+@include m.mq-phone-lg
+  .Toast
+    width: 20rem
+
 // VARIANTS
 
 @mixin variant($color, $hoverBgColor)
@@ -39,11 +52,10 @@
 
   .CloseBtn:hover
     background-color: $hoverBgColor
-  
 
 .Danger
   @include variant(c.$red-default, c.$red-darker)
-  
+
 .Warning
   @include variant(c.$warning-default, c.$warning-darker)
 

@@ -1,64 +1,170 @@
+import { ReduxProvider } from '@/pages/_app';
 import { fireEvent, render, screen } from '@testing-library/react';
-import Toast from './Toast';
+import { act, renderHook } from '@testing-library/react-hooks';
+
+import Toast, { useAppToast } from './Toast';
+import * as toastActions from '@/store/actions/toast/toast';
+
+const mockUseRouter = jest.spyOn(require('next/router'), 'useRouter');
+const mockAppSelector = jest.spyOn(
+	require('@/hooks/useAppSelector'),
+	'useAppSelector'
+);
+const mockHideToast = jest.spyOn(toastActions, 'hideToast');
 
 describe('Toast', () => {
-	it('should render correctly', () => {
-		const onCloseMock = jest.fn();
-
-		render(
-			<Toast
-				title='Toast'
-				description='This is toast description'
-				onClose={onCloseMock}
-			/>
-		);
-
-		const toast = screen.getByTestId('toast');
-		const toastTitle = screen.getByRole('heading');
-		const toastDescription = screen.getByTestId('toast-desc');
-		const toastCloseBtn = screen.getByRole('button');
-
-		fireEvent.click(toastCloseBtn);
-
-		expect(toast).toBeVisible();
-		expect(toastTitle).toBeVisible();
-		expect(toastTitle).toHaveTextContent('Toast');
-		expect(toastDescription).toBeVisible();
-		expect(toastDescription).toHaveTextContent('This is toast description');
-		expect(toastCloseBtn).toBeVisible();
-		expect(onCloseMock).toHaveBeenCalled();
+	mockUseRouter.mockReturnValue({
+		asPath: '/',
 	});
 
-	it('should render its variants correctly', () => {
-		const args = {
-			title: 'Toast',
-			description: 'This is toast description',
-			onClose: () => {},
-		};
+	describe('useAppToast', () => {
+		it('should return initial state of toast store', () => {
+			const { result } = renderHook(() => useAppToast(), {
+				wrapper: ReduxProvider,
+			});
 
-		const { container: dangerContainer } = render(
-			<Toast variant='danger' {...args} />
-		);
-		const { container: warningContainer } = render(
-			<Toast variant='warning' {...args} />
-		);
-		const { container: infoContainer } = render(
-			<Toast variant='info' {...args} />
-		);
-		const { container: successContainer } = render(
-			<Toast variant='success' {...args} />
-		);
+			expect(result.current).toEqual({
+				toast: {
+					title: null,
+					message: null,
+					variant: 'success',
+					isShow: false,
+				},
+				onClose: expect.any(Function),
+			});
+			expect(mockHideToast).not.toHaveBeenCalled();
+		});
 
-		expect(dangerContainer.querySelector('.Danger')).toBeVisible();
-		expect(dangerContainer.querySelector('svg#danger-icon')).toBeVisible();
+		it('should call hideToast action when onClose is called', () => {
+			const { result } = renderHook(() => useAppToast(), {
+				wrapper: ReduxProvider,
+			});
 
-		expect(warningContainer.querySelector('.Warning')).toBeVisible();
-		expect(warningContainer.querySelector('svg#warning-icon')).toBeVisible();
+			act(() => {
+				result.current.onClose();
+			});
 
-		expect(infoContainer.querySelector('.Info')).toBeVisible();
-		expect(infoContainer.querySelector('svg#info-icon')).toBeVisible();
+			expect(mockHideToast).toHaveBeenCalledTimes(1);
+		});
 
-		expect(successContainer.querySelector('.Success')).toBeVisible();
-		expect(successContainer.querySelector('svg#success-icon')).toBeVisible();
+		it('should call hideToast action when asPath is changed', () => {
+			renderHook(() => useAppToast(), {
+				wrapper: ReduxProvider,
+			});
+
+			mockUseRouter.mockReturnValue({
+				asPath: '/mylist',
+			});
+
+			expect(mockHideToast).toHaveBeenCalledTimes(1);
+		});
+	});
+
+	describe('<Toast />', () => {
+		it('should render correctly', () => {
+			mockAppSelector.mockReturnValue({
+				title: 'Title',
+				message: 'Message',
+				variant: 'danger',
+				isShow: true,
+			});
+
+			render(
+				<ReduxProvider>
+					<Toast />
+				</ReduxProvider>
+			);
+
+			const toast = screen.getByTestId('toast');
+			const toastTitle = screen.getByRole('heading');
+			const toastMessage = screen.getByTestId('toast-message');
+			const toastCloseBtn = screen.getByRole('button');
+			fireEvent.click(toastCloseBtn);
+
+			expect(toast).toBeVisible();
+			expect(toast).toHaveClass('ToastShow');
+			expect(toastTitle).toBeVisible();
+			expect(toastTitle).toHaveTextContent('Title');
+			expect(toastMessage).toBeVisible();
+			expect(toastMessage).toHaveTextContent('Message');
+			expect(toastCloseBtn).toBeVisible();
+			expect(mockHideToast).toHaveBeenCalled();
+		});
+
+		it('should render danger variant', () => {
+			mockAppSelector.mockReturnValue({
+				title: 'Title',
+				message: 'Message',
+				variant: 'danger',
+				isShow: true,
+			});
+
+			render(
+				<ReduxProvider>
+					<Toast />
+				</ReduxProvider>
+			);
+
+			const toast = screen.getByTestId('toast');
+
+			expect(toast).toHaveClass('Danger');
+		});
+
+		it('should render warning variant', () => {
+			mockAppSelector.mockReturnValue({
+				title: 'Title',
+				message: 'Message',
+				variant: 'warning',
+				isShow: true,
+			});
+
+			render(
+				<ReduxProvider>
+					<Toast />
+				</ReduxProvider>
+			);
+
+			const toast = screen.getByTestId('toast');
+
+			expect(toast).toHaveClass('Warning');
+		});
+
+		it('should render info variant', () => {
+			mockAppSelector.mockReturnValue({
+				title: 'Title',
+				message: 'Message',
+				variant: 'info',
+				isShow: true,
+			});
+
+			render(
+				<ReduxProvider>
+					<Toast />
+				</ReduxProvider>
+			);
+
+			const toast = screen.getByTestId('toast');
+
+			expect(toast).toHaveClass('Info');
+		});
+
+		it('should render success variant', () => {
+			mockAppSelector.mockReturnValue({
+				title: 'Title',
+				message: 'Message',
+				variant: 'success',
+				isShow: true,
+			});
+
+			render(
+				<ReduxProvider>
+					<Toast />
+				</ReduxProvider>
+			);
+
+			const toast = screen.getByTestId('toast');
+
+			expect(toast).toHaveClass('Success');
+		});
 	});
 });
