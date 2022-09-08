@@ -1,26 +1,54 @@
 @use 'styles/mediaQueries' as mq
+@use 'styles/colors' as c
+@use 'styles/_mixins' as m
+
+.Main
+  width: 100%
+  height: 100%
+  position: relative
 
 .List
   padding: 0 2rem
   display: grid
-  grid-template-columns: 1fr
   gap: 3rem
+  grid-template-columns: 1fr
 
-@media screen and (min-width: mq.$md)
+.EmptyList
+  margin: 3rem auto
+  align-self: center
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 1rem
+  max-width: 22rem
+
+  .EmptyListImg
+    min-width: 75%
+
+  .EmptyListTitle
+    text-align: center
+    margin-bottom: 0.25rem
+
+  .EmptyListParagraph
+    text-align: center
+    font-size: 0.875rem
+    color: c.$gray-darker
+
+@include m.mq-tablet-lg
   .List
-    display: grid
     column-gap: 56px
     justify-content: center
-    grid-template-columns: repeat(auto-fit, 288px) // Set the items width to 288px while all to be fit with the container 
+    grid-template-columns: repeat(auto-fit, 288px) // Set the items width to 288px while all to be fit with the container
 
-    .Title
-      width: 100%
-      grid-column: 1 / -1 // span the all fist column
+  .Title,
+  .EmptyList
+    width: 100%
+    grid-column: 1 / -1 // span the all fist column
 
-@media screen and (min-width: mq.$lg)
+@include m.mq-desktop
   .List
     grid-template-columns: repeat(auto-fit, 277px)
 
-@media screen and (min-width: mq.$xl)
+@include m.mq-desktop-lg
   .List
     grid-template-columns: repeat(auto-fit, 288px)
