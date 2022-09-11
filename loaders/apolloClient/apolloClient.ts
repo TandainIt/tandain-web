@@ -2,10 +2,15 @@ import fetch from 'cross-fetch';
 import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
-import store from '@/store';
-
 import { ResponseErrorBody } from './apolloClient.types';
 import { setToast } from '@/store/actions/toast';
+
+const globalErrorWhitelists = new Set(['INVALID_TOKEN']);
+let STORE: any; 
+
+export const injectStore = (_store) => {
+	STORE = _store;
+};
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
 	if (graphQLErrors)
@@ -22,13 +27,13 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 			const { message, locations, path, extensions } = error;
 			const errorBody = extensions?.responseBody as ResponseErrorBody;
 
-			if (errorBody) {
+			if (errorBody && !globalErrorWhitelists.has(errorBody.name)) {
 				const error = {
 					title: 'Something went wrong',
 					message: errorBody.message,
 				};
 
-				store.dispatch(
+				STORE.dispatch(
 					setToast({
 						...error,
 						variant: 'danger',
@@ -53,7 +58,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 			message: 'Check your internet connection and try again',
 		};
 
-		store.dispatch(
+		STORE.dispatch(
 			setToast({
 				...error,
 				variant: 'danger',
