@@ -1,81 +1,41 @@
-import { NextPage } from 'next';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { useLazyQuery } from '@apollo/client';
 
 import { AuthenticatedHeader, Page, Sidebar } from '@/components/layouts';
 import { Title } from '@/components/typhographies';
 import { Button, Spinner } from '@/components/ui';
 import { ArticleListItem } from '@/modules/article';
+import { useAuth } from '@/modules/auth/hooks';
+import { GET_ARTICLE_LIST } from '@/modules/article/graphql/article.query';
 
 import classes from '@/modules/article/MyListPage/MyListPage.module.sass';
 import EmptyListSVG from '@/public/illustration/empty-list.svg';
 
-const useMyListPage = () => {
-	const myList = [
-		{
-			id: 'title-1',
-			title: 'Title 1',
-			sourceName: 'Source Name 1',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
+export const useMyListPage = () => {
+	const { idToken } = useAuth();
+	const [getArticleList, { data }] = useLazyQuery(GET_ARTICLE_LIST, {
+		context: {
+			headers: {
+				authorization: `Bearer ${idToken}`,
+			},
 		},
-		{
-			id: 'title-2',
-			title: 'Title 2',
-			sourceName: 'Source Name 2',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-		{
-			id: 'title-3',
-			title: 'Title 3',
-			sourceName: 'Source Name 3',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-		{
-			id: 'title-4',
-			title: 'Title 4',
-			sourceName: 'Source Name 4',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-		{
-			id: 'title-5',
-			title: 'Title 5',
-			sourceName: 'Source Name 5',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-		{
-			id: 'title-6',
-			title: 'Title 6',
-			sourceName: 'Source Name 6',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-		{
-			id: 'title-7',
-			title: 'Title 7',
-			sourceName: 'Source Name 7',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-		{
-			id: 'title-8',
-			title: 'Title 8',
-			sourceName: 'Source Name 8',
-			sourceURL: '/',
-			imgURL: '/temp/my-list-item-img.png',
-		},
-	];
+	});
 
-	return { isLoading: true, list: [] };
+	useEffect(() => {
+		if (idToken) {
+			getArticleList({ variables: { limit: 9 } });
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [idToken]);
+
+	return { isLoading: data === undefined, list: data?.articles };
 };
 
 const EmptyList = () => (
-	<div className={classes.EmptyList}>
+	<div className={classes.EmptyList} data-testid='empty-list'>
 		<Image src={EmptyListSVG} alt='List is empty' />
 		<div>
 			<Title as='h3' className={classes.EmptyListTitle}>
@@ -89,7 +49,7 @@ const EmptyList = () => (
 	</div>
 );
 
-const MyListPage: NextPage = () => {
+const MyListPage = () => {
 	const { isLoading, list } = useMyListPage();
 
 	return (
@@ -103,7 +63,9 @@ const MyListPage: NextPage = () => {
 					<AuthenticatedHeader />
 					<main>
 						<ol data-testid='list' className={clsx(classes.List, 'mt4 mb5')}>
-							<Title className={classes.Title}>My List</Title>
+							<Title data-testid='list-title' className={classes.Title}>
+								My List
+							</Title>
 							{isLoading ? (
 								<Spinner className='absolute-centered' />
 							) : !list.length ? (
@@ -111,11 +73,12 @@ const MyListPage: NextPage = () => {
 							) : (
 								list.map((item) => (
 									<ArticleListItem
+										data-testid='article-list-item'
 										key={item.id}
 										title={item.title}
 										sourceName={item.sourceName}
-										sourceURL={item.sourceURL}
-										imgURL={item.imgURL}
+										sourceURL={item.sourceUrl}
+										imgURL={item.image}
 										onDelete={() => {}}
 									/>
 								))

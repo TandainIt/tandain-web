@@ -28,16 +28,14 @@ const customJestConfig = {
 		// Handle module aliases
 		'@/(.*)': '<rootDir>/$1',
 	},
-	modulePathIgnorePatterns: [
-		'<rootDir>/utils/test',
-	],
-collectCoverageFrom: [
+	modulePathIgnorePatterns: ['<rootDir>/utils/test'],
+	collectCoverageFrom: [
 		'<rootDir>/**/*.{ts,tsx}',
 		'!<rootDir>/**/index.{ts,tsx}',
 		'!<rootDir>/**/*.stories.{ts,tsx}',
-    '!<rootDir>/loaders/**/*.{ts,tsx}',
-    '!<rootDir>/pages/_app.tsx',
-    '!<rootDir>/pages/_document.tsx',
+		'!<rootDir>/loaders/**/*.{ts,tsx}',
+		'!<rootDir>/pages/_app.tsx',
+		'!<rootDir>/pages/_document.tsx',
 	],
 };
 

@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
-import Image from 'next/image';
 import { FC } from 'react';
 import Link from 'next/link';
 
@@ -51,10 +51,9 @@ const ArticleListItem: FC<ArticleListItemProps> = ({
 		</div>
 		<Link href='/' passHref>
 			<a className={classes.ItemImgContainer}>
-				<Image
+				<img
 					src={imgURL}
 					className={classes.ItemImg}
-					layout='fill'
 					alt={title}
 				/>
 			</a>

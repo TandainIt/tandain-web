@@ -5,10 +5,9 @@ export const LOGIN_WITH_GOOGLE = gql`
 		login(body: { code: $code, redirectUri: $redirectUri }) {
 			idToken
 			refreshToken
-			expiryDate
 		}
 	}
-`;
+`; // TODO: Add expiryDate
 
 export const REFRESH_TOKEN = gql`
 	mutation RefreshToken($refreshToken: String!) {

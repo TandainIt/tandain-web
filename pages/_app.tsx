@@ -7,20 +7,25 @@ import { Toast } from '@/components/ui';
 import '@/styles/index.sass';
 import apolloClient from '@/loaders/apolloClient';
 import store from '@/store';
+import { injectStore } from '@/loaders/apolloClient/apolloClient';
 
-export function ReduxProvider({ children }) {
-	return <Provider store={store}>{children}</Provider>;
+export function AppProvider({ children }) {
+	injectStore(store);
+
+	return (
+		<ApolloProvider client={apolloClient}>
+			<Provider store={store}>{children}</Provider>
+		</ApolloProvider>
+	);
 }
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ApolloProvider client={apolloClient}>
-			<ReduxProvider>
-				<Component {...pageProps} />
-				<Toast />
-				<Footer />
-			</ReduxProvider>
-		</ApolloProvider>
+		<AppProvider>
+			<Component {...pageProps} />
+			<Toast />
+			<Footer />
+		</AppProvider>
 	);
 }
 
