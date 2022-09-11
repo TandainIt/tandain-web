@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { ReduxProvider } from '@/pages/_app';
+import { AppProvider } from '@/pages/_app';
 import { AuthenticatedHeader, UnauthenticatedHeader } from './Header';
 
 jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => ({
@@ -16,9 +16,9 @@ describe('Header', () => {
 	describe('<AuthenticatedHeader />', () => {
 		it('should render correctly', () => {
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<AuthenticatedHeader />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const authenticatedHeader = screen.getByTestId('authenticated-header');
@@ -34,9 +34,9 @@ describe('Header', () => {
 
 		it('should call toggleExpandSidebar action if sidebar toggle button is clicked', () => {
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<AuthenticatedHeader />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const sidebarToggleButton = screen.getByTestId('sidebar-toggle');

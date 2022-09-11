@@ -10,7 +10,7 @@ import { useAuth } from '@/modules/auth/hooks';
 
 import classes from '@/modules/auth/AuthPage/AuthPage.module.sass';
 
-const SignupPage: NextPage = () => {
+const SignupPage = () => {
 	const { isLoading } = useAuth('/mylist');
 
 	return (

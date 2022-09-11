@@ -1,4 +1,4 @@
-import { ReduxProvider } from '@/pages/_app';
+import { AppProvider } from '@/pages/_app';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import Sidebar from './Sidebar';
@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Sidebar>;
 
 export const Default: ComponentStory<typeof Sidebar> = (args) => (
-	<ReduxProvider>
+	<AppProvider>
 		<Sidebar {...args} />
-	</ReduxProvider>
+	</AppProvider>
 );

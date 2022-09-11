@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ReduxProvider } from '@/pages/_app';
+import { AppProvider } from '@/pages/_app';
 import { AuthenticatedHeader, UnauthenticatedHeader } from './Header';
 
 export default {
@@ -8,14 +8,14 @@ export default {
 } as ComponentMeta<typeof AuthenticatedHeader | typeof UnauthenticatedHeader>;
 
 export const Authenticated: ComponentStory<typeof AuthenticatedHeader> = () => (
-	<ReduxProvider>
+	<AppProvider>
 		<AuthenticatedHeader />
-	</ReduxProvider>
+	</AppProvider>
 );
 
 export const Unauthenticated: ComponentStory<typeof UnauthenticatedHeader> =
 	() => (
-		<ReduxProvider>
+		<AppProvider>
 			<UnauthenticatedHeader />
-		</ReduxProvider>
+		</AppProvider>
 	);

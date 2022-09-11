@@ -1,30 +1,19 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { ReduxProvider } from '../../../pages/_app';
+import { AppProvider } from '../../../pages/_app';
 import Sidebar, { useSidebar } from './Sidebar';
 import * as pageActions from '@/store/actions/page/page';
 
 const mockUseRouter = jest.spyOn(require('next/router'), 'useRouter');
 const mockToggleExpandSidebar = jest.spyOn(pageActions, 'toggleExpandSidebar');
 
-const ReduxWrapper = ({ children }) => (
-	<ReduxProvider>{children}</ReduxProvider>
-);
-
-const renderSidebar = () =>
-	render(
-		<ReduxProvider>
-			<Sidebar />
-		</ReduxProvider>
-	);
-
 describe('Sidebar', () => {
 	describe('useSidebar', () => {
 		describe('toggleSidebar', () => {
 			it('should call toggleExpandSidebar actions', () => {
 				const { result } = renderHook(() => useSidebar(), {
-					wrapper: ReduxWrapper,
+					wrapper: AppProvider,
 				});
 
 				act(() => {
@@ -42,7 +31,11 @@ describe('Sidebar', () => {
 		}));
 
 		it('should render correctly', () => {
-			renderSidebar();
+			render(
+				<AppProvider>
+					<Sidebar />
+				</AppProvider>
+			);
 
 			const sidebar = screen.getByTestId('sidebar');
 			const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');
@@ -63,7 +56,11 @@ describe('Sidebar', () => {
 		});
 
 		it('and SidebarNavItem should toggle the class of Expanded and Active when sidebar toggle menu is clicked', () => {
-			renderSidebar();
+			render(
+				<AppProvider>
+					<Sidebar />
+				</AppProvider>
+			);
 
 			const sidebar = screen.getByTestId('sidebar');
 			const sidebarBackdrop = screen.getByTestId('sidebar-backdrop');

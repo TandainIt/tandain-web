@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import SignUpPage from '@/pages/signup';
 import Login from '@/pages/login';
-import { ReduxProvider } from '@/pages/_app';
+import { AppProvider } from '@/pages/_app';
 import * as useAppSelector from '@/hooks/useAppSelector';
 import { generateRandomString } from '@/utils/global';
 
@@ -31,9 +31,9 @@ describe('modules/auth', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<SignUpPage />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const unauthenticatedHeader = screen.getByTestId(
@@ -54,9 +54,9 @@ describe('modules/auth', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<SignUpPage />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const unauthenticatedHeader = screen.getByTestId(
@@ -91,9 +91,9 @@ describe('modules/auth', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Login />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const unauthenticatedHeader = screen.getByTestId(
@@ -114,9 +114,9 @@ describe('modules/auth', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Login />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const unauthenticatedHeader = screen.getByTestId(

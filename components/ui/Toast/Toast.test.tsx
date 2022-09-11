@@ -1,4 +1,4 @@
-import { ReduxProvider } from '@/pages/_app';
+import { AppProvider } from '@/pages/_app';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 
@@ -20,7 +20,7 @@ describe('Toast', () => {
 	describe('useAppToast', () => {
 		it('should return initial state of toast store', () => {
 			const { result } = renderHook(() => useAppToast(), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 
 			expect(result.current).toEqual({
@@ -37,7 +37,7 @@ describe('Toast', () => {
 
 		it('should call hideToast action when onClose is called', () => {
 			const { result } = renderHook(() => useAppToast(), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 
 			act(() => {
@@ -49,7 +49,7 @@ describe('Toast', () => {
 
 		it('should call hideToast action when asPath is changed', () => {
 			renderHook(() => useAppToast(), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 
 			mockUseRouter.mockReturnValue({
@@ -70,9 +70,9 @@ describe('Toast', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Toast />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const toast = screen.getByTestId('toast');
@@ -100,9 +100,9 @@ describe('Toast', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Toast />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const toast = screen.getByTestId('toast');
@@ -119,9 +119,9 @@ describe('Toast', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Toast />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const toast = screen.getByTestId('toast');
@@ -138,9 +138,9 @@ describe('Toast', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Toast />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const toast = screen.getByTestId('toast');
@@ -157,9 +157,9 @@ describe('Toast', () => {
 			});
 
 			render(
-				<ReduxProvider>
+				<AppProvider>
 					<Toast />
-				</ReduxProvider>
+				</AppProvider>
 			);
 
 			const toast = screen.getByTestId('toast');

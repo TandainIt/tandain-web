@@ -1,4 +1,4 @@
-import { ReduxProvider } from '@/pages/_app';
+import { AppProvider } from '@/pages/_app';
 import { renderHook } from '@testing-library/react';
 
 import { useAuth } from './auth';
@@ -34,7 +34,7 @@ describe('auth/hooks', () => {
 			);
 
 			const { result } = renderHook(() => useAuth('/mylist'), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 			const { idToken, isLoading } = result.current;
 
@@ -60,7 +60,7 @@ describe('auth/hooks', () => {
 			mockLocalStorage.mockReturnValue(mockRefreshToken);
 
 			const { result } = renderHook(() => useAuth('/mylist'), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 			const { isLoading } = result.current;
 
@@ -92,7 +92,7 @@ describe('auth/hooks', () => {
 			mockUseRouter.mockReturnValue(mockUseRouterValue);
 
 			const { result } = renderHook(() => useAuth(), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 			const { isLoading } = result.current;
 
@@ -120,7 +120,7 @@ describe('auth/hooks', () => {
 			);
 
 			const { result } = renderHook(() => useAuth('/mylist'), {
-				wrapper: ReduxProvider,
+				wrapper: AppProvider,
 			});
 			const { isLoading } = result.current;
 
