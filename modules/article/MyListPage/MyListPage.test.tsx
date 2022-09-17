@@ -1,11 +1,18 @@
-import { cleanup, render, screen, renderHook } from '@testing-library/react';
+import {
+	cleanup,
+	render,
+	screen,
+	renderHook,
+	act,
+} from '@testing-library/react';
 
-import MyListPage, { useMyListPage } from '@/pages/mylist';
+import MyListPage from '@/pages/mylist';
 import { AppProvider } from '@/pages/_app';
 import { generateRandomString } from '@/utils/global';
+import useMyListPage from './MyLisPage.hooks';
 
 const mockUseLazyQuery = jest.spyOn(require('@apollo/client'), 'useLazyQuery');
-const mockUseAuth = jest.spyOn(require('@/modules/auth/hooks'), 'useAuth');
+const mockUseAuth = jest.spyOn(require('@/modules/auth/hooks/auth'), 'useAuth');
 
 jest.spyOn(require('next/router'), 'useRouter').mockImplementation(() => ({
 	pathname: '/mylist',
@@ -17,6 +24,20 @@ describe('pages/MyListPage', () => {
 	});
 
 	describe('useMyListPage', () => {
+		it('should return default value of list, showAddInspirationForm, and isLoading correctly', () => {
+			mockUseAuth.mockReturnValue({
+				idToken: generateRandomString(128),
+			});
+
+			const { result } = renderHook(() => useMyListPage(), {
+				wrapper: AppProvider,
+			});
+
+			const { list, showAddInspirationForm, isLoading } = result.current;
+			expect(list).toEqual([]);
+			expect(showAddInspirationForm).toEqual(false);
+			expect(isLoading).toEqual(true);
+		});
 		it('should return article list if idToken is exists', async () => {
 			const mockGetArticleList = jest.fn();
 			const mockArticleList = [
@@ -67,7 +88,7 @@ describe('pages/MyListPage', () => {
 			expect(mockGetArticleList).toHaveBeenCalledWith({
 				variables: { limit: 9 },
 			});
-			expect(result.current.list).toEqual(undefined);
+			expect(result.current.list).toEqual([]);
 			expect(result.current.isLoading).toEqual(true);
 		});
 		it('should not call useLazyQuery if idToken is not exists', () => {
@@ -87,8 +108,19 @@ describe('pages/MyListPage', () => {
 			});
 
 			expect(mockGetArticleList).not.toHaveBeenCalled();
-			expect(result.current.list).toEqual(undefined);
+			expect(result.current.list).toEqual([]);
 			expect(result.current.isLoading).toEqual(true);
+		});
+		it('should toggle showAddInspirationForm value', () => {
+			const { result } = renderHook(() => useMyListPage(), {
+				wrapper: AppProvider,
+			});
+
+			act(() => {
+				result.current.toggleShowAddInspirationForm();
+			});
+
+			expect(result.current.showAddInspirationForm).toEqual(true);
 		});
 	});
 

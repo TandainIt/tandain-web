@@ -2,6 +2,7 @@ export { default as CloseIcon } from './CloseIcon';
 export { default as DangerIcon } from './DangerIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as InfoIcon } from './InfoIcon';
+export { default as LinkIcon } from './LinkIcon';
 export { default as ListIcon } from './ListIcon';
 export { default as MenuIcon } from './MenuIcon';
 export { default as SuccessIcon } from './SuccessIcon';

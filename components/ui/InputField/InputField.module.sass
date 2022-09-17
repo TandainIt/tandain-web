@@ -1,0 +1,49 @@
+@use 'styles/colors' as c
+
+.InputWrapper
+  position: relative
+  display: flex
+  align-items: center
+
+.Input
+  border-radius: 0.5rem
+  border: 2px solid
+  border-color: c.$primary-lighter
+  font-size: 1rem
+  outline: none
+  box-sizing: border-box
+  width: 100%
+
+  &:focus-visible
+    border-color: c.$primary-default
+
+  &::placeholder
+    color: c.$gray-default
+
+.Icon
+  display: block
+  position: absolute
+  fill: c.$primary-default
+  width: 1.25rem
+  height: 1.25rem
+
+// size
+
+.Medium
+  $iconWidth: 1.25rem
+  $iconSpace: 1rem
+
+  .Input
+    padding: 0.345rem 1rem
+
+  .InputStartIcon
+    padding-left: calc($iconWidth + $iconSpace + 0.5rem)
+
+  .InputEndIcon
+    padding-right: calc($iconWidth + $iconSpace + 0.5rem)
+
+  .Icon
+    left: $iconSpace
+    right: $iconSpace
+    width: $iconWidth
+    height: 1.25rem

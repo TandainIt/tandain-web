@@ -1,38 +1,18 @@
-import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import clsx from 'clsx';
-import { useLazyQuery } from '@apollo/client';
 
 import { AuthenticatedHeader, Page, Sidebar } from '@/components/layouts';
 import { Title } from '@/components/typhographies';
 import { Button, Spinner } from '@/components/ui';
-import { ArticleListItem } from '@/modules/article';
-import { useAuth } from '@/modules/auth/hooks';
-import { GET_ARTICLE_LIST } from '@/modules/article/graphql/article.query';
+import {
+	ArticleListItem,
+	MyListHeader,
+	useMyListPage,
+} from '@/modules/article';
 
 import classes from '@/modules/article/MyListPage/MyListPage.module.sass';
 import EmptyListSVG from '@/public/illustration/empty-list.svg';
-
-export const useMyListPage = () => {
-	const { idToken } = useAuth();
-	const [getArticleList, { data }] = useLazyQuery(GET_ARTICLE_LIST, {
-		context: {
-			headers: {
-				authorization: `Bearer ${idToken}`,
-			},
-		},
-	});
-
-	useEffect(() => {
-		if (idToken) {
-			getArticleList({ variables: { limit: 9 } });
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [idToken]);
-
-	return { isLoading: data === undefined, list: data?.articles };
-};
 
 const EmptyList = () => (
 	<div className={classes.EmptyList} data-testid='empty-list'>
@@ -50,7 +30,12 @@ const EmptyList = () => (
 );
 
 const MyListPage = () => {
-	const { isLoading, list } = useMyListPage();
+	const {
+		list,
+		showAddInspirationForm,
+		isLoading,
+		toggleShowAddInspirationForm,
+	} = useMyListPage();
 
 	return (
 		<>
@@ -63,9 +48,11 @@ const MyListPage = () => {
 					<AuthenticatedHeader />
 					<main>
 						<ol data-testid='list' className={clsx(classes.List, 'mt4 mb5')}>
-							<Title data-testid='list-title' className={classes.Title}>
-								My List
-							</Title>
+							<MyListHeader
+								showForm={showAddInspirationForm}
+								className={classes.MyListHeader}
+								toggleShowForm={toggleShowAddInspirationForm}
+							/>
 							{isLoading ? (
 								<Spinner className='absolute-centered' />
 							) : !list.length ? (

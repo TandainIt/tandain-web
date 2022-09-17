@@ -1,0 +1,19 @@
+@use 'styles/colors' as c
+
+.MyListHeader
+  display: flex
+  justify-content: space-between
+
+.MyListHeaderForm
+  display: flex
+  gap: 1.5rem
+
+  .SubmitBtn
+    min-width: 6.75rem
+
+  .CloseBtn
+    fill: c.$primary-lighter
+    stroke: unset
+
+    &:hover
+      fill: c.$primary-default
