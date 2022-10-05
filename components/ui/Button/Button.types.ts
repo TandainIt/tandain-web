@@ -10,7 +10,8 @@ export interface ButtonProps extends BaseButtonProps {
 	variant?: 'solid' | 'outlined' | 'text' | 'base';
 	color?: 'primary' | 'dark';
 	size?: 'xs' | 'sm' | 'md' | 'lg';
-  iconClassName?: string;
+	iconClassName?: string;
 	startIcon?: ReactNode;
-  round?: Boolean 
+	round?: Boolean;
+	disabled?: Boolean;
 }
