@@ -1,10 +1,7 @@
 @use 'styles/colors' as c
 
 .Spinner
-  width: 2rem
-  height: 2rem
   border-radius: 50%
-  border-width: 0.25rem
   border-style: solid
   border-color: c.$gray-lighter
   border-top-color: c.$primary-default
@@ -14,10 +11,10 @@
 /* Safari */
 @-webkit-keyframes spin
   0% 
-    -webkit-transform: rotate(0deg)
+  -webkit-transform: rotate(0deg)
 
   100% 
-    -webkit-transform: rotate(360deg)
+  -webkit-transform: rotate(360deg)
 
 @keyframes spin
   0%
@@ -25,3 +22,16 @@
 
   100%
     transform: rotate(360deg)
+
+// Size
+
+@mixin size($size, $borderW)
+  width: $size
+  height: $size
+  border-width: $borderW
+
+.Small
+  @include size(1.25rem, 0.2rem)
+
+.Medium
+  @include size(2rem, 0.25rem)

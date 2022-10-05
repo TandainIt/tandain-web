@@ -2,15 +2,13 @@ import clsx from 'clsx';
 import { FC } from 'react';
 
 import classes from './Spinner.module.sass';
-import { DetailHTMLProps } from '@/types';
+import { sizes } from '@/utils/variables';
+import { SpinnerProps } from './Spinner.types';
 
-const Spinner: FC<DetailHTMLProps<HTMLDivElement>> = ({
-	className,
-	...rest
-}) => (
+const Spinner: FC<SpinnerProps> = ({ className, size = 'md', ...rest }) => (
 	<div
 		data-testid='spinner'
-		className={clsx(classes.Spinner, className)}
+		className={clsx(classes.Spinner, classes[sizes[size]], className)}
 		{...rest}
 	></div>
 );
