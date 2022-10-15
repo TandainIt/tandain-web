@@ -32,9 +32,12 @@ const EmptyList = () => (
 const MyListPage = () => {
 	const {
 		list,
-		showAddInspirationForm,
+		showAddArticleForm,
 		isLoading,
-		toggleShowAddInspirationForm,
+		isAddArticleLoading,
+		articleValidationError,
+		toggleShowAddArticleForm,
+		onSubmitNewArticle,
 	} = useMyListPage();
 
 	return (
@@ -49,9 +52,12 @@ const MyListPage = () => {
 					<main>
 						<ol data-testid='list' className={clsx(classes.List, 'mt4 mb5')}>
 							<MyListHeader
-								showForm={showAddInspirationForm}
 								className={classes.MyListHeader}
-								toggleShowForm={toggleShowAddInspirationForm}
+								showForm={showAddArticleForm}
+								formError={articleValidationError}
+								isAddArticleLoading={isAddArticleLoading}
+								toggleShowForm={toggleShowAddArticleForm}
+								onSubmitNewArticle={onSubmitNewArticle}
 							/>
 							{isLoading ? (
 								<Spinner className='absolute-centered' />

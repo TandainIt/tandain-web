@@ -1,4 +1,4 @@
-import { capitalize, generateRandomString } from './global';
+import { capitalize, generateRandomString, isValidURL } from './global';
 
 describe('utils/global', () => {
 	describe('capitalize', () => {
@@ -17,7 +17,7 @@ describe('utils/global', () => {
 		});
 	});
 
-  describe('generateRandomString', () => {
+	describe('generateRandomString', () => {
 		it('should generate random string', () => {
 			const randomString = generateRandomString();
 
@@ -29,6 +29,34 @@ describe('utils/global', () => {
 
 			expect(typeof randomString).toEqual('string');
 			expect(randomString.length).toEqual(128);
+		});
+	});
+
+	describe('isValidURL', () => {
+		it('should return true if URL is consist of scheme, subdomain, domain, and top-level domain', () => {
+			const result = isValidURL('https://www.google.com');
+
+			expect(result).toEqual(true);
+		});
+
+		it('should return true if URL is consist of subdomain, domain, and top-level domain', () => {
+			const result = isValidURL('www.google.com');
+
+			expect(result).toEqual(true);
+		});
+
+		it('should return true if URL is consist of domain and top-level domain', () => {
+			const result = isValidURL('google.com');
+
+			expect(result).toEqual(true);
+		});
+
+		it('should return false if URL is not valid', () => {
+			const invalidURL = isValidURL('google@com');
+			const typoURL = isValidURL('google..com');
+
+			expect(invalidURL).toEqual(false);
+			expect(typoURL).toEqual(false);
 		});
 	});
 });

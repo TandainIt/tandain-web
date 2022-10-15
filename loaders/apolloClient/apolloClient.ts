@@ -6,7 +6,7 @@ import { ResponseErrorBody } from './apolloClient.types';
 import { setToast } from '@/store/actions/toast';
 
 const globalErrorWhitelists = new Set(['INVALID_TOKEN']);
-let STORE: any; 
+let STORE: any;
 
 export const injectStore = (_store) => {
 	STORE = _store;

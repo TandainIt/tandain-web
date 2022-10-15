@@ -1,1 +1,1 @@
-export { capitalize, generateRandomString } from './global';
+export { capitalize, generateRandomString, isValidURL } from './global';

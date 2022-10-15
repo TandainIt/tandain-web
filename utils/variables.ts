@@ -11,3 +11,7 @@ export const fontTypes = {
 	'sans-serif': 'SansSerif',
 	serif: 'Serif',
 };
+
+export const colors = {
+	danger: 'Danger',
+};
